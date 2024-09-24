@@ -7,8 +7,10 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
+  shimmer: ^3.0.0
   widgetbook: ^3.9.0
   widgetbook_annotation: ^3.2.0
 

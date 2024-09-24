@@ -18,6 +18,14 @@ class WidgetbookApp extends StatelessWidget {
     return Widgetbook.material(
       directories: directories,
       addons: [
+        DeviceFrameAddon(
+          devices: [
+            Devices.ios.iPhoneSE,
+            Devices.ios.iPhone13,
+            Devices.android.samsungGalaxyS20,
+          ],
+          initialDevice: Devices.ios.iPhone13,
+        ),
         MaterialThemeAddon(
           themes: [
             WidgetbookTheme(name: 'Light', data: FlexAppThemes.lightTheme),
