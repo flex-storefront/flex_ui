@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:playground/pages/add_to_cart.dart';
+import 'package:playground/pages/banner.dart';
 import 'package:playground/pages/home.dart';
 import 'package:playground/pages/image.dart';
 
@@ -11,6 +12,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page, path: '/'),
         AutoRoute(page: AddToCartRoute.page, path: '/add-to-cart'),
+        AutoRoute(page: BannerRoute.page, path: '/banner'),
         AutoRoute(page: ImageRoute.page, path: '/image'),
       ];
 }
