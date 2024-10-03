@@ -14,8 +14,8 @@ import 'package:flex_ui/widgets/banner/banner.dart' as _i3;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
-  _i1.WidgetbookFolder(
-    name: 'widgets',
+  _i1.WidgetbookCategory(
+    name: 'Components',
     children: [
       _i1.WidgetbookComponent(
         name: 'AddToCartButton',
@@ -38,17 +38,12 @@ final directories = <_i1.WidgetbookNode>[
           ),
         ],
       ),
-      _i1.WidgetbookFolder(
-        name: 'banner',
-        children: [
-          _i1.WidgetbookLeafComponent(
-            name: 'FlexBanner',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Minimal',
-              builder: _i3.minimalBanner,
-            ),
-          )
-        ],
+      _i1.WidgetbookLeafComponent(
+        name: 'FlexBanner',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Standard',
+          builder: _i3.standardBanner,
+        ),
       ),
     ],
   )

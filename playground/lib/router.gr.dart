@@ -29,20 +29,39 @@ class AddToCartRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [BannerPage]
-class BannerRoute extends PageRouteInfo<void> {
-  const BannerRoute({List<PageRouteInfo>? children})
+/// [BannerFullPage]
+class BannerFullRoute extends PageRouteInfo<void> {
+  const BannerFullRoute({List<PageRouteInfo>? children})
       : super(
-          BannerRoute.name,
+          BannerFullRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'BannerRoute';
+  static const String name = 'BannerFullRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const BannerPage();
+      return const BannerFullPage();
+    },
+  );
+}
+
+/// generated route for
+/// [BannerMinimalPage]
+class BannerMinimalRoute extends PageRouteInfo<void> {
+  const BannerMinimalRoute({List<PageRouteInfo>? children})
+      : super(
+          BannerMinimalRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BannerMinimalRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BannerMinimalPage();
     },
   );
 }
