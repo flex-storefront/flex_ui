@@ -29,6 +29,25 @@ class AddToCartRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [BannerPage]
+class BannerRoute extends PageRouteInfo<void> {
+  const BannerRoute({List<PageRouteInfo>? children})
+      : super(
+          BannerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BannerRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BannerPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})

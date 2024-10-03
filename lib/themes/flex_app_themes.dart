@@ -1,3 +1,4 @@
+import 'package:flex_ui/themes/card_themes.dart';
 import 'package:flex_ui/themes/elevated_button_theme.dart';
 import 'package:flex_ui/tokens/colors.dart';
 import 'package:flex_ui/tokens/sizes.dart';
@@ -27,12 +28,13 @@ class FlexAppThemes {
       indicatorColor: FlexColors.secondary.withOpacity(0.1),
     ),
     primaryColor: FlexColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: FlexColors.scaffold,
     fontFamily: 'Roboto',
-    // textTheme: Typography.blackHelsinki,
+    textTheme: Typography.whiteHelsinki,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: FlexColors.primary,
     ),
+    cardTheme: FlexCardTheme.lightCardTheme,
     elevatedButtonTheme: FlexElevatedButtonTheme.lightElevatedButtonTheme,
     // outlinedButtonTheme: FlexOutlinedButtonTheme.lightOutlinedButtonTheme,
     // inputDecorationTheme: RonaTextFormFieldTheme.lightInputDecorationTheme,
@@ -69,11 +71,12 @@ class FlexAppThemes {
     ),
     brightness: Brightness.dark,
     primaryColor: FlexColors.primary,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: FlexColorsDark.scaffold,
     textTheme: Typography.blackHelsinki,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: FlexColors.tertiary,
     ),
+    cardTheme: FlexCardTheme.darkCardTheme,
     elevatedButtonTheme: FlexElevatedButtonTheme.darkElevatedButtonTheme,
     // outlinedButtonTheme: FlexOutlinedButtonTheme.darkOutlinedButtonTheme,
     // inputDecorationTheme: RonaTextFormFieldTheme.darkInputDecorationTheme,
