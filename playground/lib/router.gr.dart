@@ -29,41 +29,53 @@ class AddToCartRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [BannerFullPage]
-class BannerFullRoute extends PageRouteInfo<void> {
-  const BannerFullRoute({List<PageRouteInfo>? children})
-      : super(
-          BannerFullRoute.name,
+/// [BannerPage]
+class BannerRoute extends PageRouteInfo<BannerRouteArgs> {
+  BannerRoute({
+    Key? key,
+    String? variant,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BannerRoute.name,
+          args: BannerRouteArgs(
+            key: key,
+            variant: variant,
+          ),
+          rawQueryParams: {'variant': variant},
           initialChildren: children,
         );
 
-  static const String name = 'BannerFullRoute';
+  static const String name = 'BannerRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const BannerFullPage();
+      final queryParams = data.queryParams;
+      final args = data.argsAs<BannerRouteArgs>(
+          orElse: () =>
+              BannerRouteArgs(variant: queryParams.optString('variant')));
+      return BannerPage(
+        key: args.key,
+        variant: args.variant,
+      );
     },
   );
 }
 
-/// generated route for
-/// [BannerMinimalPage]
-class BannerMinimalRoute extends PageRouteInfo<void> {
-  const BannerMinimalRoute({List<PageRouteInfo>? children})
-      : super(
-          BannerMinimalRoute.name,
-          initialChildren: children,
-        );
+class BannerRouteArgs {
+  const BannerRouteArgs({
+    this.key,
+    this.variant,
+  });
 
-  static const String name = 'BannerMinimalRoute';
+  final Key? key;
 
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const BannerMinimalPage();
-    },
-  );
+  final String? variant;
+
+  @override
+  String toString() {
+    return 'BannerRouteArgs{key: $key, variant: $variant}';
+  }
 }
 
 /// generated route for
