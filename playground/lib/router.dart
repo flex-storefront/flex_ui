@@ -12,7 +12,8 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: HomeRoute.page, path: '/'),
         AutoRoute(page: AddToCartRoute.page, path: '/add-to-cart'),
-        AutoRoute(page: BannerRoute.page, path: '/banner'),
+        AutoRoute(page: BannerMinimalRoute.page, path: '/banner-minimal'),
+        AutoRoute(page: BannerFullRoute.page, path: '/banner-full'),
         AutoRoute(page: ImageRoute.page, path: '/image'),
       ];
 }

@@ -24,14 +24,14 @@ class FlexBanner extends StatelessWidget {
     this.orientation = Axis.horizontal,
     this.imageLayout = FlexBannerImageLayout.end,
     this.theme,
-    this.heading,
+    this.overline,
     this.description,
     this.button,
   });
 
   final Widget title;
 
-  final FlexImage image;
+  final Widget image;
 
   final Axis orientation;
 
@@ -39,14 +39,12 @@ class FlexBanner extends StatelessWidget {
 
   final CardTheme? theme;
 
-  // TODO Implement this, I'm thinking a heading line above the title to emphasise the title
-  final Widget? heading;
+  final Widget? overline;
 
-  // TODO Implement this
   final Widget? description;
 
-  /// TODO Make a standard button. Also: should be a list of buttons for more flexibility
-  final AddToCartButton? button;
+  /// TODO Implement this, also: make it a List<Widget>?
+  final Widget? button;
 
   @override
   Widget build(BuildContext context) {
@@ -54,21 +52,23 @@ class FlexBanner extends StatelessWidget {
     final MainLayout = orientation == Axis.horizontal ? Row.new : Column.new;
 
     final cardChildren = [
-      Padding(
-        padding: const EdgeInsets.all(FlexSizes.spacerDefault),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (heading != null) ...[
-              heading!,
-              const SizedBox(height: FlexSizes.spacerDefault),
+      Flexible(
+        child: Padding(
+          padding: const EdgeInsets.all(FlexSizes.spacerDefault),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (overline != null) ...[
+                overline!,
+                const SizedBox(height: FlexSizes.spacerDefault),
+              ],
+              title,
+              if (description != null) ...[
+                const SizedBox(height: FlexSizes.spacerDefault),
+                description!,
+              ],
             ],
-            title,
-            if (description != null) ...[
-              const SizedBox(height: FlexSizes.spacerDefault),
-              description!,
-            ],
-          ],
+          ),
         ),
       ),
       Flexible(child: image),
@@ -108,10 +108,11 @@ class FlexBanner extends StatelessWidget {
 }
 
 @widgetbook.UseCase(
-  name: 'Minimal',
+  name: 'Standard',
   type: FlexBanner,
+  path: '[Components]',
 )
-Widget minimalBanner(BuildContext context) {
+Widget standardBanner(BuildContext context) {
   final color = context.knobs.colorOrNull(
     label: 'Background Color',
     initialValue: null,
@@ -120,14 +121,41 @@ Widget minimalBanner(BuildContext context) {
   final theme =
       color != null ? CardTheme.of(context).copyWith(color: color) : null;
 
+  final overlineText = context.knobs.stringOrNull(
+    label: 'Heading',
+    initialValue: 'FEATURED',
+  );
+
+  final descriptionText = context.knobs.stringOrNull(
+    label: 'Description',
+    initialValue:
+        'Feeling spooky? Get our best halloween deals now before it\'s too late!',
+  );
+
   return Center(
     child: FlexBanner(
+      overline: overlineText != null
+          ? Text(
+              overlineText,
+              style: Theme.of(context).textTheme.labelSmall,
+              textAlign: TextAlign.center,
+            )
+          : null,
       title: Text(
         context.knobs.string(
           label: 'Title',
           initialValue: 'Halloween specials!',
         ),
+        style: Theme.of(context).textTheme.titleMedium,
+        textAlign: TextAlign.center,
       ),
+      description: descriptionText != null
+          ? Text(
+              descriptionText,
+              style: Theme.of(context).textTheme.bodySmall,
+              textAlign: TextAlign.center,
+            )
+          : null,
       image: const FlexImage(
         'https://loremflickr.com/240/320?lock=666',
         placeholder: SizedBox.shrink(),

@@ -52,6 +52,7 @@ class AddToCartButton extends StatelessWidget {
 @widgetbook.UseCase(
   name: 'Default',
   type: AddToCartButton,
+  path: '[Components]',
 )
 Widget defaultButton(BuildContext context) {
   return Center(
@@ -64,6 +65,7 @@ Widget defaultButton(BuildContext context) {
 @widgetbook.UseCase(
   name: 'Loading',
   type: AddToCartButton,
+  path: '[Components]',
 )
 Widget loadingButton(BuildContext context) {
   return Center(
@@ -77,6 +79,7 @@ Widget loadingButton(BuildContext context) {
 @widgetbook.UseCase(
   name: 'Disabled',
   type: AddToCartButton,
+  path: '[Components]',
 )
 Widget disabledButton(BuildContext context) {
   return Center(
@@ -90,6 +93,7 @@ Widget disabledButton(BuildContext context) {
 @widgetbook.UseCase(
   name: 'Small',
   type: AddToCartButton,
+  path: '[Components]',
 )
 Widget smallButton(BuildContext context) {
   return Center(
