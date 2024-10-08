@@ -72,6 +72,17 @@ void main() async {
           file.renameSync(newPath);
           Directory(file.parent.path).deleteSync(recursive: true);
         }
+
+        // replace main dart file
+        if (fileSegments.contains('flex_ui.dart')) {
+          final newPathSegment = fileSegments.join('/').replaceAll(
+                'flex_ui.dart',
+                '{{project_name.snakeCase()}}.dart',
+              );
+          final newPath = path.join(_targetPath, newPathSegment);
+          File(newPath).createSync(recursive: true);
+          file.renameSync(newPath);
+        }
       } catch (_) {}
     }),
   );
