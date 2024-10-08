@@ -3,8 +3,8 @@ import 'package:{{project_name.snakeCase()}}/widgets/image/image_error.dart';
 import 'package:{{project_name.snakeCase()}}/widgets/image/image_loader.dart';
 import 'package:flutter/material.dart';
 
-class {{project_name.titleCase()}}Image extends StatelessWidget {
-  const {{project_name.titleCase()}}Image(
+class FlexImage extends StatelessWidget {
+  const FlexImage(
     this.src, {
     super.key,
     this.fit = BoxFit.contain,

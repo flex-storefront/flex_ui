@@ -35,12 +35,12 @@ class AddToCartButton extends StatelessWidget {
             children: [
               if (state == ButtonState.loading) ...[
                 const SizedBox(
-                  height: {{project_name.titleCase()}}Sizes.iconXs,
-                  width: {{project_name.titleCase()}}Sizes.iconXs,
+                  height: FlexSizes.iconXs,
+                  width: FlexSizes.iconXs,
                   child:
                       Center(child: CircularProgressIndicator(strokeWidth: 2)),
                 ),
-                const SizedBox(width: {{project_name.titleCase()}}Sizes.sm),
+                const SizedBox(width: FlexSizes.sm),
               ],
               Text(title),
             ],
@@ -99,7 +99,7 @@ Widget smallButton(BuildContext context) {
   return Center(
     child: AddToCartButton(
       style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.all({{project_name.titleCase()}}Sizes.md),
+        padding: const EdgeInsets.all(FlexSizes.md),
       ),
       onPressed: () {},
     ),

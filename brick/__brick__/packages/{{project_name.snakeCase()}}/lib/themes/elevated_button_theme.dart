@@ -2,25 +2,25 @@ import 'package:{{project_name.snakeCase()}}/tokens/colors.dart';
 import 'package:{{project_name.snakeCase()}}/tokens/sizes.dart';
 import 'package:flutter/material.dart';
 
-class {{project_name.titleCase()}}ElevatedButtonTheme {
-  {{project_name.titleCase()}}ElevatedButtonTheme._();
+class FlexElevatedButtonTheme {
+  FlexElevatedButtonTheme._();
 
   static ElevatedButtonThemeData lightElevatedButtonTheme =
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: {{project_name.titleCase()}}Colors.onPrimary,
-      backgroundColor: {{project_name.titleCase()}}Colors.primary,
-      disabledForegroundColor: {{project_name.titleCase()}}Colors.disabled,
+      foregroundColor: FlexColors.onPrimary,
+      backgroundColor: FlexColors.primary,
+      disabledForegroundColor: FlexColors.disabled,
       disabledBackgroundColor: Colors.grey[300],
-      padding: const EdgeInsets.all({{project_name.titleCase()}}Sizes.lg),
+      padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle: const TextStyle(
-        fontSize: {{project_name.titleCase()}}Sizes.fontSizeSm,
-        color: {{project_name.titleCase()}}Colors.onPrimary,
+        fontSize: FlexSizes.fontSizeSm,
+        color: FlexColors.onPrimary,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular({{project_name.titleCase()}}Sizes.borderRadiusSm),
+        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
   );
@@ -29,18 +29,18 @@ class {{project_name.titleCase()}}ElevatedButtonTheme {
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: {{project_name.titleCase()}}ColorsDark.onPrimary,
-      backgroundColor: {{project_name.titleCase()}}ColorsDark.primary,
-      disabledForegroundColor: {{project_name.titleCase()}}Colors.disabled,
+      foregroundColor: FlexColorsDark.onPrimary,
+      backgroundColor: FlexColorsDark.primary,
+      disabledForegroundColor: FlexColors.disabled,
       disabledBackgroundColor: Colors.grey[300],
-      padding: const EdgeInsets.all({{project_name.titleCase()}}Sizes.lg),
+      padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle: const TextStyle(
-        fontSize: {{project_name.titleCase()}}Sizes.fontSizeSm,
-        color: {{project_name.titleCase()}}ColorsDark.onPrimary,
+        fontSize: FlexSizes.fontSizeSm,
+        color: FlexColorsDark.onPrimary,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular({{project_name.titleCase()}}Sizes.borderRadiusSm),
+        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
   );

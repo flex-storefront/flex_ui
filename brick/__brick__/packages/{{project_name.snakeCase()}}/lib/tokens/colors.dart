@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class {{project_name.titleCase()}}Colors {
+class FlexColors {
   static const primary = Color.fromRGBO(34, 34, 34, 1);
   static const secondary = Color.fromRGBO(36, 55, 254, 1);
   static const tertiary = Color.fromRGBO(241, 255, 97, 1);
@@ -27,7 +27,7 @@ class {{project_name.titleCase()}}Colors {
   static const onDisabled = Color.fromRGBO(250, 250, 250, 1);
 }
 
-class {{project_name.titleCase()}}ColorsDark {
+class FlexColorsDark {
   static const primary = Color.fromRGBO(250, 250, 250, 1);
   static const secondary = Color.fromRGBO(36, 55, 254, 1);
   static const tertiary = Color.fromRGBO(241, 255, 97, 1);

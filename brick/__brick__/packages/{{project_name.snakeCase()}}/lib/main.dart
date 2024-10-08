@@ -28,8 +28,8 @@ class WidgetbookApp extends StatelessWidget {
         ),
         MaterialThemeAddon(
           themes: [
-            WidgetbookTheme(name: 'Light', data: {{project_name.titleCase()}}AppThemes.lightTheme),
-            WidgetbookTheme(name: 'Dark', data: {{project_name.titleCase()}}AppThemes.darkTheme),
+            WidgetbookTheme(name: 'Light', data: FlexAppThemes.lightTheme),
+            WidgetbookTheme(name: 'Dark', data: FlexAppThemes.darkTheme),
           ],
         )
       ],

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-enum {{project_name.titleCase()}}BannerImageLayout {
+enum FlexBannerImageLayout {
   /// Image is firstly visible, the rest of the element are shown after the
   /// image (i.e. on the right if the orientation is horizontal, at the bottom
   /// if orientation is vertical)
@@ -16,13 +16,13 @@ enum {{project_name.titleCase()}}BannerImageLayout {
   end,
 }
 
-class {{project_name.titleCase()}}Banner extends StatelessWidget {
-  const {{project_name.titleCase()}}Banner({
+class FlexBanner extends StatelessWidget {
+  const FlexBanner({
     super.key,
     required this.title,
     required this.image,
     this.orientation = Axis.horizontal,
-    this.imageLayout = {{project_name.titleCase()}}BannerImageLayout.end,
+    this.imageLayout = FlexBannerImageLayout.end,
     this.theme,
     this.overline,
     this.description,
@@ -35,7 +35,7 @@ class {{project_name.titleCase()}}Banner extends StatelessWidget {
 
   final Axis orientation;
 
-  final {{project_name.titleCase()}}BannerImageLayout imageLayout;
+  final FlexBannerImageLayout imageLayout;
 
   final CardTheme? theme;
 
@@ -52,33 +52,33 @@ class {{project_name.titleCase()}}Banner extends StatelessWidget {
     final MainLayout = orientation == Axis.horizontal ? Row.new : Column.new;
 
     final cardChildren = [
-      {{project_name.titleCase()}}ible(
+      Flexible(
         child: Padding(
-          padding: const EdgeInsets.all({{project_name.titleCase()}}Sizes.spacerDefault),
+          padding: const EdgeInsets.all(FlexSizes.spacerDefault),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               if (overline != null) ...[
                 overline!,
-                const SizedBox(height: {{project_name.titleCase()}}Sizes.spacerDefault),
+                const SizedBox(height: FlexSizes.spacerDefault),
               ],
               title,
               if (description != null) ...[
-                const SizedBox(height: {{project_name.titleCase()}}Sizes.spacerDefault),
+                const SizedBox(height: FlexSizes.spacerDefault),
                 description!,
               ],
             ],
           ),
         ),
       ),
-      {{project_name.titleCase()}}ible(child: image),
+      Flexible(child: image),
     ];
 
     Widget widget = Card(
       color: theme?.color,
       child: MainLayout(
         mainAxisSize: MainAxisSize.min,
-        children: imageLayout == {{project_name.titleCase()}}BannerImageLayout.end
+        children: imageLayout == FlexBannerImageLayout.end
             ? cardChildren
             : cardChildren.reversed.toList(),
       ),
@@ -109,7 +109,7 @@ class {{project_name.titleCase()}}Banner extends StatelessWidget {
 
 @widgetbook.UseCase(
   name: 'Standard',
-  type: {{project_name.titleCase()}}Banner,
+  type: FlexBanner,
   path: '[Components]',
 )
 Widget standardBanner(BuildContext context) {
@@ -133,7 +133,7 @@ Widget standardBanner(BuildContext context) {
   );
 
   return Center(
-    child: {{project_name.titleCase()}}Banner(
+    child: FlexBanner(
       overline: overlineText != null
           ? Text(
               overlineText,
@@ -156,7 +156,7 @@ Widget standardBanner(BuildContext context) {
               textAlign: TextAlign.center,
             )
           : null,
-      image: const {{project_name.titleCase()}}Image(
+      image: const FlexImage(
         'https://loremflickr.com/240/320?lock=666',
         placeholder: SizedBox.shrink(),
       ),
@@ -170,8 +170,8 @@ Widget standardBanner(BuildContext context) {
         label: 'Image End',
         initialValue: true,
       )
-          ? {{project_name.titleCase()}}BannerImageLayout.end
-          : {{project_name.titleCase()}}BannerImageLayout.start,
+          ? FlexBannerImageLayout.end
+          : FlexBannerImageLayout.start,
       theme: theme,
     ),
   );

@@ -50,10 +50,10 @@ void main() async {
               .replaceAll(
                   'Beautifully crafted commerce widgets to copy and paste into your storefront app.',
                   '{{{description}}}')
-              .replaceAll(
-                'Flex',
-                '{{project_name.titleCase()}}',
-              )
+              // .replaceAll(
+              //   'Flex',
+              //   '{{library_name.titleCase()}}',
+              // )
               .replaceAll(
                 'com.example.flex_ui',
                 path.isWithin(_androidPath, file.path)

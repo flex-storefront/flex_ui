@@ -39,7 +39,7 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookLeafComponent(
-        name: '{{project_name.titleCase()}}Banner',
+        name: 'FlexBanner',
         useCase: _i1.WidgetbookUseCase(
           name: 'Standard',
           builder: _i3.standardBanner,
