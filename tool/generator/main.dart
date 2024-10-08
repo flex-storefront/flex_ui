@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:path/path.dart' as path;
 
-final _sourcePath = path.join('app');
-final _targetPath = path.join('brick', '__brick__');
+final _sourcePath = path.join('app/.');
+final _targetPath =
+    path.join('brick', '__brick__', 'packages', '{{project_name.snakeCase()}}');
 final _androidPath = path.join(_targetPath, 'android');
 final _androidKotlinPath =
     path.join(_androidPath, 'app', 'src', 'main', 'kotlin');
@@ -16,6 +17,9 @@ void main() async {
   if (targetDir.existsSync()) {
     await targetDir.delete(recursive: true);
   }
+
+  // Make Directories
+  await Shell.mkdir(_targetPath);
 
   // Copy Project Files
   await Shell.cp(_sourcePath, _targetPath);
@@ -57,7 +61,7 @@ void main() async {
                     : '{{org_name.dotCase()}}.{{project_name.paramCase()}}',
               ),
         );
-        final fileSegments = file.path.split('/').sublist(2);
+        final fileSegments = file.path.split('/').sublist(4);
         if (fileSegments.contains('flex_ui')) {
           final newPathSegment = fileSegments.join('/').replaceAll(
                 'flex_ui',
