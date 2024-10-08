@@ -1,0 +1,9 @@
+name: generator
+description: Generate brick template with mustache syntax from a Flutter project.
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  path: ^1.8.0

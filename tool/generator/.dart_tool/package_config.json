@@ -1,0 +1,23 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "path",
+      "rootUri": "file:///Users/stephenrichter/.pub-cache/hosted/pub.dev/path-1.9.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "generator",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    }
+  ],
+  "generated": "2024-10-08T16:59:44.395198Z",
+  "generator": "pub",
+  "generatorVersion": "3.5.3",
+  "flutterRoot": "file:///Users/stephenrichter/Developer/flutter",
+  "flutterVersion": "3.24.3",
+  "pubCache": "file:///Users/stephenrichter/.pub-cache"
+}

@@ -265,7 +265,7 @@ packages:
   flex_ui:
     dependency: "direct main"
     description:
-      path: ".."
+      path: "../app"
       relative: true
     source: path
     version: "0.1.0"
