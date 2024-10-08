@@ -1,5 +1,9 @@
-import 'package:flex_ui/themes/card_themes.dart';
-import 'package:flex_ui/themes/elevated_button_theme.dart';
+import 'package:flex_ui/theme/checkbox_theme.dart';
+import 'package:flex_ui/theme/chip_theme.dart';
+import 'package:flex_ui/theme/elevated_button_theme.dart';
+import 'package:flex_ui/theme/outlined_button_theme.dart';
+import 'package:flex_ui/theme/text_field_theme.dart';
+import 'package:flex_ui/theme/text_theme.dart';
 import 'package:flex_ui/tokens/colors.dart';
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +34,15 @@ class FlexAppThemes {
     primaryColor: FlexColors.primary,
     scaffoldBackgroundColor: FlexColors.scaffold,
     fontFamily: 'Roboto',
-    textTheme: Typography.whiteHelsinki,
+    textTheme: FlexTextTheme.lightTextTheme,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: FlexColors.primary,
     ),
-    cardTheme: FlexCardTheme.lightCardTheme,
     elevatedButtonTheme: FlexElevatedButtonTheme.lightElevatedButtonTheme,
-    // outlinedButtonTheme: FlexOutlinedButtonTheme.lightOutlinedButtonTheme,
-    // inputDecorationTheme: RonaTextFormFieldTheme.lightInputDecorationTheme,
+    outlinedButtonTheme: FlexOutlinedButtonTheme.lightOutlinedButtonTheme,
+    checkboxTheme: FlexCheckboxTheme.lightCheckboxTheme,
+    chipTheme: FlexChipTheme.lightChipTheme,
+    inputDecorationTheme: FlexTextFormFieldTheme.lightInputDecorationTheme,
     searchBarTheme: SearchBarThemeData(
       backgroundColor: WidgetStateColor.resolveWith((states) => Colors.white),
       elevation: const WidgetStatePropertyAll(0),
@@ -72,14 +77,15 @@ class FlexAppThemes {
     brightness: Brightness.dark,
     primaryColor: FlexColors.primary,
     scaffoldBackgroundColor: FlexColorsDark.scaffold,
-    textTheme: Typography.blackHelsinki,
+    textTheme: FlexTextTheme.darkTextTheme,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: FlexColors.tertiary,
     ),
-    cardTheme: FlexCardTheme.darkCardTheme,
     elevatedButtonTheme: FlexElevatedButtonTheme.darkElevatedButtonTheme,
-    // outlinedButtonTheme: FlexOutlinedButtonTheme.darkOutlinedButtonTheme,
-    // inputDecorationTheme: RonaTextFormFieldTheme.darkInputDecorationTheme,
+    outlinedButtonTheme: FlexOutlinedButtonTheme.darkOutlinedButtonTheme,
+    checkboxTheme: FlexCheckboxTheme.darkCheckboxTheme,
+    chipTheme: FlexChipTheme.darkChipTheme,
+    inputDecorationTheme: FlexTextFormFieldTheme.darkInputDecorationTheme,
     searchBarTheme: SearchBarThemeData(
       elevation: const WidgetStatePropertyAll(0),
       side: const WidgetStatePropertyAll(
