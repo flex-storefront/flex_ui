@@ -8,9 +8,11 @@ environment:
 
 dependencies:
   cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
   flutter:
     sdk: flutter
   shimmer: ^3.0.0
+  smooth_page_indicator: ^1.2.0+3
   widgetbook: ^3.9.0
   widgetbook_annotation: ^3.2.0
 

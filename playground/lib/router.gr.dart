@@ -67,6 +67,25 @@ class BannerMinimalRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CarouselPage]
+class CarouselRoute extends PageRouteInfo<void> {
+  const CarouselRoute({List<PageRouteInfo>? children})
+      : super(
+          CarouselRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CarouselRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CarouselPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
