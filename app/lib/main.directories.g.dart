@@ -12,6 +12,8 @@
 import 'package:flex_ui/widgets/add_to_cart_button.dart' as _i2;
 import 'package:flex_ui/widgets/banner/banner.dart' as _i3;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i4;
+import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
+    as _i5;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -51,6 +53,13 @@ final directories = <_i1.WidgetbookNode>[
         useCase: _i1.WidgetbookUseCase(
           name: 'Central banner',
           builder: _i4.centralBannerCarousel,
+        ),
+      ),
+      _i1.WidgetbookLeafComponent(
+        name: 'FlexQuantitySelector',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Default',
+          builder: _i5.defaultButton,
         ),
       ),
     ],
