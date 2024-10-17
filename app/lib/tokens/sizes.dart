@@ -20,7 +20,7 @@ class FlexSizes {
   static const double fontSizeXl = 20.0;
 
   // Button sizes
-  static const double buttonHeight = 18.0;
+  static const double buttonHeight = 48.0;
   static const double buttonRadius = 12.0;
   static const double buttonWidth = 120.0;
   static const double buttonElevation = 4.0;

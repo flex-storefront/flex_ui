@@ -1,6 +1,7 @@
 import 'package:flex_ui/theme/checkbox_theme.dart';
 import 'package:flex_ui/theme/chip_theme.dart';
 import 'package:flex_ui/theme/elevated_button_theme.dart';
+import 'package:flex_ui/theme/icon_button_theme.dart';
 import 'package:flex_ui/theme/outlined_button_theme.dart';
 import 'package:flex_ui/theme/text_field_theme.dart';
 import 'package:flex_ui/theme/text_theme.dart';
@@ -32,6 +33,7 @@ class FlexAppThemes {
       indicatorColor: FlexColors.secondary.withOpacity(0.1),
     ),
     primaryColor: FlexColors.primary,
+    disabledColor: FlexColorsDark.disabled,
     scaffoldBackgroundColor: FlexColors.scaffold,
     fontFamily: 'Roboto',
     textTheme: FlexTextTheme.lightTextTheme,
@@ -40,6 +42,7 @@ class FlexAppThemes {
     ),
     elevatedButtonTheme: FlexElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: FlexOutlinedButtonTheme.lightOutlinedButtonTheme,
+    iconButtonTheme: FlexIconButtonTheme.lightIconButtonTheme,
     checkboxTheme: FlexCheckboxTheme.lightCheckboxTheme,
     chipTheme: FlexChipTheme.lightChipTheme,
     inputDecorationTheme: FlexTextFormFieldTheme.lightInputDecorationTheme,
@@ -75,7 +78,8 @@ class FlexAppThemes {
       ),
     ),
     brightness: Brightness.dark,
-    primaryColor: FlexColors.primary,
+    primaryColor: FlexColorsDark.primary,
+    disabledColor: FlexColorsDark.disabled,
     scaffoldBackgroundColor: FlexColorsDark.scaffold,
     textTheme: FlexTextTheme.darkTextTheme,
     progressIndicatorTheme: const ProgressIndicatorThemeData(
@@ -83,6 +87,7 @@ class FlexAppThemes {
     ),
     elevatedButtonTheme: FlexElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: FlexOutlinedButtonTheme.darkOutlinedButtonTheme,
+    iconButtonTheme: FlexIconButtonTheme.darkIconButtonTheme,
     checkboxTheme: FlexCheckboxTheme.darkCheckboxTheme,
     chipTheme: FlexChipTheme.darkChipTheme,
     inputDecorationTheme: FlexTextFormFieldTheme.darkInputDecorationTheme,
