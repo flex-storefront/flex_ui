@@ -6,5 +6,8 @@ deploy:
 
 compile_and_deploy:	compile deploy
 
+widgetbook:
+	cd app && flutter run -d chrome
+
 build_brick:
 	dart run tool/generator/main.dart
