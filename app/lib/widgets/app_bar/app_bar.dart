@@ -34,7 +34,7 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    final iconButtonStyle = Theme.of(context).iconButtonTheme.style!.copyWith(
+    final iconButtonStyle = Theme.of(context).iconButtonTheme.style?.copyWith(
         backgroundColor: WidgetStatePropertyAll(Colors.transparent),
         iconColor: WidgetStatePropertyAll(
             brightness == Brightness.dark ? Colors.white : Colors.black),
