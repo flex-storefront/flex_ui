@@ -12,7 +12,6 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.title,
       this.trailingIcon,
       this.onTrailingIconPressed,
-      this.elevation = 2,
       this.centerTitle = true})
       : assert(
           (leadingIcon == null) == (onLeadingIconPressed == null),
@@ -28,7 +27,6 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onLeadingIconPressed;
   final IconData? trailingIcon;
   final VoidCallback? onTrailingIconPressed;
-  final double? elevation;
   final bool? centerTitle;
 
   @override
@@ -41,27 +39,23 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: WidgetStatePropertyAll(EdgeInsets.zero),
         fixedSize: WidgetStatePropertyAll(Size.zero));
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: FlexSizes.appPadding),
-      child: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: centerTitle,
-        leading: leadingIcon != null
-            ? IconButton(
-                style: iconButtonStyle,
-                onPressed: onLeadingIconPressed,
-                icon: Icon(leadingIcon))
-            : null,
-        title: title,
-        actions: [
-          if (trailingIcon != null)
-            IconButton(
-                style: iconButtonStyle,
-                onPressed: onTrailingIconPressed,
-                icon: Icon(trailingIcon))
-        ],
-        elevation: elevation,
-      ),
+    return AppBar(
+      automaticallyImplyLeading: false,
+      centerTitle: centerTitle,
+      leading: leadingIcon != null
+          ? IconButton(
+              style: iconButtonStyle,
+              onPressed: onLeadingIconPressed,
+              icon: Icon(leadingIcon))
+          : null,
+      title: title,
+      actions: [
+        if (trailingIcon != null)
+          IconButton(
+              style: iconButtonStyle,
+              onPressed: onTrailingIconPressed,
+              icon: Icon(trailingIcon))
+      ],
     );
   }
 
