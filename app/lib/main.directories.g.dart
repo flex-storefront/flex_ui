@@ -74,6 +74,13 @@ final directories = <_i1.WidgetbookNode>[
         ),
       ),
       _i1.WidgetbookLeafComponent(
+        name: 'FlexProductCard',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Standard',
+          builder: _i5.standard,
+        ),
+      ),
+      _i1.WidgetbookLeafComponent(
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
