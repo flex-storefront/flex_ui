@@ -11,6 +11,8 @@ class FlexImage extends StatelessWidget {
     this.placeholderAspectRatio,
     this.height,
     this.width,
+    this.borderRadius,
+    this.semantics = 'Image',
     this.placeholder,
     this.error,
   });
@@ -19,6 +21,8 @@ class FlexImage extends StatelessWidget {
   final BoxFit? fit;
   final double? height;
   final double? width;
+  final BorderRadius? borderRadius;
+  final String semantics;
 
   final Widget? placeholder;
   final Widget? error;
@@ -43,16 +47,17 @@ class FlexImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget content;
     // src could come as empty or 'null' depending on how it is declared
     if (src.isEmpty || src == 'null') {
-      return error ??
+      content = error ??
           ImageError(
             aspectRatio: placeholderAspectRatio,
           );
     }
 
     if (!isRemote) {
-      return Image.asset(
+      content = Image.asset(
         src,
         width: width,
         height: height,
@@ -65,7 +70,7 @@ class FlexImage extends StatelessWidget {
       );
     }
 
-    return CachedNetworkImage(
+    content = CachedNetworkImage(
       imageUrl: src,
       placeholder: (context, url) =>
           placeholder ??
@@ -81,5 +86,9 @@ class FlexImage extends StatelessWidget {
       height: height,
       width: width,
     );
+
+    return ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        child: Semantics(label: semantics, child: content));
   }
 }
