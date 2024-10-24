@@ -77,7 +77,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexProductCard',
         useCase: _i1.WidgetbookUseCase(
           name: 'Standard',
-          builder: _i5.standard,
+          builder: _i5.standardFlexProductCard,
         ),
       ),
       _i1.WidgetbookLeafComponent(

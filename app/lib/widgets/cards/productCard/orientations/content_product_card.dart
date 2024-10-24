@@ -1,9 +1,10 @@
+import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_infos.dart';
 import 'package:flex_ui/widgets/image/image.dart';
 import 'package:flutter/material.dart';
 
-class FlexPortraitCard extends StatelessWidget {
-  const FlexPortraitCard({
+class FlexContentProductCard extends StatelessWidget {
+  const FlexContentProductCard({
     super.key,
     required this.productName,
     this.productReference,
@@ -39,13 +40,23 @@ class FlexPortraitCard extends StatelessWidget {
         isLandscape: isLandscape,
       ),
     );
-    Widget image = FlexImage(
-      imageUrl!,
-      borderRadius: isLandscape ?  BorderRadius.horizontal(left: Radius.circular(10)) :  BorderRadius.vertical(top: Radius.circular(10)),
+
+    Widget image = Expanded(
+      child: FlexImage(
+        imageUrl!,
+        width: double.infinity,
+        height: double.infinity,
+        borderRadius: isLandscape
+            ? BorderRadius.horizontal(left: Radius.circular(FlexSizes.cardRadiusMd))
+            : BorderRadius.vertical(top: Radius.circular(FlexSizes.cardRadiusMd)),
+        fit: BoxFit.cover,
+        placeholder: Container(color: Colors.white),
+      ),
     );
 
     return isLandscape
         ? Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               if (imageUrl != null) image,

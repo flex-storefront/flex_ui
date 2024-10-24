@@ -1,6 +1,6 @@
 import 'package:flex_ui/flex_ui.dart';
 import 'package:flex_ui/utils/extension.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/notation.dart';
+import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfos extends StatelessWidget {
@@ -27,15 +27,19 @@ class ProductInfos extends StatelessWidget {
     final context = Theme.of(infosContext);
 
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(FlexSizes.md),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment:
+            isLandscape ? MainAxisAlignment.center : MainAxisAlignment.start,
         children: [
           if (!isLandscape)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: FlexNotation(
-                rating: notation ?? 0,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: FlexSizes.sm),
+                child: FlexProductNotation(
+                  rating: notation ?? 0,
+                ),
               ),
             ),
           Text(
@@ -47,7 +51,7 @@ class ProductInfos extends StatelessWidget {
           if (productReference.isNotBlank())
             Flexible(
               child: Padding(
-                padding:  EdgeInsets.only(bottom: isLandscape ? 0 : 8),
+                padding: EdgeInsets.only(bottom: isLandscape ? 0 : FlexSizes.xs),
                 child: Text(
                   productReference!,
                   style: context.textTheme.titleSmall,
@@ -58,8 +62,8 @@ class ProductInfos extends StatelessWidget {
             ),
           if (isLandscape)
             Padding(
-              padding: const EdgeInsets.only(top: 4, bottom: 10),
-              child: FlexNotation(
+              padding: const EdgeInsets.only(top: FlexSizes.xxs, bottom: FlexSizes.sm),
+              child: FlexProductNotation(
                 rating: notation ?? 0,
               ),
             ),
@@ -82,6 +86,7 @@ class ProductInfos extends StatelessWidget {
             Text(
               '$currency$price',
               style: context.textTheme.headlineSmall,
+              overflow: TextOverflow.fade,
             ),
         ],
       ),
