@@ -40,7 +40,7 @@ class AddToCartButton extends StatelessWidget {
                   child:
                       Center(child: CircularProgressIndicator(strokeWidth: 2)),
                 ),
-                const SizedBox(width: FlexSizes.sm),
+                const SizedBox(width: FlexSizes.xs),
               ],
               Text(title),
             ],
