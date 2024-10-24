@@ -25,6 +25,10 @@ class FlexColors {
   static const onWarning = Color.fromRGBO(250, 250, 250, 1);
   static const onError = Color.fromRGBO(250, 250, 250, 1);
   static const onDisabled = Color.fromRGBO(250, 250, 250, 1);
+
+  // button colors
+  static const shadow = Color.fromRGBO(0, 0, 0, 1);
+  static const background = Color.fromRGBO(255, 255, 255, 1);
 }
 
 class FlexColorsDark {
@@ -52,4 +56,8 @@ class FlexColorsDark {
   static const onWarning = Color.fromRGBO(250, 250, 250, 1);
   static const onError = Color.fromRGBO(250, 250, 250, 1);
   static const onDisabled = Color.fromRGBO(250, 250, 250, 1);
+
+  // button colors
+  static const shadow = Color.fromRGBO(0,0,0,1);
+  static const background = Color.fromRGBO(34, 34, 34, 1);
 }
