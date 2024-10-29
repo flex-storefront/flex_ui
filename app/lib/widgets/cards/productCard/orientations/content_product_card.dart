@@ -47,10 +47,12 @@ class FlexContentProductCard extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         borderRadius: isLandscape
-            ? BorderRadius.horizontal(left: Radius.circular(FlexSizes.cardRadiusMd))
-            : BorderRadius.vertical(top: Radius.circular(FlexSizes.cardRadiusMd)),
+            ? BorderRadius.horizontal(
+                left: Radius.circular(FlexSizes.cardRadiusMd))
+            : BorderRadius.vertical(
+                top: Radius.circular(FlexSizes.cardRadiusMd)),
         fit: BoxFit.cover,
-        placeholder: Placeholder(),
+        // placeholder: Placeholder(),
       ),
     );
 

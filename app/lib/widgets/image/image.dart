@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flex_ui/widgets/image/image_error.dart';
 import 'package:flex_ui/widgets/image/image_loader.dart';
-import 'package:flex_ui/widgets/image/test_cache_manager.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FlexImage extends StatelessWidget {
@@ -49,6 +51,11 @@ class FlexImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content;
+
+    // Handling for web and tests
+    if (kIsWeb || Platform.environment.containsKey('FLUTTER_TEST'))
+      return const Placeholder();
+
     // src could come as empty or 'null' depending on how it is declared
     if (src.isEmpty || src == 'null') {
       content = error ??
@@ -73,17 +80,18 @@ class FlexImage extends StatelessWidget {
 
     content = CachedNetworkImage(
       imageUrl: src,
-      cacheManager: CustomCacheManager(), 
       placeholder: (context, url) =>
           placeholder ??
           ImageLoader(
             aspectRatio: placeholderAspectRatio,
           ),
-      errorWidget: (context, url, err) =>
-          error ??
-          ImageError(
-            aspectRatio: placeholderAspectRatio,
-          ),
+      errorWidget: (context, url, err) {
+        error ??
+            ImageError(
+              aspectRatio: placeholderAspectRatio,
+            );
+        throw err;
+      },
       fit: fit,
       height: height,
       width: width,
