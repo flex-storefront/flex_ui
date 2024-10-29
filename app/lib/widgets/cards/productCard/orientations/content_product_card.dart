@@ -50,7 +50,7 @@ class FlexContentProductCard extends StatelessWidget {
             ? BorderRadius.horizontal(left: Radius.circular(FlexSizes.cardRadiusMd))
             : BorderRadius.vertical(top: Radius.circular(FlexSizes.cardRadiusMd)),
         fit: BoxFit.cover,
-        placeholder: Container(color: Colors.white),
+        placeholder: Placeholder(),
       ),
     );
 

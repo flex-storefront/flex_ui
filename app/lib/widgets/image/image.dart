@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flex_ui/widgets/image/image_error.dart';
 import 'package:flex_ui/widgets/image/image_loader.dart';
+import 'package:flex_ui/widgets/image/test_cache_manager.dart';
 import 'package:flutter/material.dart';
 
 class FlexImage extends StatelessWidget {
@@ -72,6 +73,7 @@ class FlexImage extends StatelessWidget {
 
     content = CachedNetworkImage(
       imageUrl: src,
+      cacheManager: CustomCacheManager(), 
       placeholder: (context, url) =>
           placeholder ??
           ImageLoader(
