@@ -80,7 +80,7 @@ class _FlexCarouselState extends State<FlexCarousel> {
               radius: 8.0,
               activeDotColor: Theme.of(context).primaryColor,
             ),
-          )
+          ),
         ],
       );
     }
@@ -97,7 +97,7 @@ class _FlexCarouselState extends State<FlexCarousel> {
 Widget centralBannerCarousel(BuildContext context) {
   return Center(
     child: FlexCarousel(
-      items: [
+      items: const <Widget>[
         FlexImage('https://loremflickr.com/640/480?lock=1'),
         FlexImage('https://loremflickr.com/640/480?lock=2'),
         FlexImage('https://loremflickr.com/640/480?lock=3'),

@@ -16,7 +16,7 @@ class FlexIconButtonTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
-      fixedSize: Size.square(FlexSizes.buttonHeight),
+      fixedSize: const Size.square(FlexSizes.buttonHeight),
     ),
   );
 
@@ -31,7 +31,7 @@ class FlexIconButtonTheme {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
-      fixedSize: Size.square(FlexSizes.buttonHeight),
+      fixedSize: const Size.square(FlexSizes.buttonHeight),
     ),
   );
 }
