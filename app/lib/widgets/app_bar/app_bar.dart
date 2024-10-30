@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
+/// [FlexAppBar] is a flex implementation of [AppBar].
+/// 
+/// [LeadingIcon] and [TrailingIcon] are IconData with their owns onPressed function.
+/// 
+/// If you provide an Icon, you must provide his onPressed function.
 class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
-  FlexAppBar(
-      {super.key,
-      this.leadingIcon,
-      this.onLeadingIconPressed,
-      this.title,
-      this.trailingIcon,
-      this.onTrailingIconPressed,
-      this.centerTitle = true})
-      : assert(
+  const FlexAppBar({
+    super.key,
+    this.leadingIcon,
+    this.onLeadingIconPressed,
+    this.title,
+    this.trailingIcon,
+    this.onTrailingIconPressed,
+    this.centerTitle = true,
+  })  : assert(
           (leadingIcon == null) == (onLeadingIconPressed == null),
           'If leadingIcon is not null, onLeadingIconPressed must not be null, and vice versa.',
         ),
@@ -27,17 +32,18 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onLeadingIconPressed;
   final IconData? trailingIcon;
   final VoidCallback? onTrailingIconPressed;
-  final bool? centerTitle;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     final iconButtonStyle = Theme.of(context).iconButtonTheme.style?.copyWith(
-        backgroundColor: WidgetStatePropertyAll(Colors.transparent),
-        iconColor: WidgetStatePropertyAll(
-            brightness == Brightness.dark ? Colors.white : Colors.black),
-        padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        fixedSize: WidgetStatePropertyAll(Size.zero));
+          backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
+          iconColor: WidgetStatePropertyAll(
+            brightness == Brightness.dark ? Colors.white : Colors.black,
+          ),
+          padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+        );
 
     return AppBar(
       automaticallyImplyLeading: false,
@@ -46,15 +52,17 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(
               style: iconButtonStyle,
               onPressed: onLeadingIconPressed,
-              icon: Icon(leadingIcon))
+              icon: Icon(leadingIcon),
+            )
           : null,
       title: title,
       actions: [
         if (trailingIcon != null)
           IconButton(
-              style: iconButtonStyle,
-              onPressed: onTrailingIconPressed,
-              icon: Icon(trailingIcon))
+            style: iconButtonStyle,
+            onPressed: onTrailingIconPressed,
+            icon: Icon(trailingIcon),
+          ),
       ],
     );
   }

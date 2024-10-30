@@ -40,8 +40,8 @@ class FlexQuantitySelector extends StatelessWidget {
         IconButton(
           padding: EdgeInsets.zero,
           style: Theme.of(context).iconButtonTheme.style!.copyWith(
-                padding: WidgetStatePropertyAll(EdgeInsets.zero),
-                shape: WidgetStatePropertyAll(
+                padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+                shape: const WidgetStatePropertyAll(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(FlexSizes.borderRadiusSm),
@@ -50,7 +50,7 @@ class FlexQuantitySelector extends StatelessWidget {
                   ),
                 ),
               ),
-          icon: Icon(
+          icon: const Icon(
             Icons.remove,
           ),
           onPressed: canDecrement && !disabled
@@ -86,12 +86,12 @@ class FlexQuantitySelector extends StatelessWidget {
           ),
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.add,
           ),
           style: Theme.of(context).iconButtonTheme.style!.copyWith(
-                padding: WidgetStatePropertyAll(EdgeInsets.zero),
-                shape: WidgetStatePropertyAll(
+                padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+                shape: const WidgetStatePropertyAll(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(FlexSizes.borderRadiusSm),
