@@ -1,4 +1,5 @@
-import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/tokens/sizes.dart';
+import 'package:flex_ui/utils/extensions.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/left_top_icon.dart';
@@ -124,23 +125,6 @@ Widget standardFlexProductCard(BuildContext context) {
   final bool isSaved =
       context.knobs.boolean(label: 'isProductSaved', initialValue: false);
 
-  final brightness = Theme.of(context).brightness;
-
-  final iconButtonStyle = Theme.of(context).iconButtonTheme.style?.copyWith(
-        elevation: const WidgetStatePropertyAll(1),
-        shadowColor: brightness == Brightness.light
-            ? const WidgetStatePropertyAll(FlexColors.shadow)
-            : const WidgetStatePropertyAll(FlexColorsDark.shadow),
-        backgroundColor: brightness == Brightness.light
-            ? const WidgetStatePropertyAll(FlexColors.background)
-            : const WidgetStatePropertyAll(FlexColorsDark.background),
-        iconColor: WidgetStatePropertyAll(
-            isSaved ? FlexColors.secondary : FlexColors.disabled),
-        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        fixedSize: const WidgetStatePropertyAll(Size.zero),
-        shape: const WidgetStatePropertyAll(StadiumBorder()),
-      );
-
   return Center(
     child: Container(
       height: 400,
@@ -161,7 +145,7 @@ Widget standardFlexProductCard(BuildContext context) {
             .boolean(label: 'displayLeftIcon', initialValue: false),
         leftIconLabel: 'New',
         leftIconSemanticsLabel: 'This is a new product',
-        leftIconBackgroundColor: FlexColors.secondary,
+        leftIconBackgroundColor: context.colors.info,
         leftIconTextColor: Colors.white,
         displayRightIcon: context.knobs
             .boolean(label: 'displayRightIcon', initialValue: false),
@@ -169,7 +153,6 @@ Widget standardFlexProductCard(BuildContext context) {
         rightIcon: isSaved
             ? const Icon(Icons.bookmark)
             : const Icon(Icons.bookmark_outline),
-        rightIconButtonStyle: iconButtonStyle,
         rightIconSemanticsLabel: isSaved
             ? 'Tap on this button to remove the product from your wishlist'
             : 'Tap on this button to add the product to your wishlist',

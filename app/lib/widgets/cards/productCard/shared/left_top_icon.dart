@@ -1,13 +1,13 @@
-import 'package:flex_ui/tokens/colors.dart';
 import 'package:flex_ui/tokens/sizes.dart';
+import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class LeftTopIcon extends StatelessWidget {
   const LeftTopIcon({
     super.key,
     required this.label,
-    this.iconBackgroundColor = FlexColors.secondary,
-    this.textColor = Colors.white,
+    this.iconBackgroundColor,
+    this.textColor,
   });
 
   final String label;
@@ -20,8 +20,10 @@ class LeftTopIcon extends StatelessWidget {
       borderRadius: BorderRadius.circular(FlexSizes.circleRadius),
       child: Container(
         padding: const EdgeInsets.symmetric(
-            horizontal: FlexSizes.md, vertical: FlexSizes.xxs),
-        color: iconBackgroundColor,
+          horizontal: FlexSizes.md,
+          vertical: FlexSizes.xxs,
+        ),
+        color: iconBackgroundColor ?? context.colors.info,
         child: Text(
           label,
           style: Theme.of(context)

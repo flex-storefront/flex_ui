@@ -1,4 +1,5 @@
 import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/utils/extensions.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +64,9 @@ class ProductInfo extends StatelessWidget {
           if (isLandscape)
             Padding(
               padding: const EdgeInsets.only(
-                  top: FlexSizes.xxs, bottom: FlexSizes.sm),
+                top: FlexSizes.xxs,
+                bottom: FlexSizes.sm,
+              ),
               child: FlexProductRating(
                 rating: notation ?? 0,
               ),
@@ -80,7 +83,7 @@ class ProductInfo extends StatelessWidget {
                   TextSpan(
                     text: ' $currency$price',
                     style: infoContext.textTheme.headlineSmall
-                        ?.copyWith(color: FlexColors.success),
+                        ?.copyWith(color: context.colors.success),
                   ),
                 ],
               ),

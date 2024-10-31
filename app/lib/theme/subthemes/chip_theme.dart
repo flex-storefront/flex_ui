@@ -1,21 +1,22 @@
+import 'package:flex_ui/flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class FlexChipTheme {
   FlexChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: Colors.grey.withOpacity(0.4),
+    disabledColor: FlexAppColorScheme.light.disabled.withOpacity(0.4),
     labelStyle: const TextStyle(color: Colors.black),
-    selectedColor: Colors.blue,
+    selectedColor: FlexAppColorScheme.light.info,
     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: Colors.white,
+    checkmarkColor: FlexAppColorScheme.light.onPrimary,
   );
 
-  static ChipThemeData darkChipTheme = const ChipThemeData(
-    disabledColor: Colors.grey,
-    labelStyle: TextStyle(color: Colors.white),
-    selectedColor: Colors.blue,
-    padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: Colors.white,
+  static ChipThemeData darkChipTheme = ChipThemeData(
+    disabledColor: FlexAppColorScheme.dark.disabled,
+    labelStyle: const TextStyle(color: Colors.white),
+    selectedColor: FlexAppColorScheme.dark.info,
+    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+    checkmarkColor: FlexAppColorScheme.dark.primary,
   );
 }

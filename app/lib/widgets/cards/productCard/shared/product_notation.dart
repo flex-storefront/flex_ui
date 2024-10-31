@@ -1,4 +1,4 @@
-import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class FlexProductRating extends StatelessWidget {
@@ -19,16 +19,16 @@ class FlexProductRating extends StatelessWidget {
         children: List.generate(
           numberOfStars,
           (index) => (index < rating)
-              ? const Flexible(
+              ?  Flexible(
                   child: Icon(
                     Icons.star_rounded,
-                    color: FlexColors.warning,
+                    color: context.colors.warning,
                   ),
                 )
-              : const Flexible(
+              :  Flexible(
                   child: Icon(
                     Icons.star_border_rounded,
-                    color: FlexColors.disabled,
+                    color: context.colors.disabled,
                   ),
                 ),
         ),

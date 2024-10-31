@@ -99,7 +99,8 @@ class FlexImage extends StatelessWidget {
     );
 
     return ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.zero,
-        child: Semantics(label: semantics, child: content));
+      borderRadius: borderRadius ?? BorderRadius.zero,
+      child: Semantics(label: semantics, child: content),
+    );
   }
 }

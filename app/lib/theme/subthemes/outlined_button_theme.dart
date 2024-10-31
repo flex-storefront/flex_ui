@@ -1,3 +1,4 @@
+import 'package:flex_ui/tokens/colors.dart';
 import 'package:flutter/material.dart';
 
 class FlexOutlinedButtonTheme {
@@ -7,11 +8,11 @@ class FlexOutlinedButtonTheme {
       OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 0,
-      foregroundColor: Colors.black,
-      side: const BorderSide(color: Colors.blue),
-      textStyle: const TextStyle(
+      foregroundColor: FlexAppColorScheme.light.primary,
+      side: BorderSide(color: FlexAppColorScheme.light.info),
+      textStyle: TextStyle(
         fontSize: 16,
-        color: Colors.black,
+        color: FlexAppColorScheme.light.primary,
         fontWeight: FontWeight.w600,
       ),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
@@ -22,11 +23,11 @@ class FlexOutlinedButtonTheme {
   static OutlinedButtonThemeData darkOutlinedButtonTheme =
       OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      foregroundColor: Colors.white,
-      side: const BorderSide(color: Colors.blueAccent),
-      textStyle: const TextStyle(
+      foregroundColor: FlexAppColorScheme.dark.primary,
+      side: BorderSide(color: FlexAppColorScheme.dark.info),
+      textStyle: TextStyle(
         fontSize: 16,
-        color: Colors.white,
+        color: FlexAppColorScheme.dark.primary,
         fontWeight: FontWeight.w600,
       ),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
