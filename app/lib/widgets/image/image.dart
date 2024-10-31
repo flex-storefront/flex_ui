@@ -53,8 +53,9 @@ class FlexImage extends StatelessWidget {
     Widget content;
 
     // Handling for web and tests
-    if (kIsWeb || Platform.environment.containsKey('FLUTTER_TEST'))
+    if (kIsWeb || Platform.environment.containsKey('FLUTTER_TEST')) {
       return const Placeholder();
+    }
 
     // src could come as empty or 'null' depending on how it is declared
     if (src.isEmpty || src == 'null') {
