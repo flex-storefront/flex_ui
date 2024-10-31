@@ -138,7 +138,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 For support, please:
-1. Check the [Documentation](https://flex-ui-docs.example.com)
+1. Check the [Documentation](https://flex.base1.com)
 2. Open an issue in this repository
 3. Contact the maintainers team
 
