@@ -1,5 +1,4 @@
 import 'package:flex_ui/flex_ui.dart';
-import 'package:flex_ui/utils/extension.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
 

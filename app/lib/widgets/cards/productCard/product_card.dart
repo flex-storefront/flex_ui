@@ -1,6 +1,4 @@
-import 'package:flex_ui/tokens/colors.dart';
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extension.dart';
+import 'package:flex_ui/flex_ui.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/left_top_icon.dart';
