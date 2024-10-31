@@ -10,3 +10,6 @@ export 'theme/flex_app_themes.dart';
 // Tokens
 export 'tokens/colors.dart';
 export 'tokens/sizes.dart';
+
+// Extensions
+export 'utils/extensions.dart';

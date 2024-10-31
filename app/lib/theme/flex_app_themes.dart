@@ -1,10 +1,10 @@
-import 'package:flex_ui/theme/checkbox_theme.dart';
-import 'package:flex_ui/theme/chip_theme.dart';
-import 'package:flex_ui/theme/elevated_button_theme.dart';
-import 'package:flex_ui/theme/icon_button_theme.dart';
-import 'package:flex_ui/theme/outlined_button_theme.dart';
-import 'package:flex_ui/theme/text_field_theme.dart';
-import 'package:flex_ui/theme/text_theme.dart';
+import 'package:flex_ui/theme/subthemes/checkbox_theme.dart';
+import 'package:flex_ui/theme/subthemes/chip_theme.dart';
+import 'package:flex_ui/theme/subthemes/elevated_button_theme.dart';
+import 'package:flex_ui/theme/subthemes/icon_button_theme.dart';
+import 'package:flex_ui/theme/subthemes/outlined_button_theme.dart';
+import 'package:flex_ui/theme/subthemes/text_field_theme.dart';
+import 'package:flex_ui/theme/subthemes/text_theme.dart';
 import 'package:flex_ui/tokens/colors.dart';
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flutter/material.dart';
