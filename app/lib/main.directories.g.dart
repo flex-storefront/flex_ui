@@ -12,9 +12,10 @@
 import 'package:flex_ui/widgets/add_to_cart_button.dart' as _i2;
 import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i3;
 import 'package:flex_ui/widgets/banner/banner.dart' as _i4;
+import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i6;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
-    as _i6;
+    as _i7;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -74,10 +75,17 @@ final directories = <_i1.WidgetbookNode>[
         ),
       ),
       _i1.WidgetbookLeafComponent(
+        name: 'FlexProductCard',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Standard',
+          builder: _i6.standardFlexProductCard,
+        ),
+      ),
+      _i1.WidgetbookLeafComponent(
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i6.defaultButton,
+          builder: _i7.defaultButton,
         ),
       ),
     ],

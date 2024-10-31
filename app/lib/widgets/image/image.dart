@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flex_ui/widgets/image/image_error.dart';
 import 'package:flex_ui/widgets/image/image_loader.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FlexImage extends StatelessWidget {
@@ -11,6 +14,8 @@ class FlexImage extends StatelessWidget {
     this.placeholderAspectRatio,
     this.height,
     this.width,
+    this.borderRadius,
+    this.semantics = 'Image',
     this.placeholder,
     this.error,
   });
@@ -19,6 +24,8 @@ class FlexImage extends StatelessWidget {
   final BoxFit? fit;
   final double? height;
   final double? width;
+  final BorderRadius? borderRadius;
+  final String semantics;
 
   final Widget? placeholder;
   final Widget? error;
@@ -43,16 +50,23 @@ class FlexImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget content;
+
+    // Handling for web and tests
+    if (kIsWeb || Platform.environment.containsKey('FLUTTER_TEST')) {
+      return const Placeholder();
+    }
+
     // src could come as empty or 'null' depending on how it is declared
     if (src.isEmpty || src == 'null') {
-      return error ??
+      content = error ??
           ImageError(
             aspectRatio: placeholderAspectRatio,
           );
     }
 
     if (!isRemote) {
-      return Image.asset(
+      content = Image.asset(
         src,
         width: width,
         height: height,
@@ -65,21 +79,27 @@ class FlexImage extends StatelessWidget {
       );
     }
 
-    return CachedNetworkImage(
+    content = CachedNetworkImage(
       imageUrl: src,
       placeholder: (context, url) =>
           placeholder ??
           ImageLoader(
             aspectRatio: placeholderAspectRatio,
           ),
-      errorWidget: (context, url, err) =>
-          error ??
-          ImageError(
-            aspectRatio: placeholderAspectRatio,
-          ),
+      errorWidget: (context, url, err) {
+        error ??
+            ImageError(
+              aspectRatio: placeholderAspectRatio,
+            );
+        throw err;
+      },
       fit: fit,
       height: height,
       width: width,
     );
+
+    return ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        child: Semantics(label: semantics, child: content));
   }
 }
