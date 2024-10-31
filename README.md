@@ -1,18 +1,17 @@
 # FLEX UI
 
-Beautifully crafted commerce widgets to copy and paste into your storefront app.
+A beautiful collection of eCommerce widgets for Flutter developers. Build stunning storefronts faster.
 
 ## Overview
 
-FLEX UI is a comprehensive UI library providing ready-to-use commerce widgets for Flutter applications. The library focuses on delivering high-quality, customizable components that can be easily integrated into any e-commerce application.
+FLEX UI is **NOT** a component library - it's better. It's a carefully crafted collection of eCommerce widgets that you can copy and paste directly into your Flutter applications.
 
 ## Project Structure
 
 ```
 flex_ui/
 ├── app/               # Core UI library and Widgetbook
-│   ├── lib/          # Widget implementations
-│   └── example/      # Widgetbook examples
+│   └── lib/          # Widget implementations
 │
 ├── playground/        # Flutter Web documentation app
 │   ├── lib/          # Auto-route implementation
@@ -83,8 +82,8 @@ make build_brick
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-org/flex-ui.git
-cd flex-ui
+git clone https://github.com/flex-storefront/flex_ui.git
+cd flex_ui
 ```
 
 2. Install dependencies:
@@ -121,9 +120,9 @@ make build_brick
 ### Contributing Guidelines
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create your feature branch (`git checkout -b feature/amazing-widget`)
+3. Commit your changes (`git commit -m 'feat: add some amazing widget'`)
+4. Push to the branch (`git push origin feature/amazing-widget`)
 5. Open a Pull Request
 
 Please ensure your PR adheres to:
