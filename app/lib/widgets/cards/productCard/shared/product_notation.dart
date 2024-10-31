@@ -1,8 +1,12 @@
 import 'package:flex_ui/flex_ui.dart';
 import 'package:flutter/material.dart';
 
-class FlexProductNotation extends StatelessWidget {
-  const FlexProductNotation({super.key, required this.rating, this.numberOfStars = 5});
+class FlexProductRating extends StatelessWidget {
+  const FlexProductRating({
+    super.key,
+    required this.rating,
+    this.numberOfStars = 5,
+  });
 
   final int rating;
   final int numberOfStars;
@@ -15,18 +19,18 @@ class FlexProductNotation extends StatelessWidget {
         children: List.generate(
           numberOfStars,
           (index) => (index < rating)
-              ? Flexible(
-                child: Icon(
+              ? const Flexible(
+                  child: Icon(
                     Icons.star_rounded,
                     color: FlexColors.warning,
                   ),
-              )
-              : Flexible(
-                child: Icon(
+                )
+              : const Flexible(
+                  child: Icon(
                     Icons.star_border_rounded,
                     color: FlexColors.disabled,
                   ),
-              ),
+                ),
         ),
       ),
     );

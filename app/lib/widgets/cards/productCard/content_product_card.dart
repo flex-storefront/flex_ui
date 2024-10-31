@@ -8,7 +8,7 @@ class FlexContentProductCard extends StatelessWidget {
     super.key,
     required this.productName,
     this.productReference,
-    this.imageUrl,
+    required this.imageUrl,
     required this.price,
     this.oldPrice,
     required this.currency,
@@ -19,7 +19,7 @@ class FlexContentProductCard extends StatelessWidget {
 
   final String productName;
   final String? productReference;
-  final String? imageUrl;
+  final String imageUrl;
   final double price;
   final double? oldPrice;
   final String currency;
@@ -29,8 +29,8 @@ class FlexContentProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget productInfos = Flexible(
-      child: ProductInfos(
+    final Widget productInfos = Flexible(
+      child: ProductInfo(
         productName: productName,
         productReference: productReference,
         price: price,
@@ -41,18 +41,19 @@ class FlexContentProductCard extends StatelessWidget {
       ),
     );
 
-    Widget image = Expanded(
+    final Widget image = Expanded(
       child: FlexImage(
-        imageUrl!,
+        imageUrl,
         width: double.infinity,
         height: double.infinity,
         borderRadius: isLandscape
-            ? BorderRadius.horizontal(
-                left: Radius.circular(FlexSizes.cardRadiusMd))
-            : BorderRadius.vertical(
-                top: Radius.circular(FlexSizes.cardRadiusMd)),
+            ? const BorderRadius.horizontal(
+                left: Radius.circular(FlexSizes.cardRadiusMd),
+              )
+            : const BorderRadius.vertical(
+                top: Radius.circular(FlexSizes.cardRadiusMd),
+              ),
         fit: BoxFit.cover,
-        // placeholder: Placeholder(),
       ),
     );
 
@@ -61,13 +62,13 @@ class FlexContentProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              if (imageUrl != null) image,
+              image,
               productInfos,
             ],
           )
         : Column(
             children: [
-              if (imageUrl != null) image,
+              image,
               productInfos,
             ],
           );

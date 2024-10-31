@@ -1,3 +1,3 @@
 extension StringExtension on String? {
-  bool isNotBlank() => this != null && this?.trim().isNotEmpty == true;
+  bool isNotBlank() => this?.trim().isNotEmpty ?? false;
 }

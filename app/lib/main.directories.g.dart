@@ -12,7 +12,7 @@
 import 'package:flex_ui/widgets/add_to_cart_button.dart' as _i2;
 import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i3;
 import 'package:flex_ui/widgets/banner/banner.dart' as _i4;
-import 'package:flex_ui/widgets/cards/productCard/productCard.dart' as _i6;
+import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i6;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
     as _i7;
