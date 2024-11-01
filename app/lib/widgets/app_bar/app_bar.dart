@@ -5,9 +5,9 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 /// [FlexAppBar] is a flex implementation of [AppBar].
-/// 
+///
 /// [LeadingIcon] and [TrailingIcon] are IconData with their owns onPressed function.
-/// 
+///
 /// If you provide an Icon, you must provide his onPressed function.
 class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FlexAppBar({
@@ -36,21 +36,11 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brightness = Theme.of(context).brightness;
-    final iconButtonStyle = Theme.of(context).iconButtonTheme.style?.copyWith(
-          backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
-          iconColor: WidgetStatePropertyAll(
-            brightness == Brightness.dark ? Colors.white : Colors.black,
-          ),
-          padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-        );
-
     return AppBar(
       automaticallyImplyLeading: false,
       centerTitle: centerTitle,
       leading: leadingIcon != null
           ? IconButton(
-              style: iconButtonStyle,
               onPressed: onLeadingIconPressed,
               icon: Icon(leadingIcon),
             )
@@ -59,7 +49,6 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (trailingIcon != null)
           IconButton(
-            style: iconButtonStyle,
             onPressed: onTrailingIconPressed,
             icon: Icon(trailingIcon),
           ),

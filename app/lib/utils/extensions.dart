@@ -1,16 +1,20 @@
+import 'package:flex_ui/tokens/colors.dart';
 import 'package:flutter/material.dart';
 
 extension StringExtension on String? {
   bool isNotBlank() => this?.trim().isNotEmpty ?? false;
 }
 
-extension BuildContextExtensions on BuildContext {
-  ThemeData get _theme => Theme.of(this);
-  TextTheme get textTheme => _theme.textTheme;
-  ColorScheme get colorScheme => _theme.colorScheme;
-  Size get deviceSize => MediaQuery.sizeOf(this);
+/// SugarSyntax to get access quickly to [ThemeData],[TextTheme] and [FlexAppColorScheme] from context
+extension ThemeExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  FlexAppColorScheme get colors =>
+      Theme.of(this).extension<FlexAppColorScheme>()!;
 
   // additional helpful getters
+
+  Size get deviceSize => MediaQuery.sizeOf(this);
   double get screenWidth => deviceSize.width;
   double get screenHeight => deviceSize.height;
   EdgeInsets get padding => MediaQuery.paddingOf(this);
