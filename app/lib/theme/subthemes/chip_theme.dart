@@ -5,18 +5,18 @@ class FlexChipTheme {
   FlexChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: FlexAppColorScheme.light.disabled.withOpacity(0.4),
+    disabledColor: FlexAppColorScheme.lightScheme.disabled.withOpacity(0.4),
     labelStyle: const TextStyle(color: Colors.black),
-    selectedColor: FlexAppColorScheme.light.info,
+    selectedColor: FlexAppColorScheme.lightScheme.info,
     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: FlexAppColorScheme.light.onPrimary,
+    checkmarkColor: FlexAppColorScheme.lightScheme.onPrimary,
   );
 
   static ChipThemeData darkChipTheme = ChipThemeData(
-    disabledColor: FlexAppColorScheme.dark.disabled,
+    disabledColor: FlexAppColorScheme.darkScheme.disabled,
     labelStyle: const TextStyle(color: Colors.white),
-    selectedColor: FlexAppColorScheme.dark.info,
+    selectedColor: FlexAppColorScheme.darkScheme.info,
     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
-    checkmarkColor: FlexAppColorScheme.dark.primary,
+    checkmarkColor: FlexAppColorScheme.darkScheme.primary,
   );
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// [FlexAppColorScheme] contains all colors used in the application
 /// It's a theme extension so it can be used in [ThemeData], extensions attribut
-/// [light] and [dark] are getter to get access to custom colors
+/// [lightScheme] and [darkScheme] are getter to get access to custom colors
 /// More info on this article : https://medium.com/@alexandersnotes/flutter-custom-theme-with-themeextension-792034106abc
 class FlexAppColorScheme extends ThemeExtension<FlexAppColorScheme> {
   final Color primary;
@@ -29,12 +29,6 @@ class FlexAppColorScheme extends ThemeExtension<FlexAppColorScheme> {
   final Color onDisabled;
   final Color transparent;
 
-  // information colors
-  static const info = Color.fromRGBO(0, 122, 255, 1.0);
-  static const success = Color.fromRGBO(34, 174, 69, 1);
-  static const warning = Color.fromRGBO(255, 149, 0, 1.0);
-  static const error = Color.fromRGBO(255, 59, 48, 1.0);
-  static const disabled = Color.fromRGBO(142, 142, 147, 1.0);
   const FlexAppColorScheme({
     required this.primary,
     required this.onPrimary,
@@ -146,7 +140,7 @@ class FlexAppColorScheme extends ThemeExtension<FlexAppColorScheme> {
     );
   }
 
-  static const light = FlexAppColorScheme(
+  static const lightScheme = FlexAppColorScheme(
     primary: Color.fromRGBO(34, 34, 34, 1),
     onPrimary: Color.fromRGBO(250, 250, 250, 1),
     secondary: Color.fromRGBO(36, 55, 254, 1),
@@ -172,7 +166,7 @@ class FlexAppColorScheme extends ThemeExtension<FlexAppColorScheme> {
     transparent: Colors.transparent,
   );
 
-  static const dark = FlexAppColorScheme(
+  static const darkScheme = FlexAppColorScheme(
     primary: Color.fromRGBO(250, 250, 250, 1),
     onPrimary: Color.fromRGBO(34, 34, 34, 1),
     secondary: Color.fromRGBO(36, 55, 254, 1),

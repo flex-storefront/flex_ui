@@ -8,11 +8,11 @@ class FlexIconButtonTheme {
   static IconButtonThemeData lightIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
       elevation: 1,
-      shadowColor: FlexAppColorScheme.light.primary,
-      foregroundColor: FlexAppColorScheme.light.primary,
-      backgroundColor: FlexAppColorScheme.light.onPrimary,
-      disabledForegroundColor: FlexAppColorScheme.light.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.light.background,
+      shadowColor: FlexAppColorScheme.lightScheme.primary,
+      foregroundColor: FlexAppColorScheme.lightScheme.primary,
+      backgroundColor: FlexAppColorScheme.lightScheme.onPrimary,
+      disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
+      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
       padding: const EdgeInsets.all(FlexSizes.xs),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
@@ -23,11 +23,11 @@ class FlexIconButtonTheme {
   static IconButtonThemeData darkIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
       elevation: 1,
-      shadowColor: FlexAppColorScheme.dark.primary,
-      foregroundColor: FlexAppColorScheme.dark.onPrimary,
-      backgroundColor: FlexAppColorScheme.dark.primary,
-      disabledForegroundColor: FlexAppColorScheme.dark.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.dark.onBackground,
+      shadowColor: FlexAppColorScheme.darkScheme.primary,
+      foregroundColor: FlexAppColorScheme.darkScheme.onPrimary,
+      backgroundColor: FlexAppColorScheme.darkScheme.primary,
+      disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
+      disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.xs),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),

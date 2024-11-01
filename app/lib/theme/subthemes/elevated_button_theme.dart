@@ -9,14 +9,14 @@ class FlexElevatedButtonTheme {
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: FlexAppColorScheme.light.onPrimary,
-      backgroundColor: FlexAppColorScheme.light.primary,
-      disabledForegroundColor: FlexAppColorScheme.light.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.light.background,
+      foregroundColor: FlexAppColorScheme.lightScheme.onPrimary,
+      backgroundColor: FlexAppColorScheme.lightScheme.primary,
+      disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
+      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
       padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle:  TextStyle(
         fontSize: FlexSizes.fontSizeSm,
-        color: FlexAppColorScheme.light.onPrimary,
+        color: FlexAppColorScheme.lightScheme.onPrimary,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
@@ -29,14 +29,14 @@ class FlexElevatedButtonTheme {
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: FlexAppColorScheme.dark.onPrimary,
-      backgroundColor: FlexAppColorScheme.dark.primary,
-      disabledForegroundColor: FlexAppColorScheme.dark.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.dark.onBackground,
+      foregroundColor: FlexAppColorScheme.darkScheme.onPrimary,
+      backgroundColor: FlexAppColorScheme.darkScheme.primary,
+      disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
+      disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle:  TextStyle(
         fontSize: FlexSizes.fontSizeSm,
-        color: FlexAppColorScheme.dark.onPrimary,
+        color: FlexAppColorScheme.darkScheme.onPrimary,
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(

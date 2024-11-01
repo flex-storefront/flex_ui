@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 class FlexAppThemes {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    extensions: const [FlexAppColorScheme.light],
+    extensions: const [FlexAppColorScheme.lightScheme],
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
@@ -20,31 +20,31 @@ class FlexAppThemes {
       scrolledUnderElevation: 0,
       centerTitle: false,
       iconTheme: IconThemeData(
-        color: FlexAppColorScheme.light.primary,
+        color: FlexAppColorScheme.lightScheme.primary,
         size: FlexSizes.iconMd,
       ),
       actionsIconTheme: IconThemeData(
-        color: FlexAppColorScheme.light.primary,
+        color: FlexAppColorScheme.lightScheme.primary,
         size: FlexSizes.iconMd,
       ),
       titleTextStyle: TextStyle(
         fontSize: FlexSizes.fontSizeXl,
         fontWeight: FontWeight.w600,
-        color: FlexAppColorScheme.light.primary,
+        color: FlexAppColorScheme.lightScheme.primary,
       ),
     ),
     brightness: Brightness.light,
     navigationBarTheme: NavigationBarThemeData(
-      backgroundColor: FlexAppColorScheme.light.primary.withOpacity(0.15),
-      indicatorColor: FlexAppColorScheme.light.secondary.withOpacity(0.1),
+      backgroundColor: FlexAppColorScheme.lightScheme.primary.withOpacity(0.15),
+      indicatorColor: FlexAppColorScheme.lightScheme.secondary.withOpacity(0.1),
     ),
-    primaryColor: FlexAppColorScheme.light.primary,
-    disabledColor: FlexAppColorScheme.light.disabled,
-    scaffoldBackgroundColor: FlexAppColorScheme.light.scaffold,
+    primaryColor: FlexAppColorScheme.lightScheme.primary,
+    disabledColor: FlexAppColorScheme.lightScheme.disabled,
+    scaffoldBackgroundColor: FlexAppColorScheme.lightScheme.scaffold,
     fontFamily: 'Roboto',
     textTheme: FlexTextTheme.lightTextTheme,
     progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     elevatedButtonTheme: FlexElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: FlexOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -54,11 +54,11 @@ class FlexAppThemes {
     inputDecorationTheme: FlexTextFormFieldTheme.lightInputDecorationTheme,
     searchBarTheme: SearchBarThemeData(
       backgroundColor: WidgetStateColor.resolveWith(
-        (states) => FlexAppColorScheme.light.background,
+        (states) => FlexAppColorScheme.lightScheme.background,
       ),
       elevation: const WidgetStatePropertyAll(0),
       side: WidgetStatePropertyAll(
-        BorderSide(color: FlexAppColorScheme.light.primary),
+        BorderSide(color: FlexAppColorScheme.lightScheme.primary),
       ),
       shape: WidgetStateProperty.resolveWith(
         (states) => RoundedRectangleBorder(
@@ -70,34 +70,34 @@ class FlexAppThemes {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    extensions: const [FlexAppColorScheme.dark],
+    extensions: const [FlexAppColorScheme.darkScheme],
     appBarTheme: AppBarTheme(
-      backgroundColor: FlexAppColorScheme.dark.transparent,
+      backgroundColor: FlexAppColorScheme.darkScheme.transparent,
       surfaceTintColor: Colors.transparent,
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: false,
       iconTheme: IconThemeData(
-        color: FlexAppColorScheme.dark.onPrimary,
+        color: FlexAppColorScheme.darkScheme.onPrimary,
         size: FlexSizes.iconMd,
       ),
       actionsIconTheme: IconThemeData(
-        color: FlexAppColorScheme.dark.onPrimary,
+        color: FlexAppColorScheme.darkScheme.onPrimary,
         size: FlexSizes.iconMd,
       ),
       titleTextStyle: TextStyle(
         fontSize: FlexSizes.fontSizeXl,
         fontWeight: FontWeight.w600,
-        color: FlexAppColorScheme.dark.onPrimary,
+        color: FlexAppColorScheme.darkScheme.onPrimary,
       ),
     ),
     brightness: Brightness.dark,
-    primaryColor: FlexAppColorScheme.dark.primary,
-    disabledColor: FlexAppColorScheme.dark.disabled,
-    scaffoldBackgroundColor: FlexAppColorScheme.dark.scaffold,
+    primaryColor: FlexAppColorScheme.darkScheme.primary,
+    disabledColor: FlexAppColorScheme.darkScheme.disabled,
+    scaffoldBackgroundColor: FlexAppColorScheme.darkScheme.scaffold,
     textTheme: FlexTextTheme.darkTextTheme,
     progressIndicatorTheme: ProgressIndicatorThemeData(
-      color: FlexAppColorScheme.dark.tertiary,
+      color: FlexAppColorScheme.darkScheme.tertiary,
     ),
     elevatedButtonTheme: FlexElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: FlexOutlinedButtonTheme.darkOutlinedButtonTheme,
@@ -108,7 +108,7 @@ class FlexAppThemes {
     searchBarTheme: SearchBarThemeData(
       elevation: const WidgetStatePropertyAll(0),
       side: WidgetStatePropertyAll(
-        BorderSide(color: FlexAppColorScheme.dark.onPrimary),
+        BorderSide(color: FlexAppColorScheme.darkScheme.onPrimary),
       ),
       shape: WidgetStateProperty.resolveWith(
         (states) => RoundedRectangleBorder(

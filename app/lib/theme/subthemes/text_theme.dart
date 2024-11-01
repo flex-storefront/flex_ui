@@ -8,57 +8,57 @@ class FlexTextTheme {
     headlineLarge: const TextStyle().copyWith(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     headlineMedium: const TextStyle().copyWith(
       fontSize: 24.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     headlineSmall: const TextStyle().copyWith(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     titleLarge: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     titleMedium: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     titleSmall: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     bodyLarge: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     bodyMedium: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     bodySmall: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.light.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.lightScheme.primary.withOpacity(0.5),
     ),
     labelLarge: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.light.primary,
+      color: FlexAppColorScheme.lightScheme.primary,
     ),
     labelSmall: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.light.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.lightScheme.primary.withOpacity(0.5),
     ),
   );
 
@@ -66,57 +66,57 @@ class FlexTextTheme {
     headlineLarge: const TextStyle().copyWith(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     headlineMedium: const TextStyle().copyWith(
       fontSize: 24.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     headlineSmall: const TextStyle().copyWith(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     titleLarge: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     titleMedium: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     titleSmall: const TextStyle().copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     bodyLarge: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     bodyMedium: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     bodySmall: const TextStyle().copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.dark.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.darkScheme.primary.withOpacity(0.5),
     ),
     labelLarge: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.dark.primary,
+      color: FlexAppColorScheme.darkScheme.primary,
     ),
     labelSmall: const TextStyle().copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.dark.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.darkScheme.primary.withOpacity(0.5),
     ),
   );
 }

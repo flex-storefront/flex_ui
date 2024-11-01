@@ -5,6 +5,15 @@ extension StringExtension on String? {
   bool isNotBlank() => this?.trim().isNotEmpty ?? false;
 }
 
+/// SugarSyntax to get access quickly to [ThemeData],[TextTheme] and [FlexAppColorScheme] from context
+extension ThemeExtension on BuildContext {
+  ThemeData get theme => Theme.of(this);
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  FlexAppColorScheme get colors =>
+      Theme.of(this).extension<FlexAppColorScheme>()!;
+
+  // additional helpful getters
+
   Size get deviceSize => MediaQuery.sizeOf(this);
   double get screenWidth => deviceSize.width;
   double get screenHeight => deviceSize.height;
@@ -12,11 +21,4 @@ extension StringExtension on String? {
   bool get isDarkMode =>
       MediaQuery.platformBrightnessOf(this) == Brightness.dark;
   bool get isKeyboardVisible => MediaQuery.viewInsetsOf(this).bottom > 0;
-/// SugarSyntax to get access quickly to [ThemeData],[TextTheme] and [FlexAppColorScheme] from context
-extension ThemeExtension on BuildContext {
-  ThemeData get theme => Theme.of(this);
-  TextTheme get textTheme => Theme.of(this).textTheme;
-  FlexAppColorScheme get colors => Theme.of(this).extension<FlexAppColorScheme>()!;
-  // additional helpful getters
-
 }

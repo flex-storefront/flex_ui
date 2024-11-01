@@ -1,5 +1,5 @@
 import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/product_infos.dart';
+import 'package:flex_ui/widgets/cards/productCard/shared/product_info.dart';
 import 'package:flex_ui/widgets/image/image.dart';
 import 'package:flutter/material.dart';
 
