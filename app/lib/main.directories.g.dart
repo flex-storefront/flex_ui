@@ -16,6 +16,7 @@ import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i6;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
     as _i7;
+import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i8;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -73,6 +74,23 @@ final directories = <_i1.WidgetbookNode>[
           name: 'Central banner',
           builder: _i5.centralBannerCarousel,
         ),
+      ),
+      _i1.WidgetbookComponent(
+        name: 'Price',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Default w/ Formatter Callback',
+            builder: _i8.flexPrice,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Sale',
+            builder: _i8.flexPriceSale,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Style Override (No formatter)',
+            builder: _i8.priceStyleOverride,
+          ),
+        ],
       ),
       _i1.WidgetbookLeafComponent(
         name: 'FlexProductCard',
