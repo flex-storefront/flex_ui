@@ -23,7 +23,7 @@ class Price extends StatelessWidget {
   final TextStyle? textStyle;
   @override
   Widget build(BuildContext context) {
-    final defaultTheme = context.theme;
+    final defaultTheme = Theme.of(context);
 // @TODO before merge - potentially add theme fallback?
 
     final formattedPrice = formatterCallback != null
