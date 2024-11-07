@@ -18,7 +18,7 @@ class Price extends StatelessWidget {
     this.textStyle,
   });
   final double price;
-  final Function? formatterCallback;
+  final String Function(double)? formatterCallback;
   final Variant? variant;
   final TextStyle? textStyle;
   @override
