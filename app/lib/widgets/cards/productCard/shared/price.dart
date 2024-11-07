@@ -13,13 +13,11 @@ class Price extends StatelessWidget {
   const Price({
     super.key,
     required this.price,
-    this.oldPrice,
     this.formatterCallback,
     this.variant = Variant.standard,
     this.textStyle,
   });
   final double price;
-  final double? oldPrice;
   final Function? formatterCallback;
   final Variant? variant;
   final TextStyle? textStyle;
@@ -66,7 +64,6 @@ Widget flexPrice(BuildContext context) {
   return Center(
     child: Price(
       price: context.knobs.double.input(label: 'Price', initialValue: 150.99),
-      oldPrice: 200.52,
       formatterCallback: (price) => exampleFormatter(
         price,
         context.knobs.list(
