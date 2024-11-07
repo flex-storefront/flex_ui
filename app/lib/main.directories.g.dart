@@ -74,12 +74,18 @@ final directories = <_i1.WidgetbookNode>[
           builder: _i5.centralBannerCarousel,
         ),
       ),
-      _i1.WidgetbookLeafComponent(
+      _i1.WidgetbookComponent(
         name: 'FlexProductCard',
-        useCase: _i1.WidgetbookUseCase(
-          name: 'Standard',
-          builder: _i6.standardFlexProductCard,
-        ),
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Grid',
+            builder: _i6.gridFlexProductCard,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Standard',
+            builder: _i6.standardFlexProductCard,
+          ),
+        ],
       ),
       _i1.WidgetbookLeafComponent(
         name: 'FlexQuantitySelector',
