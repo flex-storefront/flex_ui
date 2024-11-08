@@ -127,7 +127,6 @@ Widget standardFlexProductCard(BuildContext context) {
 
   return Center(
     child: Container(
-      height: 400,
       width: 400,
       padding: const EdgeInsets.all(FlexSizes.lg),
       child: FlexProductCard(
@@ -160,6 +159,60 @@ Widget standardFlexProductCard(BuildContext context) {
         isAvailable: context.knobs
             .boolean(label: 'isProductAvailable', initialValue: true),
       ),
+    ),
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Grid',
+  type: FlexProductCard,
+  path: '[Components]',
+)
+Widget gridFlexProductCard(BuildContext context) {
+  final bool isSaved =
+      context.knobs.boolean(label: 'isProductSaved', initialValue: false);
+  final bool isLandscape =
+      context.knobs.boolean(label: 'isLandscape', initialValue: false);
+
+  return GridView.builder(
+    physics: const AlwaysScrollableScrollPhysics(),
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      mainAxisExtent: isLandscape ? 200 : 350,
+      crossAxisCount: context.knobs.int.slider(
+        label: 'columns',
+        initialValue: 2,
+        min: 1,
+        max: 2,
+      ),
+    ),
+    itemCount: 6,
+    itemBuilder: (_, i) => FlexProductCard(
+      productName: 'Temple Fork TFO NXT Series Fly Rod',
+      productReference: 'TFO NXT 905 5/6',
+      price: 159,
+      oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      imageUrl: 'https://picsum.photos/200',
+      notation: 4,
+      isLandscape: isLandscape,
+      currency: "\$",
+      displayLeftIcon:
+          context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
+      leftIconLabel: 'New',
+      leftIconSemanticsLabel: 'This is a new product',
+      leftIconBackgroundColor: context.colors.info,
+      leftIconTextColor: Colors.white,
+      displayRightIcon:
+          context.knobs.boolean(label: 'displayRightIcon', initialValue: false),
+      isSaved: isSaved,
+      rightIcon: isSaved
+          ? const Icon(Icons.bookmark)
+          : const Icon(Icons.bookmark_outline),
+      rightIconSemanticsLabel: isSaved
+          ? 'Tap on this button to remove the product from your wishlist'
+          : 'Tap on this button to add the product to your wishlist',
+      onPressedRightIcon: () {},
+      isAvailable: context.knobs
+          .boolean(label: 'isProductAvailable', initialValue: true),
     ),
   );
 }
