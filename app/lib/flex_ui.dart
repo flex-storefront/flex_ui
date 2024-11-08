@@ -1,5 +1,5 @@
 // Widgets
-export 'widgets/add_to_cart_button.dart';
+export 'widgets/buttons/button.dart';
 export 'widgets/banner/banner.dart';
 export 'widgets/carousel/carousel.dart';
 export 'widgets/image/image.dart';
