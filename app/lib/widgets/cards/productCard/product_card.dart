@@ -171,10 +171,13 @@ Widget standardFlexProductCard(BuildContext context) {
 Widget gridFlexProductCard(BuildContext context) {
   final bool isSaved =
       context.knobs.boolean(label: 'isProductSaved', initialValue: false);
+  final bool isLandscape =
+      context.knobs.boolean(label: 'isLandscape', initialValue: false);
 
   return GridView.builder(
     physics: const AlwaysScrollableScrollPhysics(),
     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      mainAxisExtent: isLandscape ? 200 : 350,
       crossAxisCount: context.knobs.int.slider(
         label: 'columns',
         initialValue: 2,
@@ -190,8 +193,7 @@ Widget gridFlexProductCard(BuildContext context) {
       oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
-      isLandscape:
-          context.knobs.boolean(label: 'isLandscape', initialValue: false),
+      isLandscape: isLandscape,
       currency: "\$",
       displayLeftIcon:
           context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
