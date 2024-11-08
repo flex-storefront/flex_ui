@@ -4,35 +4,60 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:intl/intl.dart';
 
-enum Variant {
+/// A flexible price display widget that handles various e-commerce pricing scenarios.
+///
+/// This widget can display prices in different formats and styles, supporting:
+/// - Custom price formatting
+/// - Multiple display variants (standard, savings)
+/// - Theme customization
+/// - Accessibility features
+///
+/// Example usage:
+/// ```dart
+/// FlexPrice(
+///   price: 99.99,
+///   priceVariant: PriceVariant.standard,
+///   priceFormatter: (price) => NumberFormat.currency(locale: 'en_US').format(price),
+///)
+
+enum PriceVariant {
   standard,
-  savings, // Defaults to text decoration linethrough and color 'disabled'
+
+  /// Default Styling:
+  /// TextTheme.headerSmall
+
+  strikethrough,
+
+  /// Default Styling:
+  /// Color: Theme Disabled Color,
+  /// Text Decoration: Linethrough
 }
 
-class Price extends StatelessWidget {
-  const Price({
+class FlexPrice extends StatelessWidget {
+  const FlexPrice({
     super.key,
     required this.price,
-    this.formatterCallback,
-    this.variant = Variant.standard,
+    this.priceFormatter,
+    this.priceVariant = PriceVariant.standard,
     this.textStyle,
   });
+
   final double price;
-  final String Function(double)? formatterCallback;
-  final Variant? variant;
+  final String Function(double)? priceFormatter;
+  final PriceVariant priceVariant;
   final TextStyle? textStyle;
+
   @override
   Widget build(BuildContext context) {
     final defaultTheme = Theme.of(context);
 // @TODO before merge - potentially add theme fallback?
 
-    final formattedPrice = formatterCallback != null
-        ? formatterCallback!(price)
-        : price.toString();
+    final formattedPrice =
+        priceFormatter != null ? priceFormatter!(price) : price.toString();
 
-    final Map<Variant, TextStyle> variantTextStyle = {
-      Variant.standard: const TextStyle(),
-      Variant.savings: TextStyle(
+    final Map<PriceVariant, TextStyle> variantTextStyle = {
+      PriceVariant.standard: const TextStyle(),
+      PriceVariant.strikethrough: TextStyle(
         color: defaultTheme.disabledColor,
         decoration: TextDecoration.lineThrough,
       ),
@@ -41,7 +66,7 @@ class Price extends StatelessWidget {
     return Text(
       formattedPrice,
       style: defaultTheme.textTheme.headlineSmall
-          ?.merge(variantTextStyle[variant])
+          ?.merge(variantTextStyle[priceVariant])
           .merge(textStyle),
     );
   }
@@ -49,7 +74,7 @@ class Price extends StatelessWidget {
 
 @widgetbook.UseCase(
   name: 'Default',
-  type: Price,
+  type: FlexPrice,
   path: '[Components]',
 )
 Widget flexPrice(BuildContext context) {
@@ -62,9 +87,9 @@ Widget flexPrice(BuildContext context) {
   }
 
   return Center(
-    child: Price(
+    child: FlexPrice(
       price: context.knobs.double.input(label: 'Price', initialValue: 150.99),
-      formatterCallback: (price) => exampleFormatter(
+      priceFormatter: (price) => exampleFormatter(
         price,
         context.knobs.list(
           label: 'Locale Examples',
@@ -73,7 +98,9 @@ Widget flexPrice(BuildContext context) {
           options: ['en-US', 'fr-CA', 'ja-JP'],
         ),
         decimalDigits: context.knobs.boolean(
-                label: 'Example 3 Decimal Place override', initialValue: false)
+          label: 'Example 3 Decimal Place override',
+          initialValue: false,
+        )
             ? 3
             : null,
       ),
@@ -82,8 +109,8 @@ Widget flexPrice(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: 'Sale',
-  type: Price,
+  name: 'Strikethrough',
+  type: FlexPrice,
   path: '[Components]',
 )
 Widget flexPriceSale(BuildContext context) {
@@ -96,30 +123,30 @@ Widget flexPriceSale(BuildContext context) {
   }
 
   return Center(
-    child: Price(
+    child: FlexPrice(
       price: context.knobs.double.input(label: 'Price', initialValue: 150.99),
-      formatterCallback: (price) => exampleFormatter(
+      priceFormatter: (price) => exampleFormatter(
         price,
         context.knobs.list(
           label: 'Locale Examples',
           options: ['en-US', 'fr-CA', 'ja-JP'],
         ),
       ),
-      variant: Variant.savings,
+      priceVariant: PriceVariant.strikethrough,
     ),
   );
 }
 
 @widgetbook.UseCase(
   name: 'Style Override (No formatter)',
-  type: Price,
+  type: FlexPrice,
   path: '[Components]',
 )
 Widget priceStyleOverride(BuildContext context) {
   return Center(
-    child: Price(
+    child: FlexPrice(
       price: context.knobs.double.input(label: 'Price', initialValue: 150.99),
-      variant: Variant.savings,
+      priceVariant: PriceVariant.strikethrough,
       textStyle:
           context.theme.textTheme.headlineLarge?.copyWith(color: Colors.green),
     ),

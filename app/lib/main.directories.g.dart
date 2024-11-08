@@ -76,7 +76,7 @@ final directories = <_i1.WidgetbookNode>[
         ),
       ),
       _i1.WidgetbookComponent(
-        name: 'Price',
+        name: 'FlexPrice',
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default w/ Formatter Callback',
