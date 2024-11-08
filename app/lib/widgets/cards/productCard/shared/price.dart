@@ -18,19 +18,23 @@ import 'package:intl/intl.dart';
 ///   price: 99.99,
 ///   priceVariant: PriceVariant.standard,
 ///   priceFormatter: (price) => NumberFormat.currency(locale: 'en_US').format(price),
-///)
+///   priceLabel: "Sale Price {price}" // {price} token position indicates where the post formatter price should be placed in label
+/// )
+///
 
 enum PriceVariant {
   standard,
 
   /// Default Styling:
   /// TextTheme.headerSmall
+  /// priceLabel: 'Price $formattedPrice'
 
   strikethrough,
 
   /// Default Styling:
   /// Color: Theme Disabled Color,
   /// Text Decoration: Linethrough
+  /// Text Semantic Label: 'Strikethrough Price $formattedPrice'
 }
 
 class FlexPrice extends StatelessWidget {
@@ -40,17 +44,18 @@ class FlexPrice extends StatelessWidget {
     this.priceFormatter,
     this.priceVariant = PriceVariant.standard,
     this.textStyle,
+    this.priceLabel,
   });
 
   final double price;
   final String Function(double)? priceFormatter;
   final PriceVariant priceVariant;
   final TextStyle? textStyle;
+  final String? priceLabel;
 
   @override
   Widget build(BuildContext context) {
     final defaultTheme = Theme.of(context);
-// @TODO before merge - potentially add theme fallback?
 
     final formattedPrice =
         priceFormatter != null ? priceFormatter!(price) : price.toString();
@@ -63,11 +68,22 @@ class FlexPrice extends StatelessWidget {
       ),
     };
 
+    final Map<PriceVariant, String> defaultLabel = {
+      PriceVariant.standard: formattedPrice,
+      PriceVariant.strikethrough: 'Strikethrough Price $formattedPrice',
+    };
+
+    /// Allows for user determined formattedPrice positioning in label text, '{price}' string token is replaced with formatted price when present
+    final String resolvedPriceLabel = priceLabel?.contains('{price}') == true
+        ? priceLabel!.replaceAll('{price}', formattedPrice)
+        : (priceLabel ?? defaultLabel[priceVariant]!);
+
     return Text(
       formattedPrice,
       style: defaultTheme.textTheme.headlineSmall
           ?.merge(variantTextStyle[priceVariant])
           .merge(textStyle),
+      semanticsLabel: resolvedPriceLabel,
     );
   }
 }
@@ -133,6 +149,7 @@ Widget flexPriceSale(BuildContext context) {
         ),
       ),
       priceVariant: PriceVariant.strikethrough,
+      priceLabel: '{price} Before Discount',
     ),
   );
 }
@@ -149,6 +166,7 @@ Widget priceStyleOverride(BuildContext context) {
       priceVariant: PriceVariant.strikethrough,
       textStyle:
           context.theme.textTheme.headlineLarge?.copyWith(color: Colors.green),
+      priceLabel: 'Example {price} Label Positioning',
     ),
   );
 }
