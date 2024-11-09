@@ -1,84 +1,92 @@
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-enum ButtonState { normal, loading, disabled, selected }
+enum ButtonState { normal, loading, disabled }
 
+/// A flexible button widget that extends [ElevatedButton] with support for loading and disabled states.
+///
+/// The [FlexButton] can be in one of three states defined by [ButtonState]:
+/// * [ButtonState.normal] - The default state where the button displays the title and is interactive
+/// * [ButtonState.loading] - Shows a circular progress indicator instead of the title
+/// * [ButtonState.disabled] - Greys out the button and makes it non-interactive
+///
+/// The button will also be disabled if [onPressed] is null, regardless of the [state].
+///
+/// Example usage:
+/// ```dart
+/// FlexButton(
+///   onPressed: () => print('Button pressed'),
+///   title: 'Click Me',
+///   state: ButtonState.normal,
+///   style: ElevatedButton.styleFrom(
+///     backgroundColor: Colors.blue,
+///     padding: EdgeInsets.symmetric(horizontal: 24),
+///   ),
+/// )
+/// ```
 class FlexButton extends StatelessWidget {
-  const FlexButton({
-    super.key,
-    this.title = 'Add to Cart',
-    this.style,
-    this.child,
-    this.state = ButtonState.normal,
-    this.isSelected = false,
-    this.onPressed,
-  });
-
+  final VoidCallback? onPressed;
   final String title;
   final ButtonState state;
+  final double? width;
+  final double? height;
   final ButtonStyle? style;
-  final Widget? child;
-  final VoidCallback? onPressed;
-  final bool isSelected;
+  final TextStyle? textStyle;
+
+  const FlexButton({
+    super.key,
+    required this.onPressed,
+    required this.title,
+    this.state = ButtonState.normal,
+    this.width,
+    this.height,
+    this.style,
+    this.textStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: _getButtonStyle(context),
-      onPressed: _getOnPressed(),
-      child: child ??
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (state == ButtonState.loading) ...[
-                SizedBox(
-                  height: FlexSizes.iconXs,
-                  width: FlexSizes.iconXs,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: context.colors.onSecondary,
-                    ),
+    final bool isDisabled = state == ButtonState.disabled || onPressed == null;
+
+    final ButtonStyle baseStyle = style ?? ElevatedButton.styleFrom();
+
+    final effectiveStyle = isDisabled
+        ? baseStyle.copyWith(
+            backgroundColor: WidgetStatePropertyAll(context.colors.disabled),
+            foregroundColor: WidgetStatePropertyAll(context.colors.onDisabled),
+          )
+        : baseStyle;
+
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        style: effectiveStyle,
+        onPressed: isDisabled ? null : onPressed,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(title, style: textStyle),
+            if (state == ButtonState.loading) ...[
+              const SizedBox(width: FlexSizes.xs),
+              SizedBox(
+                height: FlexSizes.iconXs,
+                width: FlexSizes.iconXs,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: context.colors.onPrimary,
                   ),
                 ),
-                const SizedBox(width: FlexSizes.xs),
-              ],
-              Text(title, style: _getTextStyle(context)),
+              ),
             ],
-          ),
+          ],
+        ),
+      ),
     );
   }
-
-  ButtonStyle? _getButtonStyle(BuildContext context) => switch (state) {
-        ButtonState.selected => ButtonStyle(
-            backgroundColor: isSelected
-                ? WidgetStatePropertyAll(context.colors.primary)
-                : WidgetStatePropertyAll(context.colors.onPrimary),
-            side: WidgetStatePropertyAll(
-              BorderSide(
-                color: context.colors.disabled,
-              ),
-            ),
-          ),
-        _ => null
-      };
-
-  TextStyle? _getTextStyle(BuildContext context) => switch (state) {
-        ButtonState.selected => TextStyle(
-            color:
-                isSelected ? context.colors.onPrimary : context.colors.primary,
-          ),
-        _ => null
-      };
-
-  VoidCallback? _getOnPressed() => switch (state) {
-        ButtonState.normal => onPressed,
-        ButtonState.selected => onPressed,
-        _ => null
-      };
 }
 
 @widgetbook.UseCase(
@@ -89,6 +97,7 @@ class FlexButton extends StatelessWidget {
 Widget defaultButton(BuildContext context) {
   return Center(
     child: FlexButton(
+      title: 'Add to Cart',
       onPressed: () {},
     ),
   );
@@ -102,6 +111,7 @@ Widget defaultButton(BuildContext context) {
 Widget loadingButton(BuildContext context) {
   return Center(
     child: FlexButton(
+      title: 'Add to Cart',
       onPressed: () {},
       state: ButtonState.loading,
     ),
@@ -116,6 +126,7 @@ Widget loadingButton(BuildContext context) {
 Widget disabledButton(BuildContext context) {
   return Center(
     child: FlexButton(
+      title: 'Add to Cart',
       onPressed: () {},
       state: ButtonState.disabled,
     ),
@@ -123,33 +134,20 @@ Widget disabledButton(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: 'Small',
+  name: 'Small & Styled',
   type: FlexButton,
   path: '[Components]',
 )
 Widget smallButton(BuildContext context) {
   return Center(
     child: FlexButton(
+      title: 'Add to Cart',
       style: ElevatedButton.styleFrom(
+        backgroundColor: context.colors.tertiary,
+        foregroundColor: context.colors.onTertiary,
         padding: const EdgeInsets.all(FlexSizes.md),
       ),
       onPressed: () {},
-    ),
-  );
-}
-
-@widgetbook.UseCase(
-  name: 'Selected',
-  type: FlexButton,
-  path: '[Components]',
-)
-Widget selectedButton(BuildContext context) {
-  final bool isSelected =
-      context.knobs.boolean(label: 'isSelected', initialValue: true);
-  return Center(
-    child: FlexButton(
-      isSelected: isSelected,
-      state: ButtonState.selected,
     ),
   );
 }

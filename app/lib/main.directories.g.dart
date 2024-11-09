@@ -62,11 +62,7 @@ final directories = <_i1.WidgetbookNode>[
             builder: _i4.loadingButton,
           ),
           _i1.WidgetbookUseCase(
-            name: 'Selected',
-            builder: _i4.selectedButton,
-          ),
-          _i1.WidgetbookUseCase(
-            name: 'Small',
+            name: 'Small & Styled',
             builder: _i4.smallButton,
           ),
         ],
