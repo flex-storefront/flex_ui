@@ -10,7 +10,8 @@ class AddToCartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: AddToCartButton(
+      child: FlexButton(
+        title: 'Add to cart',
         onPressed: () {},
       ),
     ));
