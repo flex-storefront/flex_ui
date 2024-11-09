@@ -124,7 +124,7 @@ final quantityState = ValueNotifier(5);
   type: FlexQuantitySelector,
   path: '[Components]',
 )
-Widget defaultButton(BuildContext context) {
+Widget defaultQuantitySelector(BuildContext context) {
   return Center(
     child: ValueListenableProvider<int>.value(
       value: quantityState,

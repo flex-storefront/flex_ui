@@ -109,7 +109,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i8.defaultButton,
+          builder: _i8.defaultQuantitySelector,
         ),
       ),
     ],

@@ -10,25 +10,6 @@
 part of 'router.dart';
 
 /// generated route for
-/// [AddToCartPage]
-class AddToCartRoute extends PageRouteInfo<void> {
-  const AddToCartRoute({List<PageRouteInfo>? children})
-      : super(
-          AddToCartRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AddToCartRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const AddToCartPage();
-    },
-  );
-}
-
-/// generated route for
 /// [BannerFullPage]
 class BannerFullRoute extends PageRouteInfo<void> {
   const BannerFullRoute({List<PageRouteInfo>? children})
@@ -62,6 +43,25 @@ class BannerMinimalRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const BannerMinimalPage();
+    },
+  );
+}
+
+/// generated route for
+/// [ButtonPage]
+class ButtonRoute extends PageRouteInfo<void> {
+  const ButtonRoute({List<PageRouteInfo>? children})
+      : super(
+          ButtonRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ButtonRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ButtonPage();
     },
   );
 }
@@ -119,6 +119,25 @@ class ImageRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ImagePage();
+    },
+  );
+}
+
+/// generated route for
+/// [QuantitySelectorPage]
+class QuantitySelectorRoute extends PageRouteInfo<void> {
+  const QuantitySelectorRoute({List<PageRouteInfo>? children})
+      : super(
+          QuantitySelectorRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuantitySelectorRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const QuantitySelectorPage();
     },
   );
 }
