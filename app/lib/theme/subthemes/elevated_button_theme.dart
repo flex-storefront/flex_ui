@@ -11,8 +11,8 @@ class FlexElevatedButtonTheme {
       elevation: 0,
       foregroundColor: FlexAppColorScheme.lightScheme.onPrimary,
       backgroundColor: FlexAppColorScheme.lightScheme.primary,
-      disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
+      disabledForegroundColor: FlexAppColorScheme.lightScheme.onPrimary,
+      disabledBackgroundColor: FlexAppColorScheme.lightScheme.disabled,
       padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle:  TextStyle(
         fontSize: FlexSizes.fontSizeSm,
@@ -31,8 +31,8 @@ class FlexElevatedButtonTheme {
       elevation: 0,
       foregroundColor: FlexAppColorScheme.darkScheme.onPrimary,
       backgroundColor: FlexAppColorScheme.darkScheme.primary,
-      disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
+      disabledForegroundColor: FlexAppColorScheme.darkScheme.onPrimary,
+      disabledBackgroundColor: FlexAppColorScheme.darkScheme.disabled,
       padding: const EdgeInsets.all(FlexSizes.lg),
       textStyle:  TextStyle(
         fontSize: FlexSizes.fontSizeSm,

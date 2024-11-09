@@ -141,6 +141,7 @@ class MyProductCard extends StatelessWidget {
 |--------|-------------|
 | `FlexAppBar` | A customizable app bar component with built-in support for common eCommerce actions like cart, search, and menu icons. Handles icon layout and spacing automatically. |
 | `FlexBanner` | A responsive banner component designed for homepage promotions and marketing content. Integrates seamlessly with CMS systems for dynamic content updates. |
+| `FlexButton` | A flexible button widget that extends [ElevatedButton] with support for loading and disabled states. |
 | `FlexProductCard` | A versatile product display card showing product image, title, price, and optional elements like ratings and sale badges. Optimized for grid and list layouts. |
 | `FlexCarousel` | A smooth, gesture-enabled carousel widget for showcasing multiple banners or products. Features autoplay, custom transitions, and pagination indicators. |
 | `FlexImage` | An enhanced image widget that handles loading states, error fallbacks, and image caching. Includes placeholder support and progressive loading for larger images. |

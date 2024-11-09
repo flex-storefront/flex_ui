@@ -9,9 +9,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flex_ui/widgets/add_to_cart_button.dart' as _i2;
-import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i3;
-import 'package:flex_ui/widgets/banner/banner.dart' as _i4;
+import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i2;
+import 'package:flex_ui/widgets/banner/banner.dart' as _i3;
+import 'package:flex_ui/widgets/buttons/button.dart' as _i4;
 import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i7;
 import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i6;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
@@ -24,40 +24,19 @@ final directories = <_i1.WidgetbookNode>[
     name: 'Components',
     children: [
       _i1.WidgetbookComponent(
-        name: 'AddToCartButton',
-        useCases: [
-          _i1.WidgetbookUseCase(
-            name: 'Default',
-            builder: _i2.defaultButton,
-          ),
-          _i1.WidgetbookUseCase(
-            name: 'Disabled',
-            builder: _i2.disabledButton,
-          ),
-          _i1.WidgetbookUseCase(
-            name: 'Loading',
-            builder: _i2.loadingButton,
-          ),
-          _i1.WidgetbookUseCase(
-            name: 'Small',
-            builder: _i2.smallButton,
-          ),
-        ],
-      ),
-      _i1.WidgetbookComponent(
         name: 'FlexAppBar',
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i3.defaultFlexAppBar,
+            builder: _i2.defaultFlexAppBar,
           ),
           _i1.WidgetbookUseCase(
             name: 'With both',
-            builder: _i3.leadingAndTrailingWidgetFlexAppBar,
+            builder: _i2.leadingAndTrailingWidgetFlexAppBar,
           ),
           _i1.WidgetbookUseCase(
             name: 'With trailing widget',
-            builder: _i3.trailingWidgetFlexAppBar,
+            builder: _i2.trailingWidgetFlexAppBar,
           ),
         ],
       ),
@@ -65,8 +44,29 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexBanner',
         useCase: _i1.WidgetbookUseCase(
           name: 'Standard',
-          builder: _i4.standardBanner,
+          builder: _i3.standardBanner,
         ),
+      ),
+      _i1.WidgetbookComponent(
+        name: 'FlexButton',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Default',
+            builder: _i4.defaultButton,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Disabled',
+            builder: _i4.disabledButton,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Loading',
+            builder: _i4.loadingButton,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Small & Styled',
+            builder: _i4.smallButton,
+          ),
+        ],
       ),
       _i1.WidgetbookLeafComponent(
         name: 'FlexCarousel',
