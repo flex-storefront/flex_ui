@@ -64,10 +64,8 @@ class FlexPriceDiscount extends StatelessWidget {
           ).merge(oldPriceStyle),
           priceLabel: oldPriceLabel,
         ),
-
-      // If isLandscape wrap spacing will handle gap between prices, otherwise sized box between row items
+      // If single line, spacer between prices elements, otherwise Wrap spacer provided
       if (!enableLineWrap) const SizedBox(width: 4),
-
       FlexPrice(
         price: price,
         priceFormatter: priceFormatter,
@@ -79,10 +77,12 @@ class FlexPriceDiscount extends StatelessWidget {
       ),
     ];
 
-    final discountPriceLayout = enableLineWrap
+// Row or Wrap Price Widgets to dependent on enableLineWrap toggle
+    final Widget discountPriceLayout = enableLineWrap
         ? Wrap(spacing: 4, children: priceWidgets)
         : IntrinsicWidth(
             child: Row(
+              // Row Price Widgets to be wrapped in flexible as overflow Guardrail for Product Card
               children: priceWidgets.map((widget) {
                 if (widget is SizedBox) {
                   return widget;
