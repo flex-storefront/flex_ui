@@ -10,8 +10,13 @@ class FlexContentProductCard extends StatelessWidget {
     this.productReference,
     required this.imageUrl,
     required this.price,
+    this.priceLabel,
+    this.priceStyle,
     this.oldPrice,
-    required this.currency,
+    this.oldPriceLabel,
+    this.oldPriceStyle,
+    this.discountPriceStyle,
+    this.priceFormatter,
     this.notation,
     required this.isAvailable,
     required this.isLandscape,
@@ -22,10 +27,15 @@ class FlexContentProductCard extends StatelessWidget {
   final String imageUrl;
   final double price;
   final double? oldPrice;
-  final String currency;
   final int? notation;
   final bool isAvailable;
   final bool isLandscape;
+  final String Function(double)? priceFormatter;
+  final String? priceLabel;
+  final String? oldPriceLabel;
+  final TextStyle? priceStyle;
+  final TextStyle? oldPriceStyle;
+  final TextStyle? discountPriceStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +44,13 @@ class FlexContentProductCard extends StatelessWidget {
         productName: productName,
         productReference: productReference,
         price: price,
+        priceLabel: priceLabel,
+        priceStyle: priceStyle,
         oldPrice: oldPrice,
-        currency: currency,
+        oldPriceLabel: oldPriceLabel,
+        oldPriceStyle: oldPriceStyle,
+        discountPriceStyle: discountPriceStyle,
+        priceFormatter: priceFormatter,
         notation: notation,
         isLandscape: isLandscape,
       ),

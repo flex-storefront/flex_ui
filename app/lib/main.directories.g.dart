@@ -18,6 +18,8 @@ import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
     as _i8;
 import 'package:widgetbook/widgetbook.dart' as _i1;
+import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
+    as _i9;
 
 final directories = <_i1.WidgetbookNode>[
   _i1.WidgetbookCategory(
@@ -91,6 +93,13 @@ final directories = <_i1.WidgetbookNode>[
             builder: _i6.priceStyleOverride,
           ),
         ],
+      ),
+      _i1.WidgetbookLeafComponent(
+        name: 'FlexPriceDiscount',
+        useCase: _i1.WidgetbookUseCase(
+          name: 'Default',
+          builder: _i9.defaultPriceDiscount,
+        ),
       ),
       _i1.WidgetbookComponent(
         name: 'FlexProductCard',

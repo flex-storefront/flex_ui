@@ -14,8 +14,13 @@ class FlexProductCard extends StatelessWidget {
     this.productReference,
     required this.imageUrl,
     required this.price,
+    this.priceFormatter,
+    this.priceLabel,
+    this.priceStyle,
     this.oldPrice,
-    required this.currency,
+    this.oldPriceLabel,
+    this.oldPriceStyle,
+    this.discountPriceStyle,
     this.notation,
     this.displayLeftIcon = false,
     this.leftIconLabel,
@@ -44,8 +49,13 @@ class FlexProductCard extends StatelessWidget {
   final String? productReference;
   final String imageUrl;
   final double price;
+  final String Function(double)? priceFormatter;
   final double? oldPrice;
-  final String currency;
+  final String? priceLabel;
+  final String? oldPriceLabel;
+  final TextStyle? priceStyle;
+  final TextStyle? oldPriceStyle;
+  final TextStyle? discountPriceStyle;
   final int? notation;
   final bool displayLeftIcon;
   final String? leftIconLabel;
@@ -77,8 +87,13 @@ class FlexProductCard extends StatelessWidget {
               productReference: productReference,
               imageUrl: imageUrl,
               price: price,
+              priceLabel: priceLabel,
+              priceStyle: priceStyle,
               oldPrice: oldPrice,
-              currency: currency,
+              oldPriceLabel: oldPriceLabel,
+              oldPriceStyle: oldPriceStyle,
+              discountPriceStyle: discountPriceStyle,
+              priceFormatter: priceFormatter,
               notation: notation,
               isAvailable: isAvailable,
               isLandscape: isLandscape,
@@ -132,14 +147,14 @@ Widget standardFlexProductCard(BuildContext context) {
       child: FlexProductCard(
         productName: 'Temple Fork TFO NXT Series Fly Rod',
         productReference: 'TFO NXT 905 5/6',
-        price: 159,
+        price: context.knobs.double.input(label: 'price', initialValue: 150),
         oldPrice:
             context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+        priceFormatter: (price) => '\$$price',
         imageUrl: 'https://picsum.photos/200',
         notation: 4,
         isLandscape:
             context.knobs.boolean(label: 'isLandscape', initialValue: false),
-        currency: "\$",
         displayLeftIcon: context.knobs
             .boolean(label: 'displayLeftIcon', initialValue: false),
         leftIconLabel: 'New',
@@ -191,10 +206,10 @@ Widget gridFlexProductCard(BuildContext context) {
       productReference: 'TFO NXT 905 5/6',
       price: 159,
       oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      priceFormatter: (price) => '\$$price',
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
       isLandscape: isLandscape,
-      currency: "\$",
       displayLeftIcon:
           context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
       leftIconLabel: 'New',
