@@ -91,6 +91,7 @@ class FlexPriceDiscount extends StatelessWidget {
   path: '[Components]',
 )
 Widget defaultPriceDiscount(BuildContext context) {
+  final theme = Theme.of(context);
   exampleFormatter(
     double price,
   ) {
@@ -111,6 +112,13 @@ Widget defaultPriceDiscount(BuildContext context) {
           context.knobs.double.input(label: 'oldPrice', initialValue: 300),
       priceFormatter: exampleFormatter,
       oldPriceLabel: 'originally {price}',
+      discountPriceStyle: context.knobs.boolean(
+        label: 'Example Discount Price Style Override',
+        initialValue: false,
+      )
+          ? theme.textTheme.headlineMedium!
+              .merge(const TextStyle(color: Colors.blue))
+          : null,
     ),
   );
 }
