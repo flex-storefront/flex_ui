@@ -5,6 +5,26 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 import 'package:flex_ui/flex_ui.dart';
 import 'package:intl/intl.dart';
 
+/// This widget leverages the ``FlexPrice`` Widget for Price Formatting and display, but provides additional convenience for the conditional rendering of Sale Prices
+///
+/// Widget
+/// - custom price formatting
+/// - Theme customization for Price, Discount Price & Old Price values
+/// - Price & Old Price Semantic Label Optional Parameters
+/// - single line or line Wrap parameter for Price Value overflows
+/// - When no 'oldPrice' is present, fallback to standard ``FlexPrice``
+///
+/// Example usage:
+/// ```dart
+/// FlexPriceDiscount(
+///   price: 99.99,
+///   oldPrice: 200.00,
+///   discountPriceStyle: TextStyle(color: Colors.green), // Example optional style override
+///   priceFormatter: (price) => NumberFormat.currency(locale: 'en_US').format(price),
+///   priceLabel: "Sale Price {price}" // {price} token position indicates where the post formatter price should be placed in label
+/// )
+///
+
 class FlexPriceDiscount extends StatelessWidget {
   const FlexPriceDiscount({
     super.key,
@@ -107,7 +127,7 @@ Widget defaultPriceDiscount(BuildContext context) {
 
   return Center(
     child: FlexPriceDiscount(
-      price: 200.00,
+      price: context.knobs.double.input(label: 'Price', initialValue: 200),
       oldPrice:
           context.knobs.double.input(label: 'oldPrice', initialValue: 300),
       priceFormatter: exampleFormatter,
@@ -119,6 +139,10 @@ Widget defaultPriceDiscount(BuildContext context) {
           ? theme.textTheme.headlineMedium!
               .merge(const TextStyle(color: Colors.blue))
           : null,
+      enableLineWrap: context.knobs.boolean(
+        label: 'Enable Line Wrap when price values overflow',
+        initialValue: false,
+      ),
     ),
   );
 }
