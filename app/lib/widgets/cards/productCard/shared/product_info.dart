@@ -1,4 +1,5 @@
 import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class ProductInfo extends StatelessWidget {
   final double? oldPrice;
   final int? notation;
   final bool isLandscape;
-  final String Function(double)? priceFormatter;
+  final PriceFormatter? priceFormatter;
   final String? priceLabel;
   final String? oldPriceLabel;
   final TextStyle? priceStyle;
@@ -88,7 +89,6 @@ class ProductInfo extends StatelessWidget {
             priceLabel: priceLabel,
             oldPriceLabel: oldPriceLabel,
             oldPriceStyle: oldPriceStyle,
-            enableLineWrap: isLandscape,
           ),
         ],
       ),

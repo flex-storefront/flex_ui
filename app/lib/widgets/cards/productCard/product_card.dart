@@ -1,11 +1,13 @@
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flex_ui/utils/extensions.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/left_top_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:intl/intl.dart';
 
 class FlexProductCard extends StatelessWidget {
   FlexProductCard({
@@ -48,7 +50,7 @@ class FlexProductCard extends StatelessWidget {
   final String? productReference;
   final String imageUrl;
   final double price;
-  final String Function(double)? priceFormatter;
+  final PriceFormatter? priceFormatter;
   final double? oldPrice;
   final String? priceLabel;
   final String? oldPriceLabel;
@@ -181,6 +183,19 @@ Widget standardFlexProductCard(BuildContext context) {
   path: '[Components]',
 )
 Widget gridFlexProductCard(BuildContext context) {
+  exampleFormatter(
+    double price,
+  ) {
+    final formatter = NumberFormat.simpleCurrency(
+      locale: context.knobs.list(
+        label: 'Locale Examples',
+        options: ['en-US', 'fr-CA', 'ja-JP'],
+      ),
+      decimalDigits: 2,
+    );
+    return formatter.format(price);
+  }
+
   final bool isSaved =
       context.knobs.boolean(label: 'isProductSaved', initialValue: false);
   final bool isLandscape =
@@ -201,9 +216,9 @@ Widget gridFlexProductCard(BuildContext context) {
     itemBuilder: (_, i) => FlexProductCard(
       productName: 'Temple Fork TFO NXT Series Fly Rod',
       productReference: 'TFO NXT 905 5/6',
-      price: 159,
+      price: context.knobs.double.input(label: 'Price', initialValue: 0),
       oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
-      priceFormatter: (price) => '\$$price',
+      priceFormatter: exampleFormatter,
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
       isLandscape: isLandscape,

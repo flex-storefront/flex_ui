@@ -1,4 +1,5 @@
 import 'package:flex_ui/utils/extensions.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -48,7 +49,7 @@ class FlexPrice extends StatelessWidget {
   });
 
   final double price;
-  final String Function(double)? priceFormatter;
+  final PriceFormatter? priceFormatter;
   final PriceVariant priceVariant;
   final TextStyle? textStyle;
   final String? priceLabel;

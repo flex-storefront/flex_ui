@@ -1,4 +1,5 @@
 import 'package:flex_ui/tokens/sizes.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_info.dart';
 import 'package:flex_ui/widgets/image/image.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class FlexContentProductCard extends StatelessWidget {
   final int? notation;
   final bool isAvailable;
   final bool isLandscape;
-  final String Function(double)? priceFormatter;
+  final PriceFormatter? priceFormatter;
   final String? priceLabel;
   final String? oldPriceLabel;
   final TextStyle? priceStyle;
