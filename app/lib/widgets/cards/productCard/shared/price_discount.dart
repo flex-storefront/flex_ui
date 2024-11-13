@@ -7,12 +7,24 @@ import 'package:intl/intl.dart';
 
 /// This widget leverages the ``FlexPrice`` Widget for Price Formatting and display, but provides additional convenience for the conditional rendering of Sale Prices
 ///
-/// Widget
-/// - custom price formatting
+/// FlexPriceDiscount implemented with same interface as FlexPrice with additional functionality
+/// - Conditional rendering of Current Price as a 'sale' price when an oldPrice is provided
+/// - When no 'oldPrice' is present, fallback to standard ``FlexPrice``
 /// - Theme customization for Price, Discount Price & Old Price values
 /// - Price & Old Price Semantic Label Optional Parameters
 /// - single line or line Wrap parameter for Price Value overflows
-/// - When no 'oldPrice' is present, fallback to standard ``FlexPrice``
+///
+/// Parameters
+/// - [price]: Current Product Price, when [oldPrice] provided, will be styled as a 'sale price'
+/// - [oldPrice]: Previous Product Price. Default Text Styling linethrough
+/// - [priceFormatter]: Price Formatter Callback provided to underlying FlexPrice Widget
+/// - [priceStyle]: Override Price TextStyle when no [oldPrice] is provided
+/// - [discountPriceStyle]: Override [price] TextStyle when [oldPrice] is provided (discounted/sale styling)
+/// - [oldPriceStyle]: Override [oldPrice] TextStyle FlexPrice widget
+/// - [priceLabel]: Text semantic label for [price]
+/// - [oldPriceLabel]: Text semantic label for [oldPrice]
+/// - [enableLineWrap]: Default false: single line display -TextOverflow.ellipsis, True: Enables Line wrap on overlfow
+///
 ///
 /// Example usage:
 /// ```dart
@@ -132,8 +144,28 @@ Widget defaultPriceDiscount(BuildContext context) {
           context.knobs.double.input(label: 'oldPrice', initialValue: 300),
       priceFormatter: exampleFormatter,
       oldPriceLabel: 'originally {price}',
+      priceStyle: context.knobs.boolean(
+        label: 'Example Price Style Override',
+        description: 'Overrides Styling of Price, when no Old Price provided',
+        initialValue: false,
+      )
+          ? theme.textTheme.headlineMedium!
+              .merge(const TextStyle(color: Colors.blue))
+          : null,
       discountPriceStyle: context.knobs.boolean(
         label: 'Example Discount Price Style Override',
+        description:
+            'Overrides Styling of current price when Old Price is provided',
+        initialValue: false,
+      )
+          ? theme.textTheme.headlineMedium!.copyWith(
+              color: Colors.purple,
+              decoration: TextDecoration.underline,
+            )
+          : null,
+      oldPriceStyle: context.knobs.boolean(
+        label: 'Example Old Price Style Override',
+        description: 'Overrides Styling of Old Price',
         initialValue: false,
       )
           ? theme.textTheme.headlineMedium!
@@ -141,6 +173,50 @@ Widget defaultPriceDiscount(BuildContext context) {
           : null,
       enableLineWrap: context.knobs.boolean(
         label: 'Enable Line Wrap when price values overflow',
+        initialValue: false,
+      ),
+    ),
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Default - No Old Price Provided',
+  type: FlexPriceDiscount,
+  path: '[Components]',
+)
+Widget fallbackPriceDiscount(BuildContext context) {
+  final theme = Theme.of(context);
+  exampleFormatter(
+    double price,
+  ) {
+    final formatter = NumberFormat.simpleCurrency(
+      locale: context.knobs.list(
+        label: 'Locale Examples',
+        options: ['en-US', 'fr-CA', 'ja-JP'],
+      ),
+      decimalDigits: 2,
+    );
+    return formatter.format(price);
+  }
+
+  return Center(
+    child: FlexPriceDiscount(
+      price: context.knobs.double.input(label: 'Price', initialValue: 200),
+      oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      priceFormatter: exampleFormatter,
+      oldPriceLabel: 'originally {price}',
+      priceStyle: context.knobs.boolean(
+        label: 'Example Price Style Override',
+        description: 'Overrides Styling of Price, when no Old Price provided',
+        initialValue: false,
+      )
+          ? theme.textTheme.headlineMedium!
+              .merge(const TextStyle(color: Colors.blue))
+          : null,
+      enableLineWrap: context.knobs.boolean(
+        label: 'Enable Line Wrap',
+        description:
+            'Enables price values line wrap on container overflow. False: TextOverflow Ellipsis ',
         initialValue: false,
       ),
     ),
