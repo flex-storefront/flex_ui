@@ -20,7 +20,6 @@ class FlexProductCard extends StatelessWidget {
     this.oldPrice,
     this.oldPriceLabel,
     this.oldPriceStyle,
-    this.discountPriceStyle,
     this.notation,
     this.displayLeftIcon = false,
     this.leftIconLabel,
@@ -55,7 +54,6 @@ class FlexProductCard extends StatelessWidget {
   final String? oldPriceLabel;
   final TextStyle? priceStyle;
   final TextStyle? oldPriceStyle;
-  final TextStyle? discountPriceStyle;
   final int? notation;
   final bool displayLeftIcon;
   final String? leftIconLabel;
@@ -92,7 +90,6 @@ class FlexProductCard extends StatelessWidget {
               oldPrice: oldPrice,
               oldPriceLabel: oldPriceLabel,
               oldPriceStyle: oldPriceStyle,
-              discountPriceStyle: discountPriceStyle,
               priceFormatter: priceFormatter,
               notation: notation,
               isAvailable: isAvailable,

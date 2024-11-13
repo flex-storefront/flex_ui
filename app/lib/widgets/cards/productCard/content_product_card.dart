@@ -15,7 +15,6 @@ class FlexContentProductCard extends StatelessWidget {
     this.oldPrice,
     this.oldPriceLabel,
     this.oldPriceStyle,
-    this.discountPriceStyle,
     this.priceFormatter,
     this.notation,
     required this.isAvailable,
@@ -35,7 +34,6 @@ class FlexContentProductCard extends StatelessWidget {
   final String? oldPriceLabel;
   final TextStyle? priceStyle;
   final TextStyle? oldPriceStyle;
-  final TextStyle? discountPriceStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +47,6 @@ class FlexContentProductCard extends StatelessWidget {
         oldPrice: oldPrice,
         oldPriceLabel: oldPriceLabel,
         oldPriceStyle: oldPriceStyle,
-        discountPriceStyle: discountPriceStyle,
         priceFormatter: priceFormatter,
         notation: notation,
         isLandscape: isLandscape,

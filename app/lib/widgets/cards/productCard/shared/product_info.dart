@@ -88,7 +88,6 @@ class ProductInfo extends StatelessWidget {
             priceLabel: priceLabel,
             oldPriceLabel: oldPriceLabel,
             oldPriceStyle: oldPriceStyle,
-            discountPriceStyle: discountPriceStyle,
             enableLineWrap: isLandscape,
           ),
         ],

@@ -18,9 +18,8 @@ import 'package:intl/intl.dart';
 /// - [price]: Current Product Price, when [oldPrice] provided, will be styled as a 'sale price'
 /// - [oldPrice]: Previous Product Price. Default Text Styling linethrough
 /// - [priceFormatter]: Price Formatter Callback provided to underlying FlexPrice Widget
-/// - [priceStyle]: Override Price TextStyle when no [oldPrice] is provided
-/// - [discountPriceStyle]: Override [price] TextStyle when [oldPrice] is provided (discounted/sale styling)
-/// - [oldPriceStyle]: Override [oldPrice] TextStyle FlexPrice widget
+/// - [priceStyle]: Override Price TextStyle for Current Price, Either when oldPrice is provided or not.
+/// - [oldPriceStyle]: Override [oldPrice] TextStyle (Default Strikethrough) FlexPrice widget
 /// - [priceLabel]: Text semantic label for [price]
 /// - [oldPriceLabel]: Text semantic label for [oldPrice]
 /// - [enableLineWrap]: Default false: single line display -TextOverflow.ellipsis, True: Enables Line wrap on overlfow
@@ -31,7 +30,7 @@ import 'package:intl/intl.dart';
 /// FlexPriceDiscount(
 ///   price: 99.99,
 ///   oldPrice: 200.00,
-///   discountPriceStyle: TextStyle(color: Colors.green), // Example optional style override
+///   priceStyle: TextStyle(color: Colors.blue), // Example optional style override
 ///   priceFormatter: (price) => NumberFormat.currency(locale: 'en_US').format(price),
 ///   priceLabel: "Sale Price {price}" // {price} token position indicates where the post formatter price should be placed in label
 /// )
@@ -46,7 +45,6 @@ class FlexPriceDiscount extends StatelessWidget {
     this.enableLineWrap = false,
     this.priceLabel,
     this.priceStyle,
-    this.discountPriceStyle,
     this.oldPriceLabel,
     this.oldPriceStyle,
   });
@@ -58,7 +56,6 @@ class FlexPriceDiscount extends StatelessWidget {
   final String? oldPriceLabel;
   final TextStyle? priceStyle;
   final TextStyle? oldPriceStyle;
-  final TextStyle? discountPriceStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +81,7 @@ class FlexPriceDiscount extends StatelessWidget {
         textStyle: TextStyle(
           color: context.colors.success,
           overflow: TextOverflow.ellipsis,
-        ).merge(discountPriceStyle),
+        ).merge(priceStyle),
         priceLabel: priceLabel,
       ),
     ];
@@ -123,6 +120,9 @@ class FlexPriceDiscount extends StatelessWidget {
   path: '[Components]',
 )
 Widget defaultPriceDiscount(BuildContext context) {
+  final price = context.knobs.double.input(label: 'Price', initialValue: 200);
+  final oldPrice =
+      context.knobs.double.input(label: 'oldPrice', initialValue: 300);
   final theme = Theme.of(context);
   exampleFormatter(
     double price,
@@ -139,28 +139,20 @@ Widget defaultPriceDiscount(BuildContext context) {
 
   return Center(
     child: FlexPriceDiscount(
-      price: context.knobs.double.input(label: 'Price', initialValue: 200),
-      oldPrice:
-          context.knobs.double.input(label: 'oldPrice', initialValue: 300),
+      price: price,
+      oldPrice: oldPrice,
       priceFormatter: exampleFormatter,
       oldPriceLabel: 'originally {price}',
       priceStyle: context.knobs.boolean(
         label: 'Example Price Style Override',
-        description: 'Overrides Styling of Price, when no Old Price provided',
-        initialValue: false,
-      )
-          ? theme.textTheme.headlineMedium!
-              .merge(const TextStyle(color: Colors.blue))
-          : null,
-      discountPriceStyle: context.knobs.boolean(
-        label: 'Example Discount Price Style Override',
         description:
-            'Overrides Styling of current price when Old Price is provided',
+            'Overrides Styling of Current Price, Both When oldPrice is provided, and when not',
         initialValue: false,
       )
-          ? theme.textTheme.headlineMedium!.copyWith(
-              color: Colors.purple,
-              decoration: TextDecoration.underline,
+          ? theme.textTheme.headlineMedium!.merge(
+              TextStyle(
+                color: oldPrice > 0 ? Colors.blue : Colors.red,
+              ),
             )
           : null,
       oldPriceStyle: context.knobs.boolean(
@@ -186,6 +178,11 @@ Widget defaultPriceDiscount(BuildContext context) {
 )
 Widget fallbackPriceDiscount(BuildContext context) {
   final theme = Theme.of(context);
+
+  final price = context.knobs.double.input(label: 'Price', initialValue: 200);
+  final oldPrice =
+      context.knobs.double.input(label: 'oldPrice', initialValue: 0);
+
   exampleFormatter(
     double price,
   ) {
@@ -201,17 +198,21 @@ Widget fallbackPriceDiscount(BuildContext context) {
 
   return Center(
     child: FlexPriceDiscount(
-      price: context.knobs.double.input(label: 'Price', initialValue: 200),
-      oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      price: price,
+      oldPrice: oldPrice,
       priceFormatter: exampleFormatter,
       oldPriceLabel: 'originally {price}',
       priceStyle: context.knobs.boolean(
         label: 'Example Price Style Override',
-        description: 'Overrides Styling of Price, when no Old Price provided',
+        description:
+            'Overrides Styling of Current Price, Both When oldPrice is provided and when not',
         initialValue: false,
       )
-          ? theme.textTheme.headlineMedium!
-              .merge(const TextStyle(color: Colors.blue))
+          ? theme.textTheme.headlineMedium!.merge(
+              TextStyle(
+                color: oldPrice > 0 ? Colors.blue : Colors.red,
+              ),
+            )
           : null,
       enableLineWrap: context.knobs.boolean(
         label: 'Enable Line Wrap',
