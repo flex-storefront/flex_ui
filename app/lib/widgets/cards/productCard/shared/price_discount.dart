@@ -35,8 +35,8 @@ import 'package:intl/intl.dart';
 ///   priceFormatter: (price) => NumberFormat.currency(locale: 'en_US').format(price),
 ///   priceLabel: "Sale Price {price}" // {price} token position indicates where the post formatter price should be placed in label
 /// )
+/// ```
 ///
-
 class FlexPriceDiscount extends StatelessWidget {
   const FlexPriceDiscount({
     super.key,
