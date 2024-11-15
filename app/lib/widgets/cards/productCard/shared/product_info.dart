@@ -1,4 +1,6 @@
 import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/utils/typedefs.dart';
+import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,23 +11,32 @@ class ProductInfo extends StatelessWidget {
     required this.productName,
     this.productReference,
     required this.price,
-    this.oldPrice,
-    required this.currency,
+    this.salePrice,
+    this.priceLabel,
+    this.priceStyle,
+    this.salePriceLabel,
+    this.salePriceStyle,
+    this.discountPriceStyle,
+    this.priceFormatter,
     this.notation,
   });
 
   final String productName;
   final String? productReference;
   final double price;
-  final double? oldPrice;
-  final String currency;
+  final double? salePrice;
   final int? notation;
   final bool isLandscape;
+  final PriceFormatter? priceFormatter;
+  final String? priceLabel;
+  final String? salePriceLabel;
+  final TextStyle? priceStyle;
+  final TextStyle? salePriceStyle;
+  final TextStyle? discountPriceStyle;
 
   @override
   Widget build(BuildContext context) {
     final infoContext = Theme.of(context);
-
     return Padding(
       padding: const EdgeInsets.all(FlexSizes.md),
       child: Column(
@@ -70,29 +81,15 @@ class ProductInfo extends StatelessWidget {
                 rating: notation ?? 0,
               ),
             ),
-          if (oldPrice != null && oldPrice! > 0)
-            RichText(
-              maxLines: 1,
-              text: TextSpan(
-                text: '$currency$oldPrice',
-                style: infoContext.textTheme.headlineSmall?.copyWith(
-                  decoration: TextDecoration.lineThrough,
-                ),
-                children: [
-                  TextSpan(
-                    text: ' $currency$price',
-                    style: infoContext.textTheme.headlineSmall
-                        ?.copyWith(color: context.colors.success),
-                  ),
-                ],
-              ),
-            )
-          else
-            Text(
-              '$currency$price',
-              style: infoContext.textTheme.headlineSmall,
-              overflow: TextOverflow.fade,
-            ),
+          FlexPriceDiscount(
+            price: price,
+            salePrice: salePrice,
+            priceFormatter: priceFormatter,
+            priceStyle: priceStyle,
+            priceLabel: priceLabel,
+            salePriceLabel: salePriceLabel,
+            salePriceStyle: salePriceStyle,
+          ),
         ],
       ),
     );

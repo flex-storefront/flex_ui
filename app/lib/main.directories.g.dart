@@ -12,11 +12,13 @@
 import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i2;
 import 'package:flex_ui/widgets/banner/banner.dart' as _i3;
 import 'package:flex_ui/widgets/buttons/button.dart' as _i4;
-import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i7;
+import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i8;
 import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i6;
+import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
+    as _i7;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
-    as _i8;
+    as _i9;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -93,15 +95,28 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookComponent(
+        name: 'FlexPriceDiscount',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Default',
+            builder: _i7.defaultPriceDiscount,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Default - No Sale Price',
+            builder: _i7.fallbackPriceDiscount,
+          ),
+        ],
+      ),
+      _i1.WidgetbookComponent(
         name: 'FlexProductCard',
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Grid',
-            builder: _i7.gridFlexProductCard,
+            builder: _i8.gridFlexProductCard,
           ),
           _i1.WidgetbookUseCase(
             name: 'Standard',
-            builder: _i7.standardFlexProductCard,
+            builder: _i8.standardFlexProductCard,
           ),
         ],
       ),
@@ -109,7 +124,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i8.defaultQuantitySelector,
+          builder: _i9.defaultQuantitySelector,
         ),
       ),
     ],

@@ -1,11 +1,13 @@
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flex_ui/utils/extensions.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/left_top_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:intl/intl.dart';
 
 class FlexProductCard extends StatelessWidget {
   FlexProductCard({
@@ -14,8 +16,12 @@ class FlexProductCard extends StatelessWidget {
     this.productReference,
     required this.imageUrl,
     required this.price,
-    this.oldPrice,
-    required this.currency,
+    this.priceFormatter,
+    this.priceLabel,
+    this.priceStyle,
+    this.salePrice,
+    this.salePriceLabel,
+    this.salePriceStyle,
     this.notation,
     this.displayLeftIcon = false,
     this.leftIconLabel,
@@ -44,8 +50,12 @@ class FlexProductCard extends StatelessWidget {
   final String? productReference;
   final String imageUrl;
   final double price;
-  final double? oldPrice;
-  final String currency;
+  final PriceFormatter? priceFormatter;
+  final double? salePrice;
+  final String? priceLabel;
+  final String? salePriceLabel;
+  final TextStyle? priceStyle;
+  final TextStyle? salePriceStyle;
   final int? notation;
   final bool displayLeftIcon;
   final String? leftIconLabel;
@@ -77,8 +87,12 @@ class FlexProductCard extends StatelessWidget {
               productReference: productReference,
               imageUrl: imageUrl,
               price: price,
-              oldPrice: oldPrice,
-              currency: currency,
+              priceLabel: priceLabel,
+              priceStyle: priceStyle,
+              salePrice: salePrice,
+              salePriceLabel: salePriceLabel,
+              salePriceStyle: salePriceStyle,
+              priceFormatter: priceFormatter,
               notation: notation,
               isAvailable: isAvailable,
               isLandscape: isLandscape,
@@ -132,14 +146,14 @@ Widget standardFlexProductCard(BuildContext context) {
       child: FlexProductCard(
         productName: 'Temple Fork TFO NXT Series Fly Rod',
         productReference: 'TFO NXT 905 5/6',
-        price: 159,
-        oldPrice:
-            context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+        price: context.knobs.double.input(label: 'price', initialValue: 150),
+        salePrice:
+            context.knobs.double.input(label: 'salePrice', initialValue: 0),
+        priceFormatter: (price) => '\$$price',
         imageUrl: 'https://picsum.photos/200',
         notation: 4,
         isLandscape:
             context.knobs.boolean(label: 'isLandscape', initialValue: false),
-        currency: "\$",
         displayLeftIcon: context.knobs
             .boolean(label: 'displayLeftIcon', initialValue: false),
         leftIconLabel: 'New',
@@ -169,6 +183,19 @@ Widget standardFlexProductCard(BuildContext context) {
   path: '[Components]',
 )
 Widget gridFlexProductCard(BuildContext context) {
+  exampleFormatter(
+    double price,
+  ) {
+    final formatter = NumberFormat.simpleCurrency(
+      locale: context.knobs.list(
+        label: 'Locale Examples',
+        options: ['en-US', 'fr-CA', 'ja-JP'],
+      ),
+      decimalDigits: 2,
+    );
+    return formatter.format(price);
+  }
+
   final bool isSaved =
       context.knobs.boolean(label: 'isProductSaved', initialValue: false);
   final bool isLandscape =
@@ -189,12 +216,13 @@ Widget gridFlexProductCard(BuildContext context) {
     itemBuilder: (_, i) => FlexProductCard(
       productName: 'Temple Fork TFO NXT Series Fly Rod',
       productReference: 'TFO NXT 905 5/6',
-      price: 159,
-      oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      price: context.knobs.double.input(label: 'Price', initialValue: 100),
+      salePrice:
+          context.knobs.double.input(label: 'salePrice', initialValue: 50),
+      priceFormatter: exampleFormatter,
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
       isLandscape: isLandscape,
-      currency: "\$",
       displayLeftIcon:
           context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
       leftIconLabel: 'New',

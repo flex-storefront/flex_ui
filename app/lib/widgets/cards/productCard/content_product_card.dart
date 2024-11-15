@@ -1,4 +1,5 @@
 import 'package:flex_ui/tokens/sizes.dart';
+import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/product_info.dart';
 import 'package:flex_ui/widgets/image/image.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +11,12 @@ class FlexContentProductCard extends StatelessWidget {
     this.productReference,
     required this.imageUrl,
     required this.price,
-    this.oldPrice,
-    required this.currency,
+    this.priceLabel,
+    this.priceStyle,
+    this.salePrice,
+    this.salePriceLabel,
+    this.salePriceStyle,
+    this.priceFormatter,
     this.notation,
     required this.isAvailable,
     required this.isLandscape,
@@ -21,11 +26,15 @@ class FlexContentProductCard extends StatelessWidget {
   final String? productReference;
   final String imageUrl;
   final double price;
-  final double? oldPrice;
-  final String currency;
+  final double? salePrice;
   final int? notation;
   final bool isAvailable;
   final bool isLandscape;
+  final PriceFormatter? priceFormatter;
+  final String? priceLabel;
+  final String? salePriceLabel;
+  final TextStyle? priceStyle;
+  final TextStyle? salePriceStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +43,12 @@ class FlexContentProductCard extends StatelessWidget {
         productName: productName,
         productReference: productReference,
         price: price,
-        oldPrice: oldPrice,
-        currency: currency,
+        priceLabel: priceLabel,
+        priceStyle: priceStyle,
+        salePrice: salePrice,
+        salePriceLabel: salePriceLabel,
+        salePriceStyle: salePriceStyle,
+        priceFormatter: priceFormatter,
         notation: notation,
         isLandscape: isLandscape,
       ),
