@@ -11,11 +11,11 @@ class ProductInfo extends StatelessWidget {
     required this.productName,
     this.productReference,
     required this.price,
-    this.oldPrice,
+    this.salePrice,
     this.priceLabel,
     this.priceStyle,
-    this.oldPriceLabel,
-    this.oldPriceStyle,
+    this.salePriceLabel,
+    this.salePriceStyle,
     this.discountPriceStyle,
     this.priceFormatter,
     this.notation,
@@ -24,14 +24,14 @@ class ProductInfo extends StatelessWidget {
   final String productName;
   final String? productReference;
   final double price;
-  final double? oldPrice;
+  final double? salePrice;
   final int? notation;
   final bool isLandscape;
   final PriceFormatter? priceFormatter;
   final String? priceLabel;
-  final String? oldPriceLabel;
+  final String? salePriceLabel;
   final TextStyle? priceStyle;
-  final TextStyle? oldPriceStyle;
+  final TextStyle? salePriceStyle;
   final TextStyle? discountPriceStyle;
 
   @override
@@ -83,12 +83,12 @@ class ProductInfo extends StatelessWidget {
             ),
           FlexPriceDiscount(
             price: price,
-            oldPrice: oldPrice,
+            salePrice: salePrice,
             priceFormatter: priceFormatter,
             priceStyle: priceStyle,
             priceLabel: priceLabel,
-            oldPriceLabel: oldPriceLabel,
-            oldPriceStyle: oldPriceStyle,
+            salePriceLabel: salePriceLabel,
+            salePriceStyle: salePriceStyle,
           ),
         ],
       ),

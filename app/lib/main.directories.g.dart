@@ -102,7 +102,7 @@ final directories = <_i1.WidgetbookNode>[
             builder: _i7.defaultPriceDiscount,
           ),
           _i1.WidgetbookUseCase(
-            name: 'Default - No Old Price Provided',
+            name: 'Default - No Sale Price',
             builder: _i7.fallbackPriceDiscount,
           ),
         ],

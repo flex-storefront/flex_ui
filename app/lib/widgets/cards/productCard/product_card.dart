@@ -19,9 +19,9 @@ class FlexProductCard extends StatelessWidget {
     this.priceFormatter,
     this.priceLabel,
     this.priceStyle,
-    this.oldPrice,
-    this.oldPriceLabel,
-    this.oldPriceStyle,
+    this.salePrice,
+    this.salePriceLabel,
+    this.salePriceStyle,
     this.notation,
     this.displayLeftIcon = false,
     this.leftIconLabel,
@@ -51,11 +51,11 @@ class FlexProductCard extends StatelessWidget {
   final String imageUrl;
   final double price;
   final PriceFormatter? priceFormatter;
-  final double? oldPrice;
+  final double? salePrice;
   final String? priceLabel;
-  final String? oldPriceLabel;
+  final String? salePriceLabel;
   final TextStyle? priceStyle;
-  final TextStyle? oldPriceStyle;
+  final TextStyle? salePriceStyle;
   final int? notation;
   final bool displayLeftIcon;
   final String? leftIconLabel;
@@ -89,9 +89,9 @@ class FlexProductCard extends StatelessWidget {
               price: price,
               priceLabel: priceLabel,
               priceStyle: priceStyle,
-              oldPrice: oldPrice,
-              oldPriceLabel: oldPriceLabel,
-              oldPriceStyle: oldPriceStyle,
+              salePrice: salePrice,
+              salePriceLabel: salePriceLabel,
+              salePriceStyle: salePriceStyle,
               priceFormatter: priceFormatter,
               notation: notation,
               isAvailable: isAvailable,
@@ -147,8 +147,8 @@ Widget standardFlexProductCard(BuildContext context) {
         productName: 'Temple Fork TFO NXT Series Fly Rod',
         productReference: 'TFO NXT 905 5/6',
         price: context.knobs.double.input(label: 'price', initialValue: 150),
-        oldPrice:
-            context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+        salePrice:
+            context.knobs.double.input(label: 'salePrice', initialValue: 0),
         priceFormatter: (price) => '\$$price',
         imageUrl: 'https://picsum.photos/200',
         notation: 4,
@@ -216,8 +216,9 @@ Widget gridFlexProductCard(BuildContext context) {
     itemBuilder: (_, i) => FlexProductCard(
       productName: 'Temple Fork TFO NXT Series Fly Rod',
       productReference: 'TFO NXT 905 5/6',
-      price: context.knobs.double.input(label: 'Price', initialValue: 0),
-      oldPrice: context.knobs.double.input(label: 'oldPrice', initialValue: 0),
+      price: context.knobs.double.input(label: 'Price', initialValue: 100),
+      salePrice:
+          context.knobs.double.input(label: 'salePrice', initialValue: 50),
       priceFormatter: exampleFormatter,
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
