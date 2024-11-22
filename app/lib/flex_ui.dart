@@ -4,6 +4,10 @@ export 'widgets/banner/banner.dart';
 export 'widgets/carousel/carousel.dart';
 export 'widgets/image/image.dart';
 export 'widgets/quantity_selector/quantity_selector.dart';
+export 'widgets/cards/productCard/shared/price.dart';
+export 'widgets/cards/productCard/shared/price_discount.dart';
+export 'widgets/gallery/gallery.dart';
+export 'widgets/image/tappable_image.dart';
 
 // Themes
 export 'theme/flex_app_themes.dart';
