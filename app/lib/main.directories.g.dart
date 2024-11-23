@@ -17,6 +17,7 @@ import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i6;
 import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
     as _i7;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
+import 'package:flex_ui/widgets/gallery/gallery.dart' as _i10;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
     as _i9;
 import 'package:widgetbook/widgetbook.dart' as _i1;
@@ -128,5 +129,22 @@ final directories = <_i1.WidgetbookNode>[
         ),
       ),
     ],
-  )
+  ),
+  _i1.WidgetbookFolder(
+    name: 'widgets',
+    children: [
+      _i1.WidgetbookFolder(
+        name: 'gallery',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'FlexGallery',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i10.defaultCarousel,
+            ),
+          )
+        ],
+      )
+    ],
+  ),
 ];
