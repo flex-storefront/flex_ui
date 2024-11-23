@@ -86,6 +86,25 @@ class CarouselRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [GalleryPage]
+class GalleryRoute extends PageRouteInfo<void> {
+  const GalleryRoute({List<PageRouteInfo>? children})
+      : super(
+          GalleryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'GalleryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const GalleryPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -119,6 +138,25 @@ class ImageRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ImagePage();
+    },
+  );
+}
+
+/// generated route for
+/// [PricePage]
+class PriceRoute extends PageRouteInfo<void> {
+  const PriceRoute({List<PageRouteInfo>? children})
+      : super(
+          PriceRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PriceRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PricePage();
     },
   );
 }
