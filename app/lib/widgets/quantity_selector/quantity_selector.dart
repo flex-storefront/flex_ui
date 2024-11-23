@@ -34,22 +34,26 @@ class FlexQuantitySelector extends StatelessWidget {
     final canDecrement = quantity - increment >= minQuantity;
     final canIncrement = quantity + increment <= maxQuantity;
 
+    final theme = Theme.of(context);
+    // Fallback theme styling if IconButtonTheme.style is not set by library user
+    final themeStyle = Theme.of(context).iconButtonTheme.style ?? ButtonStyle();
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         IconButton(
           padding: EdgeInsets.zero,
-          style: Theme.of(context).iconButtonTheme.style!.copyWith(
-                padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-                shape: const WidgetStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(FlexSizes.borderRadiusSm),
-                      bottomLeft: Radius.circular(FlexSizes.borderRadiusSm),
-                    ),
-                  ),
+          style: themeStyle.copyWith(
+            padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: const WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(FlexSizes.borderRadiusSm),
+                  bottomLeft: Radius.circular(FlexSizes.borderRadiusSm),
                 ),
               ),
+            ),
+          ),
           icon: const Icon(
             Icons.remove,
           ),
@@ -71,11 +75,11 @@ class FlexQuantitySelector extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.symmetric(
               horizontal: BorderSide(
-                color: Theme.of(context)
-                    .iconButtonTheme
-                    .style!
-                    .backgroundColor!
-                    .resolve({if (disabled) WidgetState.disabled})!,
+                color: themeStyle.backgroundColor
+                        ?.resolve({if (disabled) WidgetState.disabled}) ??
+                    (disabled
+                        ? theme.colorScheme.surfaceContainer
+                        : theme.colorScheme.surfaceContainerHigh),
               ),
             ),
           ),
@@ -89,17 +93,17 @@ class FlexQuantitySelector extends StatelessWidget {
           icon: const Icon(
             Icons.add,
           ),
-          style: Theme.of(context).iconButtonTheme.style!.copyWith(
-                padding: const WidgetStatePropertyAll(EdgeInsets.zero),
-                shape: const WidgetStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(FlexSizes.borderRadiusSm),
-                      bottomRight: Radius.circular(FlexSizes.borderRadiusSm),
-                    ),
-                  ),
+          style: themeStyle.copyWith(
+            padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: const WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(FlexSizes.borderRadiusSm),
+                  bottomRight: Radius.circular(FlexSizes.borderRadiusSm),
                 ),
               ),
+            ),
+          ),
           onPressed: canIncrement && !disabled
               ? () {
                   final newQuantity = quantity + increment;
