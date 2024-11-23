@@ -36,7 +36,8 @@ class FlexQuantitySelector extends StatelessWidget {
 
     final theme = Theme.of(context);
     // Fallback theme styling if IconButtonTheme.style is not set by library user
-    final themeStyle = Theme.of(context).iconButtonTheme.style ?? ButtonStyle();
+    final themeStyle =
+        Theme.of(context).iconButtonTheme.style ?? const ButtonStyle();
 
     return Row(
       mainAxisSize: MainAxisSize.min,
