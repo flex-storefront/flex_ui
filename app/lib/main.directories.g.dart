@@ -10,16 +10,17 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i2;
-import 'package:flex_ui/widgets/banner/banner.dart' as _i3;
-import 'package:flex_ui/widgets/buttons/button.dart' as _i4;
-import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i8;
-import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i6;
+import 'package:flex_ui/widgets/banner/banner.dart' as _i4;
+import 'package:flex_ui/widgets/buttons/button.dart' as _i5;
+import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i9;
+import 'package:flex_ui/widgets/cards/productCard/shared/badge.dart' as _i3;
+import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i7;
 import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
-    as _i7;
-import 'package:flex_ui/widgets/carousel/carousel.dart' as _i5;
-import 'package:flex_ui/widgets/gallery/gallery.dart' as _i10;
+    as _i8;
+import 'package:flex_ui/widgets/carousel/carousel.dart' as _i6;
+import 'package:flex_ui/widgets/gallery/gallery.dart' as _i11;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
-    as _i9;
+    as _i10;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -43,11 +44,24 @@ final directories = <_i1.WidgetbookNode>[
           ),
         ],
       ),
+      _i1.WidgetbookComponent(
+        name: 'FlexBadge',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Default',
+            builder: _i3.defaultBadge,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Example Parameter Overrides',
+            builder: _i3.saleBadge,
+          ),
+        ],
+      ),
       _i1.WidgetbookLeafComponent(
         name: 'FlexBanner',
         useCase: _i1.WidgetbookUseCase(
           name: 'Standard',
-          builder: _i3.standardBanner,
+          builder: _i4.standardBanner,
         ),
       ),
       _i1.WidgetbookComponent(
@@ -55,19 +69,19 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i4.defaultButton,
+            builder: _i5.defaultButton,
           ),
           _i1.WidgetbookUseCase(
             name: 'Disabled',
-            builder: _i4.disabledButton,
+            builder: _i5.disabledButton,
           ),
           _i1.WidgetbookUseCase(
             name: 'Loading',
-            builder: _i4.loadingButton,
+            builder: _i5.loadingButton,
           ),
           _i1.WidgetbookUseCase(
             name: 'Small & Styled',
-            builder: _i4.smallButton,
+            builder: _i5.smallButton,
           ),
         ],
       ),
@@ -75,7 +89,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexCarousel',
         useCase: _i1.WidgetbookUseCase(
           name: 'Central banner',
-          builder: _i5.centralBannerCarousel,
+          builder: _i6.centralBannerCarousel,
         ),
       ),
       _i1.WidgetbookComponent(
@@ -83,15 +97,15 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i6.flexPrice,
+            builder: _i7.flexPrice,
           ),
           _i1.WidgetbookUseCase(
             name: 'Strikethrough',
-            builder: _i6.flexPriceSale,
+            builder: _i7.flexPriceSale,
           ),
           _i1.WidgetbookUseCase(
             name: 'Style Override (No formatter)',
-            builder: _i6.priceStyleOverride,
+            builder: _i7.priceStyleOverride,
           ),
         ],
       ),
@@ -100,11 +114,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i7.defaultPriceDiscount,
+            builder: _i8.defaultPriceDiscount,
           ),
           _i1.WidgetbookUseCase(
             name: 'Default - No Sale Price',
-            builder: _i7.fallbackPriceDiscount,
+            builder: _i8.fallbackPriceDiscount,
           ),
         ],
       ),
@@ -113,11 +127,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Grid',
-            builder: _i8.gridFlexProductCard,
+            builder: _i9.gridFlexProductCard,
           ),
           _i1.WidgetbookUseCase(
             name: 'Standard',
-            builder: _i8.standardFlexProductCard,
+            builder: _i9.standardFlexProductCard,
           ),
         ],
       ),
@@ -125,7 +139,7 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i9.defaultQuantitySelector,
+          builder: _i10.defaultQuantitySelector,
         ),
       ),
     ],
@@ -140,7 +154,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'FlexGallery',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i10.defaultCarousel,
+              builder: _i11.defaultCarousel,
             ),
           )
         ],
