@@ -35,7 +35,7 @@ class _FlexGalleryState extends State<FlexGallery> {
       children: [
         // Main Image
         Container(
-          padding: const EdgeInsets.all(FlexSizes.sm),
+          padding: const EdgeInsets.only(bottom: FlexSizes.sm),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
@@ -58,7 +58,6 @@ class _FlexGalleryState extends State<FlexGallery> {
         SizedBox(
           height: FlexSizes.imageThumbSize,
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: FlexSizes.sm),
             scrollDirection: Axis.horizontal,
             itemCount: _thumbnailUrls.length,
             itemBuilder: (_, int index) {
