@@ -9,6 +9,7 @@ class FlexGallery extends StatefulWidget {
     this.imageUrls = const [],
     this.thumbnailUrls,
     this.borderRadius = 0,
+    this.thumbRowPaddingX = 0,
   }) : assert(
           thumbnailUrls != null
               ? imageUrls.length == thumbnailUrls.length
@@ -19,6 +20,7 @@ class FlexGallery extends StatefulWidget {
   final List<String> imageUrls;
   final List<String>? thumbnailUrls;
   final double borderRadius;
+  final double thumbRowPaddingX;
 
   @override
   State<FlexGallery> createState() => _FlexGalleryState();
@@ -35,7 +37,7 @@ class _FlexGalleryState extends State<FlexGallery> {
       children: [
         // Main Image
         Container(
-          padding: const EdgeInsets.all(FlexSizes.sm),
+          padding: const EdgeInsets.only(bottom: FlexSizes.sm),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
@@ -58,7 +60,7 @@ class _FlexGalleryState extends State<FlexGallery> {
         SizedBox(
           height: FlexSizes.imageThumbSize,
           child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: FlexSizes.sm),
+            padding: EdgeInsets.symmetric(horizontal: widget.thumbRowPaddingX),
             scrollDirection: Axis.horizontal,
             itemCount: _thumbnailUrls.length,
             itemBuilder: (_, int index) {
@@ -98,6 +100,8 @@ class _FlexGalleryState extends State<FlexGallery> {
 Widget defaultCarousel(BuildContext context) {
   return Center(
     child: FlexGallery(
+      thumbRowPaddingX: context.knobs.double
+          .input(label: 'Horizontal Thumbnail Padding', initialValue: 0),
       imageUrls: List.generate(
         context.knobs.int.slider(label: 'Item count', initialValue: 3),
         (index) => 'https://loremflickr.com/640/640?lock=$index',
