@@ -9,6 +9,7 @@ export 'widgets/cards/productCard/shared/price_discount.dart';
 export 'widgets/gallery/gallery.dart';
 export 'widgets/image/tappable_image.dart';
 export 'widgets/cards/productCard/shared/badge.dart';
+export 'widgets/search/search.dart';
 
 // Themes
 export 'theme/flex_app_themes.dart';
