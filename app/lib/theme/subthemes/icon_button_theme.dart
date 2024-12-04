@@ -7,30 +7,28 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData lightIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      elevation: 1,
-      shadowColor: FlexAppColorScheme.lightScheme.primary,
-      foregroundColor: FlexAppColorScheme.lightScheme.primary,
+      elevation: 0,
       backgroundColor: FlexAppColorScheme.lightScheme.onPrimary,
+      foregroundColor: FlexAppColorScheme.lightScheme.primary,
       disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
-      padding: const EdgeInsets.all(FlexSizes.xs),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
+      disabledBackgroundColor: FlexAppColorScheme.lightScheme.onBackground,
+      padding: const EdgeInsets.all(FlexSizes.sm),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
       ),
     ),
   );
 
   static IconButtonThemeData darkIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      elevation: 1,
-      shadowColor: FlexAppColorScheme.darkScheme.primary,
-      foregroundColor: FlexAppColorScheme.darkScheme.onPrimary,
-      backgroundColor: FlexAppColorScheme.darkScheme.primary,
+      elevation: 0,
+      backgroundColor: FlexAppColorScheme.darkScheme.onPrimary,
+      foregroundColor: FlexAppColorScheme.darkScheme.primary,
       disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
       disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
-      padding: const EdgeInsets.all(FlexSizes.xs),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
+      padding: const EdgeInsets.all(FlexSizes.sm),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
       ),
     ),
   );
