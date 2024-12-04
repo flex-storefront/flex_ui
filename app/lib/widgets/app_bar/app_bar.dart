@@ -20,9 +20,7 @@ ThemeStyles _getThemeStyles(BuildContext context) {
 
   return ThemeStyles(
     iconButtonStyle: theme.iconButtonTheme.style ?? const ButtonStyle(),
-    titleStyle: theme.brightness == Brightness.light
-        ? FlexTextTheme.lightTextTheme.headlineSmall
-        : FlexTextTheme.darkTextTheme.headlineSmall,
+    titleStyle: theme.textTheme.headlineSmall,
   );
 }
 
