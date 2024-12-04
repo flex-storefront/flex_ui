@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
+/// [ThemeStyles] groups related theme data
 class ThemeStyles {
   final ButtonStyle iconButtonStyle;
-  final TextStyle? titleStyle;
+  final TextStyle titleStyle;
 
   ThemeStyles({
     required this.iconButtonStyle,
@@ -15,12 +16,17 @@ class ThemeStyles {
   });
 }
 
+/// [_getThemeStyles] sets the theme of both [iconButtonStyle] and [titleStyle]
+///
+/// The theme is that of the app theme
+///
+/// Fallback theme styling is also specified if theme is not set by the library user
 ThemeStyles _getThemeStyles(BuildContext context) {
   final theme = Theme.of(context);
 
   return ThemeStyles(
     iconButtonStyle: theme.iconButtonTheme.style ?? const ButtonStyle(),
-    titleStyle: theme.textTheme.headlineSmall,
+    titleStyle: theme.textTheme.headlineSmall ?? const TextStyle(),
   );
 }
 
