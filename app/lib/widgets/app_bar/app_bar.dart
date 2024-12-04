@@ -148,3 +148,21 @@ Widget leadingAndTrailingWidgetFlexAppBar(BuildContext context) {
     onTrailingIconPressed: () {},
   );
 }
+
+@widgetbook.UseCase(
+  name: 'Custom Text Style',
+  type: FlexAppBar,
+  path: '[Components]',
+)
+Widget customTextStyleFlexAppBar(BuildContext context) {
+  return FlexAppBar(
+    title: Text(
+      context.knobs.string(
+        label: 'Title',
+        initialValue: 'Product List',
+      ),
+      style: Theme.of(context).textTheme.headlineLarge,
+      textAlign: TextAlign.center,
+    ),
+  );
+}
