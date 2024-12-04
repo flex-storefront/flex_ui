@@ -1,8 +1,30 @@
 import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/theme/subthemes/text_theme.dart';
 import 'package:flex_ui/tokens/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+
+class ThemeStyles {
+  final ButtonStyle iconButtonStyle;
+  final TextStyle? titleStyle;
+
+  ThemeStyles({
+    required this.iconButtonStyle,
+    required this.titleStyle,
+  });
+}
+
+ThemeStyles _getThemeStyles(BuildContext context) {
+  final theme = Theme.of(context);
+
+  return ThemeStyles(
+    iconButtonStyle: theme.iconButtonTheme.style ?? const ButtonStyle(),
+    titleStyle: theme.brightness == Brightness.light
+        ? FlexTextTheme.lightTextTheme.headlineSmall
+        : FlexTextTheme.darkTextTheme.headlineSmall,
+  );
+}
 
 /// [FlexAppBar] is a flex implementation of [AppBar].
 ///
@@ -36,6 +58,8 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final styles = _getThemeStyles(context);
+
     return AppBar(
       automaticallyImplyLeading: false,
       centerTitle: centerTitle,
@@ -43,14 +67,17 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(
               onPressed: onLeadingIconPressed,
               icon: Icon(leadingIcon),
+              style: styles.iconButtonStyle,
             )
           : null,
       title: title,
+      titleTextStyle: styles.titleStyle,
       actions: [
         if (trailingIcon != null)
           IconButton(
             onPressed: onTrailingIconPressed,
             icon: Icon(trailingIcon),
+            style: styles.iconButtonStyle,
           ),
       ],
     );
@@ -72,7 +99,6 @@ Widget defaultFlexAppBar(BuildContext context) {
         label: 'Title',
         initialValue: 'Product List',
       ),
-      style: Theme.of(context).textTheme.titleMedium,
       textAlign: TextAlign.center,
     ),
     leadingIcon: Icons.arrow_back,
@@ -92,7 +118,6 @@ Widget trailingWidgetFlexAppBar(BuildContext context) {
         label: 'Title',
         initialValue: 'Product List',
       ),
-      style: Theme.of(context).textTheme.titleMedium,
       textAlign: TextAlign.center,
     ),
     trailingIcon: Icons.close,
@@ -112,7 +137,6 @@ Widget leadingAndTrailingWidgetFlexAppBar(BuildContext context) {
         label: 'Title',
         initialValue: 'Product List',
       ),
-      style: Theme.of(context).textTheme.titleMedium,
       textAlign: TextAlign.center,
     ),
     leadingIcon: Icons.arrow_back,
