@@ -4,31 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-/// [ThemeStyles] groups related theme data
-class ThemeStyles {
-  final ButtonStyle iconButtonStyle;
-  final TextStyle titleStyle;
-
-  ThemeStyles({
-    required this.iconButtonStyle,
-    required this.titleStyle,
-  });
-}
-
-/// [_getThemeStyles] sets the theme of both [iconButtonStyle] and [titleStyle]
-///
-/// The theme is that of the app theme
-///
-/// Fallback theme styling is also specified if theme is not set by the library user
-ThemeStyles _getThemeStyles(BuildContext context) {
-  final theme = Theme.of(context);
-
-  return ThemeStyles(
-    iconButtonStyle: theme.iconButtonTheme.style ?? const ButtonStyle(),
-    titleStyle: theme.textTheme.headlineSmall ?? const TextStyle(),
-  );
-}
-
 /// [FlexAppBar] is a flex implementation of [AppBar].
 ///
 /// [LeadingIcon] and [TrailingIcon] are IconData with their owns onPressed function.
@@ -61,26 +36,21 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styles = _getThemeStyles(context);
-
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       centerTitle: centerTitle,
       leading: leadingIcon != null
           ? IconButton(
               onPressed: onLeadingIconPressed,
               icon: Icon(leadingIcon),
-              style: styles.iconButtonStyle,
             )
           : null,
       title: title,
-      titleTextStyle: styles.titleStyle,
       actions: [
         if (trailingIcon != null)
           IconButton(
             onPressed: onTrailingIconPressed,
             icon: Icon(trailingIcon),
-            style: styles.iconButtonStyle,
           ),
       ],
     );
@@ -146,23 +116,5 @@ Widget leadingAndTrailingWidgetFlexAppBar(BuildContext context) {
     onLeadingIconPressed: () {},
     trailingIcon: Icons.close,
     onTrailingIconPressed: () {},
-  );
-}
-
-@widgetbook.UseCase(
-  name: 'Custom Text Style',
-  type: FlexAppBar,
-  path: '[Components]',
-)
-Widget customTextStyleFlexAppBar(BuildContext context) {
-  return FlexAppBar(
-    title: Text(
-      context.knobs.string(
-        label: 'Title',
-        initialValue: 'Product List',
-      ),
-      style: Theme.of(context).textTheme.headlineLarge,
-      textAlign: TextAlign.center,
-    ),
   );
 }
