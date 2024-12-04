@@ -131,8 +131,6 @@ class _FlexSearchState extends State<FlexSearch> {
   }
 }
 
-final quantityState = ValueNotifier(5);
-
 @UseCase(
   name: 'Default',
   type: FlexSearch,
