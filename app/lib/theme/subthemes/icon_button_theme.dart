@@ -10,10 +10,10 @@ class FlexIconButtonTheme {
       elevation: 0,
       backgroundColor: FlexAppColorScheme.lightScheme.onPrimary,
       foregroundColor: FlexAppColorScheme.lightScheme.primary,
+      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
       disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.lightScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.sm),
-      shape: BeveledRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
@@ -24,10 +24,10 @@ class FlexIconButtonTheme {
       elevation: 0,
       backgroundColor: FlexAppColorScheme.darkScheme.onPrimary,
       foregroundColor: FlexAppColorScheme.darkScheme.primary,
+      disabledBackgroundColor: FlexAppColorScheme.darkScheme.background,
       disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
-      disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.sm),
-      shape: BeveledRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
