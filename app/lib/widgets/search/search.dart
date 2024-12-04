@@ -36,16 +36,6 @@ class FlexSearch extends StatefulWidget {
     this.inputFormatters,
   });
 
-  /// - [onChanged] fired when search text changes
-  /// - [onSubmit] Callback fired when search is submitted
-  ///-  [hintText] Placeholder text shown when search field is empty
-  /// [autofocus] text field autofocus boolean
-  /// [showClearButton] Whether to show the clear button when text is present
-  /// [clearButtonIcon] Custom icon for the clear button
-  /// Custom search icon
-  /// Custom input decoration that overrides the default
-  /// Optional external text controller
-  /// Optional external focus node
   final Function(String)? onChanged;
   final Function(String)? onSubmitted;
   final VoidCallback? onClearPressed;
