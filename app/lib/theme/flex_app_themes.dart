@@ -78,17 +78,17 @@ class FlexAppThemes {
       scrolledUnderElevation: 0,
       centerTitle: false,
       iconTheme: IconThemeData(
-        color: FlexAppColorScheme.darkScheme.onPrimary,
+        color: FlexAppColorScheme.darkScheme.primary,
         size: FlexSizes.iconMd,
       ),
       actionsIconTheme: IconThemeData(
-        color: FlexAppColorScheme.darkScheme.onPrimary,
+        color: FlexAppColorScheme.darkScheme.primary,
         size: FlexSizes.iconMd,
       ),
       titleTextStyle: TextStyle(
         fontSize: FlexSizes.fontSizeXl,
         fontWeight: FontWeight.w600,
-        color: FlexAppColorScheme.darkScheme.onPrimary,
+        color: FlexAppColorScheme.darkScheme.primary,
       ),
     ),
     brightness: Brightness.dark,

@@ -37,7 +37,7 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: true,
       centerTitle: centerTitle,
       leading: leadingIcon != null
           ? IconButton(
