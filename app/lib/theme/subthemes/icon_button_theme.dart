@@ -20,7 +20,6 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData darkIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      elevation: 3,
       backgroundColor: Colors.transparent,
       foregroundColor: FlexAppColorScheme.darkScheme.primary,
       disabledBackgroundColor: Colors.transparent,
