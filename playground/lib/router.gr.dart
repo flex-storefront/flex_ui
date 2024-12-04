@@ -10,6 +10,25 @@
 part of 'router.dart';
 
 /// generated route for
+/// [BadgePage]
+class BadgeRoute extends PageRouteInfo<void> {
+  const BadgeRoute({List<PageRouteInfo>? children})
+      : super(
+          BadgeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'BadgeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const BadgePage();
+    },
+  );
+}
+
+/// generated route for
 /// [BannerFullPage]
 class BannerFullRoute extends PageRouteInfo<void> {
   const BannerFullRoute({List<PageRouteInfo>? children})

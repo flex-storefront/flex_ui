@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:playground/pages/badge.dart';
 import 'package:playground/pages/banner.dart';
 import 'package:playground/pages/button.dart';
 import 'package:playground/pages/carousel.dart';
@@ -23,5 +24,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ImageRoute.page, path: '/image'),
         AutoRoute(page: PriceRoute.page, path: '/price'),
         AutoRoute(page: QuantitySelectorRoute.page, path: '/quantity-selector'),
+        AutoRoute(page: BadgeRoute.page, path: '/badge'),
       ];
 }

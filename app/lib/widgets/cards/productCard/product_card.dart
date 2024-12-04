@@ -3,7 +3,7 @@ import 'package:flex_ui/utils/extensions.dart';
 import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/left_top_icon.dart';
+import 'package:flex_ui/widgets/cards/productCard/shared/badge.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -104,7 +104,7 @@ class FlexProductCard extends StatelessWidget {
               left: 0,
               child: Semantics(
                 label: leftIconSemanticsLabel,
-                child: LeftTopIcon(
+                child: FlexBadge(
                   label: leftIconLabel!,
                   textColor: leftIconTextColor,
                   iconBackgroundColor: leftIconBackgroundColor,
