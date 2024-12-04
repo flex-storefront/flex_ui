@@ -7,9 +7,9 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData lightIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      backgroundColor: FlexAppColorScheme.lightScheme.onPrimary,
+      backgroundColor: Colors.transparent,
       foregroundColor: FlexAppColorScheme.lightScheme.primary,
-      disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
+      disabledBackgroundColor: Colors.transparent,
       disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
       padding: const EdgeInsets.all(FlexSizes.sm),
       shape: RoundedRectangleBorder(
@@ -20,9 +20,10 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData darkIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      backgroundColor: FlexAppColorScheme.darkScheme.onPrimary,
+      elevation: 3,
+      backgroundColor: Colors.transparent,
       foregroundColor: FlexAppColorScheme.darkScheme.primary,
-      disabledBackgroundColor: FlexAppColorScheme.darkScheme.background,
+      disabledBackgroundColor: Colors.transparent,
       disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
       padding: const EdgeInsets.all(FlexSizes.sm),
       shape: RoundedRectangleBorder(
