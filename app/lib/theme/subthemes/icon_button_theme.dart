@@ -13,8 +13,8 @@ class FlexIconButtonTheme {
       disabledForegroundColor: FlexAppColorScheme.lightScheme.disabled,
       disabledBackgroundColor: FlexAppColorScheme.lightScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.sm),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
+      shape: BeveledRectangleBorder(
+        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
   );
@@ -27,8 +27,8 @@ class FlexIconButtonTheme {
       disabledForegroundColor: FlexAppColorScheme.darkScheme.disabled,
       disabledBackgroundColor: FlexAppColorScheme.darkScheme.onBackground,
       padding: const EdgeInsets.all(FlexSizes.sm),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
+      shape: BeveledRectangleBorder(
+        borderRadius: BorderRadius.circular(FlexSizes.borderRadiusSm),
       ),
     ),
   );
