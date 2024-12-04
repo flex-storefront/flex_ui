@@ -7,7 +7,6 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData lightIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      elevation: 0,
       backgroundColor: FlexAppColorScheme.lightScheme.onPrimary,
       foregroundColor: FlexAppColorScheme.lightScheme.primary,
       disabledBackgroundColor: FlexAppColorScheme.lightScheme.background,
@@ -21,7 +20,6 @@ class FlexIconButtonTheme {
 
   static IconButtonThemeData darkIconButtonTheme = IconButtonThemeData(
     style: IconButton.styleFrom(
-      elevation: 0,
       backgroundColor: FlexAppColorScheme.darkScheme.onPrimary,
       foregroundColor: FlexAppColorScheme.darkScheme.primary,
       disabledBackgroundColor: FlexAppColorScheme.darkScheme.background,
