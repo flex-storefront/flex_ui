@@ -7,7 +7,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 ///A simple Badge Widget providing override properties for
 ///
 /// - textColor
-/// - iconBackgroudnColor
+/// - iconBackgroundColor
 /// - padding
 /// - border radius
 ///
