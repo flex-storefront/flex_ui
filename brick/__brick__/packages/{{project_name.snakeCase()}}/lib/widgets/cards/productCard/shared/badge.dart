@@ -1,7 +1,6 @@
 import 'package:{{project_name.snakeCase()}}/tokens/sizes.dart';
 import 'package:{{project_name.snakeCase()}}/utils/extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 ///A simple Badge Widget providing override properties for
@@ -77,7 +76,7 @@ Widget saleBadge(BuildContext context) {
       textColor: context.colors.onSuccess,
       iconBackgroundColor: context.colors.success,
       borderRadius: BorderRadius.circular(4),
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
     ),
   );
 }
