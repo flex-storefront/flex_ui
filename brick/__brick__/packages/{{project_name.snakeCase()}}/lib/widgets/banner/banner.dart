@@ -1,5 +1,4 @@
 import 'package:{{project_name.snakeCase()}}/{{project_name.snakeCase()}}.dart';
-import 'package:{{project_name.snakeCase()}}/tokens/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
