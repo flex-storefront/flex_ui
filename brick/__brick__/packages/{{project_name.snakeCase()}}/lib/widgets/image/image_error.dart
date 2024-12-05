@@ -1,3 +1,4 @@
+import 'package:{{project_name.snakeCase()}}/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class ImageError extends StatelessWidget {
@@ -8,7 +9,7 @@ class ImageError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget widget = Container(
-      color: Colors.grey[100]!,
+      color: context.colors.disabled,
       alignment: Alignment.center,
       child: const Icon(Icons.error),
     );

@@ -31,7 +31,7 @@ class WidgetbookApp extends StatelessWidget {
             WidgetbookTheme(name: 'Light', data: FlexAppThemes.lightTheme),
             WidgetbookTheme(name: 'Dark', data: FlexAppThemes.darkTheme),
           ],
-        )
+        ),
       ],
     );
   }

@@ -1,5 +1,5 @@
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
+import 'package:{{project_name.snakeCase()}}/tokens/sizes.dart';
+import 'package:{{project_name.snakeCase()}}/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
