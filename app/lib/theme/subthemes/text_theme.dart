@@ -58,8 +58,8 @@ class FlexTextTheme {
       color: FlexAppColorScheme.lightScheme.onSurface,
     ),
     labelSmall: textStyle.copyWith(
-      fontSize: 12.0,
-      fontWeight: FontWeight.normal,
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
       color: FlexAppColorScheme.lightScheme.onSurface.withOpacity(0.5),
     ),
   );
@@ -116,8 +116,8 @@ class FlexTextTheme {
       color: FlexAppColorScheme.darkScheme.onSurface,
     ),
     labelSmall: textStyle.copyWith(
-      fontSize: 12.0,
-      fontWeight: FontWeight.normal,
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
       color: FlexAppColorScheme.darkScheme.onSurface.withOpacity(0.5),
     ),
   );
