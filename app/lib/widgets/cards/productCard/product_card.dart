@@ -28,7 +28,6 @@ class FlexProductCard extends StatelessWidget {
     this.leftIconSemanticsLabel,
     this.leftIconBackgroundColor,
     this.leftIconTextColor,
-    this.surfaceColor,
     this.displayRightIcon = false,
     this.rightIcon,
     this.rightIconButtonStyle,
@@ -63,7 +62,6 @@ class FlexProductCard extends StatelessWidget {
   final String? leftIconSemanticsLabel;
   final Color? leftIconBackgroundColor;
   final Color? leftIconTextColor;
-  final Color? surfaceColor;
   final bool displayRightIcon;
   final Icon? rightIcon;
   final ButtonStyle? rightIconButtonStyle;
@@ -84,7 +82,6 @@ class FlexProductCard extends StatelessWidget {
         children: [
           Card(
             margin: const EdgeInsets.all(FlexSizes.sm),
-            color: surfaceColor,
             child: FlexContentProductCard(
               productName: productName,
               productReference: productReference,
