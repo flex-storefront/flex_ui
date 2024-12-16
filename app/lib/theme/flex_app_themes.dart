@@ -41,7 +41,6 @@ class FlexAppThemes {
     primaryColor: FlexAppColorScheme.lightScheme.primary,
     disabledColor: FlexAppColorScheme.lightScheme.disabled,
     scaffoldBackgroundColor: FlexAppColorScheme.lightScheme.scaffold,
-    fontFamily: 'Roboto',
     textTheme: FlexTextTheme.lightTextTheme,
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: FlexAppColorScheme.lightScheme.primary,

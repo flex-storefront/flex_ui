@@ -4,119 +4,121 @@ import 'package:flutter/material.dart';
 class FlexTextTheme {
   FlexTextTheme._();
 
+  static TextStyle textStyle = const TextStyle().copyWith(fontFamily: "Roboto");
+
   static TextTheme lightTextTheme = TextTheme(
-    headlineLarge: const TextStyle().copyWith(
+    headlineLarge: textStyle.copyWith(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    headlineMedium: const TextStyle().copyWith(
+    headlineMedium: textStyle.copyWith(
       fontSize: 24.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    headlineSmall: const TextStyle().copyWith(
+    headlineSmall: textStyle.copyWith(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    titleLarge: const TextStyle().copyWith(
+    titleLarge: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    titleMedium: const TextStyle().copyWith(
+    titleMedium: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    titleSmall: const TextStyle().copyWith(
+    titleSmall: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    bodyLarge: const TextStyle().copyWith(
+    bodyLarge: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    bodyMedium: const TextStyle().copyWith(
+    bodyMedium: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    bodySmall: const TextStyle().copyWith(
+    bodySmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.lightScheme.onSurface.withOpacity(0.5),
     ),
-    labelLarge: const TextStyle().copyWith(
+    labelLarge: textStyle.copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.primary,
+      color: FlexAppColorScheme.lightScheme.onSurface,
     ),
-    labelSmall: const TextStyle().copyWith(
-      fontSize: 12.0,
-      fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.primary.withOpacity(0.5),
+    labelSmall: textStyle.copyWith(
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      color: FlexAppColorScheme.lightScheme.onSurface.withOpacity(0.5),
     ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
-    headlineLarge: const TextStyle().copyWith(
+    headlineLarge: textStyle.copyWith(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    headlineMedium: const TextStyle().copyWith(
+    headlineMedium: textStyle.copyWith(
       fontSize: 24.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    headlineSmall: const TextStyle().copyWith(
+    headlineSmall: textStyle.copyWith(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    titleLarge: const TextStyle().copyWith(
+    titleLarge: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    titleMedium: const TextStyle().copyWith(
+    titleMedium: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    titleSmall: const TextStyle().copyWith(
+    titleSmall: textStyle.copyWith(
       fontSize: 16.0,
       fontWeight: FontWeight.w400,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    bodyLarge: const TextStyle().copyWith(
+    bodyLarge: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    bodyMedium: const TextStyle().copyWith(
+    bodyMedium: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    bodySmall: const TextStyle().copyWith(
+    bodySmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.primary.withOpacity(0.5),
+      color: FlexAppColorScheme.darkScheme.onSurface.withOpacity(0.5),
     ),
-    labelLarge: const TextStyle().copyWith(
+    labelLarge: textStyle.copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.primary,
+      color: FlexAppColorScheme.darkScheme.onSurface,
     ),
-    labelSmall: const TextStyle().copyWith(
-      fontSize: 12.0,
-      fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.primary.withOpacity(0.5),
+    labelSmall: textStyle.copyWith(
+      fontSize: 14.0,
+      fontWeight: FontWeight.bold,
+      color: FlexAppColorScheme.darkScheme.onSurface.withOpacity(0.5),
     ),
   );
 }
