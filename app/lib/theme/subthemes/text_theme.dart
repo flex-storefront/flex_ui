@@ -1,4 +1,5 @@
 import 'package:flex_ui/tokens/colors.dart';
+import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class FlexTextTheme {
@@ -50,7 +51,7 @@ class FlexTextTheme {
     bodySmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.lightScheme.onSurface.withOpacity(0.5),
+      color: FlexAppColorScheme.lightScheme.onSurface.adjustOpacity(0.5),
     ),
     labelLarge: textStyle.copyWith(
       fontSize: 12.0,
@@ -60,7 +61,7 @@ class FlexTextTheme {
     labelSmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.lightScheme.onSurface.withOpacity(0.5),
+      color: FlexAppColorScheme.lightScheme.onSurface.adjustOpacity(0.5),
     ),
   );
 
@@ -108,7 +109,7 @@ class FlexTextTheme {
     bodySmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
-      color: FlexAppColorScheme.darkScheme.onSurface.withOpacity(0.5),
+      color: FlexAppColorScheme.darkScheme.onSurface.adjustOpacity(0.5),
     ),
     labelLarge: textStyle.copyWith(
       fontSize: 12.0,
@@ -118,7 +119,7 @@ class FlexTextTheme {
     labelSmall: textStyle.copyWith(
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
-      color: FlexAppColorScheme.darkScheme.onSurface.withOpacity(0.5),
+      color: FlexAppColorScheme.darkScheme.onSurface.adjustOpacity(0.5),
     ),
   );
 }
