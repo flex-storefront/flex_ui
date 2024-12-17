@@ -1,6 +1,5 @@
 import 'package:{{project_name.snakeCase()}}/{{project_name.snakeCase()}}.dart';
 import 'package:{{project_name.snakeCase()}}/utils/typedefs.dart';
-import 'package:{{project_name.snakeCase()}}/widgets/cards/productCard/shared/price_discount.dart';
 import 'package:{{project_name.snakeCase()}}/widgets/cards/productCard/shared/product_notation.dart';
 import 'package:flutter/material.dart';
 

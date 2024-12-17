@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "path",
-      "rootUri": "file:///Users/stephenrichter/.pub-cache/hosted/pub.dev/path-1.9.0",
+      "rootUri": "file:///Users/dpersson/.pub-cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -14,10 +14,10 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-08T17:22:28.365596Z",
+  "generated": "2024-12-17T18:55:53.309118Z",
   "generator": "pub",
-  "generatorVersion": "3.5.3",
-  "flutterRoot": "file:///Users/stephenrichter/Developer/flutter",
-  "flutterVersion": "3.24.3",
-  "pubCache": "file:///Users/stephenrichter/.pub-cache"
+  "generatorVersion": "3.6.0",
+  "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.24.5/flutter",
+  "flutterVersion": "3.27.0",
+  "pubCache": "file:///Users/dpersson/.pub-cache"
 }
