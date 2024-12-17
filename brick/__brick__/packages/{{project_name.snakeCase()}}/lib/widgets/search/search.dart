@@ -95,6 +95,7 @@ class _FlexSearchState extends State<FlexSearch> {
   InputDecoration _buildDefaultDecoration() {
     return InputDecoration(
       hintText: widget.hintText,
+      hintStyle: widget.textStyle,
       suffixIcon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

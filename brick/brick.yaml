@@ -1,7 +1,7 @@
 name: flex_ui
 description: Beautifully crafted commerce widgets to copy and paste into your storefront app.
 repository: https://github.com/flex-storefront/flex_ui
-version: 1.0.0
+version: 1.1.0
 
 vars:
   project_name:

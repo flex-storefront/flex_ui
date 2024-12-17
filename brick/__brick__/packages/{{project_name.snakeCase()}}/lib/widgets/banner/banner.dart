@@ -22,7 +22,7 @@ class FlexBanner extends StatelessWidget {
     required this.image,
     this.orientation = Axis.horizontal,
     this.imageLayout = FlexBannerImageLayout.end,
-    this.theme,
+    this.themeData,
     this.overline,
     this.description,
     this.button,
@@ -36,13 +36,13 @@ class FlexBanner extends StatelessWidget {
 
   final FlexBannerImageLayout imageLayout;
 
-  final CardTheme? theme;
+  final CardThemeData? themeData;
 
   final Widget? overline;
 
   final Widget? description;
 
-  /// TODO Implement this, also: make it a List<Widget>?
+  /// TODO Implement this, also: make it a List< Widget >?
   final Widget? button;
 
   @override
@@ -74,7 +74,7 @@ class FlexBanner extends StatelessWidget {
     ];
 
     Widget widget = Card(
-      color: theme?.color,
+      color: themeData?.color,
       child: MainLayout(
         mainAxisSize: MainAxisSize.min,
         children: imageLayout == FlexBannerImageLayout.end
@@ -83,7 +83,7 @@ class FlexBanner extends StatelessWidget {
       ),
     );
 
-    if (theme != null) {
+    if (themeData != null) {
       final appCardTheme = Theme.of(context).cardTheme;
 
       widget = Theme(
@@ -117,8 +117,7 @@ Widget standardBanner(BuildContext context) {
     initialValue: null,
   );
 
-  final theme =
-      color != null ? CardTheme.of(context).copyWith(color: color) : null;
+  final themeData = color != null ? CardThemeData(color: color) : null;
 
   final overlineText = context.knobs.stringOrNull(
     label: 'Heading',
@@ -171,7 +170,7 @@ Widget standardBanner(BuildContext context) {
       )
           ? FlexBannerImageLayout.end
           : FlexBannerImageLayout.start,
-      theme: theme,
+      themeData: themeData,
     ),
   );
 }
