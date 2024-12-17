@@ -1,10 +1,9 @@
+import 'package:flex_ui/flex_ui.dart';
 import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/price.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
-import 'package:flex_ui/flex_ui.dart';
-import 'package:intl/intl.dart';
 
 /// This widget leverages the ``FlexPrice`` Widget for Price Formatting and display, but provides additional convenience for the conditional rendering of Sale Prices
 ///

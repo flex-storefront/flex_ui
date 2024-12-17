@@ -35,8 +35,10 @@ class FlexAppThemes {
     ),
     brightness: Brightness.light,
     navigationBarTheme: NavigationBarThemeData(
-      backgroundColor: FlexAppColorScheme.lightScheme.primary.withOpacity(0.15),
-      indicatorColor: FlexAppColorScheme.lightScheme.secondary.withOpacity(0.1),
+      backgroundColor:
+          FlexAppColorScheme.lightScheme.primary.withValues(alpha: 0.15),
+      indicatorColor:
+          FlexAppColorScheme.lightScheme.secondary.withValues(alpha: 0.1),
     ),
     primaryColor: FlexAppColorScheme.lightScheme.primary,
     disabledColor: FlexAppColorScheme.lightScheme.disabled,

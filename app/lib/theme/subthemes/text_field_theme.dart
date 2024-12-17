@@ -13,27 +13,33 @@ class FlexTextFormFieldTheme {
     hintStyle: const TextStyle()
         .copyWith(fontSize: 14, color: FlexAppColorScheme.lightScheme.primary),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle()
-        .copyWith(color: FlexAppColorScheme.lightScheme.primary.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: FlexAppColorScheme.lightScheme.primary.withValues(alpha: 0.8),
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.disabled),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.disabled),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.disabled),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.disabled),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.primary),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.primary),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.error),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.lightScheme.error),
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 2, color: FlexAppColorScheme.lightScheme.warning),
+      borderSide:
+          BorderSide(width: 2, color: FlexAppColorScheme.lightScheme.warning),
     ),
   );
 
@@ -46,27 +52,33 @@ class FlexTextFormFieldTheme {
     hintStyle: const TextStyle()
         .copyWith(fontSize: 14, color: FlexAppColorScheme.darkScheme.primary),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle()
-        .copyWith(color: FlexAppColorScheme.darkScheme.primary.withOpacity(0.8)),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: FlexAppColorScheme.darkScheme.primary.withValues(alpha: 0.8),
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.disabled),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.disabled),
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.disabled),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.disabled),
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.primary),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.primary),
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.error),
+      borderSide:
+          BorderSide(width: 1, color: FlexAppColorScheme.darkScheme.error),
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
-      borderSide: BorderSide(width: 2, color: FlexAppColorScheme.darkScheme.warning),
+      borderSide:
+          BorderSide(width: 2, color: FlexAppColorScheme.darkScheme.warning),
     ),
   );
 }
