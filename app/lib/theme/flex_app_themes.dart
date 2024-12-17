@@ -7,7 +7,6 @@ import 'package:flex_ui/theme/subthemes/text_field_theme.dart';
 import 'package:flex_ui/theme/subthemes/text_theme.dart';
 import 'package:flex_ui/tokens/colors.dart';
 import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class FlexAppThemes {
@@ -37,9 +36,9 @@ class FlexAppThemes {
     brightness: Brightness.light,
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor:
-          FlexAppColorScheme.lightScheme.primary.adjustOpacity(0.15),
+          FlexAppColorScheme.lightScheme.primary.withValues(alpha: 0.15),
       indicatorColor:
-          FlexAppColorScheme.lightScheme.secondary.adjustOpacity(0.1),
+          FlexAppColorScheme.lightScheme.secondary.withValues(alpha: 0.1),
     ),
     primaryColor: FlexAppColorScheme.lightScheme.primary,
     disabledColor: FlexAppColorScheme.lightScheme.disabled,

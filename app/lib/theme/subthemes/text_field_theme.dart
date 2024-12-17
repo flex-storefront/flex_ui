@@ -1,5 +1,4 @@
 import 'package:flex_ui/tokens/colors.dart';
-import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class FlexTextFormFieldTheme {
@@ -15,7 +14,7 @@ class FlexTextFormFieldTheme {
         .copyWith(fontSize: 14, color: FlexAppColorScheme.lightScheme.primary),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle().copyWith(
-      color: FlexAppColorScheme.lightScheme.primary.adjustOpacity(0.8),
+      color: FlexAppColorScheme.lightScheme.primary.withValues(alpha: 0.8),
     ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),
@@ -54,7 +53,7 @@ class FlexTextFormFieldTheme {
         .copyWith(fontSize: 14, color: FlexAppColorScheme.darkScheme.primary),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
     floatingLabelStyle: const TextStyle().copyWith(
-      color: FlexAppColorScheme.darkScheme.primary.adjustOpacity(0.8),
+      color: FlexAppColorScheme.darkScheme.primary.withValues(alpha: 0.8),
     ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(14),

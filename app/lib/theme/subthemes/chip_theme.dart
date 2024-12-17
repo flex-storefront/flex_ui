@@ -5,7 +5,8 @@ class FlexChipTheme {
   FlexChipTheme._();
 
   static ChipThemeData lightChipTheme = ChipThemeData(
-    disabledColor: FlexAppColorScheme.lightScheme.disabled.adjustOpacity(0.4),
+    disabledColor:
+        FlexAppColorScheme.lightScheme.disabled.withValues(alpha: 0.4),
     labelStyle: const TextStyle(color: Colors.black),
     selectedColor: FlexAppColorScheme.lightScheme.info,
     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
