@@ -46,8 +46,6 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           npm install -g firebase-tools
-          echo "Authenticating with Firebase CLI..."
-          firebase auth:ci-login --token ${{ secrets.FIREBASE_CLI_TOKEN }}
           echo "Uploading APK to Firebase App Distribution..."
           firebase appdistribution:distribute app/build/app/outputs/flutter-apk/app-release.apk \
             --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
