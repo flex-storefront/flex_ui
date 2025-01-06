@@ -39,7 +39,7 @@ jobs:
       - name: Build Android APK
         run: |
           cd app
-          flutter build apk -t lib/main_development.dart --flavor development --release
+          flutter build apk --release
 
       - name: Upload APK to BrowserStack
         env:
