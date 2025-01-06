@@ -1,4 +1,4 @@
-name: Build and Upload Android App for Firebase
+name: Build and Upload iOS App for Firebase
 
 on:
   push:
@@ -9,9 +9,42 @@ permissions:
   contents: read
 
 jobs:
-  build-android:
-    name: Build Android Firebase APK
-    runs-on: ubuntu-latest
+  # build-android:
+  #   name: Build Android Release APK
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout Code
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup Flutter
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.27.0'
+
+  #     - name: Install Dependencies
+  #       run: |
+  #         cd app
+  #         flutter pub get
+
+  #     - name: Build Android APK
+  #       run: |
+  #         cd app
+  #         flutter build apk --release
+
+  #     - name: Upload APK to Firebase
+  #       env:
+  #         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+  #       run: |
+  #         npm install -g firebase-tools
+  #         echo "Uploading APK to Firebase App Distribution..."
+  #         firebase appdistribution:distribute app/build/app/outputs/flutter-apk/app-release.apk \
+  #           --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
+  #           --token ${{ secrets.FIREBASE_CLI_TOKEN }}
+
+  build-ios:
+    name: Build iOS Release IPA
+    runs-on: macos-latest
 
     steps:
       - name: Checkout Code
@@ -27,23 +60,17 @@ jobs:
           cd app
           flutter pub get
 
-      - name: Build Android APK
+      - name: Build iOS IPA
         run: |
           cd app
-          flutter build apk --release
+          flutter build ipa --release --no-codesign
 
-      - name: Upload APK to Firebase
+      - name: Upload IPA to Firebase
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           npm install -g firebase-tools
-          echo "Uploading APK to Firebase App Distribution..."
-          firebase appdistribution:distribute app/build/app/outputs/flutter-apk/app-release.apk \
-            --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
+          echo "Uploading IPA to Firebase App Distribution..."
+          firebase appdistribution:distribute build/ios/ipa/app.ipa \
+            --app 1:486238391141:ios:8377bfb3f147ae672a6f8c \
             --token ${{ secrets.FIREBASE_CLI_TOKEN }}
-
-      - name: Upload APK to GitHub Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: android-apk
-          path: app/build/app/outputs/flutter-apk/app-release.apk
