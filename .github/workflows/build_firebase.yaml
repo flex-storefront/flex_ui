@@ -50,3 +50,9 @@ jobs:
           firebase appdistribution:distribute app/build/app/outputs/flutter-apk/app-release.apk \
             --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
             --token ${{ secrets.FIREBASE_CLI_TOKEN }}
+
+      - name: Upload APK to GitHub Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
