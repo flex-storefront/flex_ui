@@ -134,7 +134,7 @@ Please ensure your PR adheres to:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+This project is tested with BrowserStack
 ## Support
 
 For support, please:
