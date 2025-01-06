@@ -48,5 +48,5 @@ jobs:
         run: |
           curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
             -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-            -F "file=@app/build/app/outputs/flutter-apk/app-development-release.apk" \
+            -F "file=@app/build/app/outputs/flutter-apk/app-release.apk" \
             | jq '.'
