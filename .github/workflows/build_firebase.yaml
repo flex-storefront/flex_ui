@@ -1,4 +1,4 @@
-name: Build and Upload Android App to BrowserStack
+name: Build and Upload Android App for Firebase
 
 on:
   push:
@@ -9,8 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  build-and-upload:
-    name: Build and Upload Android App
+  build-android:
+    name: Build Android Firebase APK
     runs-on: ubuntu-latest
 
     steps:
@@ -41,12 +41,14 @@ jobs:
           cd app
           flutter build apk --release
 
-      - name: Upload APK to BrowserStack
+      - name: Upload APK to Firebase
         env:
-          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
-          curl --fail -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
-            -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-            -F "file=@app/build/app/outputs/flutter-apk/app-release.apk" \
-            | jq '.'
+          npm install -g firebase-tools
+          echo "Authenticating with Firebase CLI..."
+          firebase auth:ci-login --token ${{ secrets.FIREBASE_CLI_TOKEN }}
+          echo "Uploading APK to Firebase App Distribution..."
+          firebase appdistribution:distribute app/build/app/outputs/flutter-apk/app-release.apk \
+            --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
+            --token ${{ secrets.FIREBASE_CLI_TOKEN }}
