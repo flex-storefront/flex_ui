@@ -22,3 +22,24 @@ migrate_working_dir/
 .settings/
 .vscode/*
 
+# Mason
+.mason/
+
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.packages
+pubspec.lock
+
+# Android
+**/key.properties
+**/build/
+**/debug.keystore
+
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework

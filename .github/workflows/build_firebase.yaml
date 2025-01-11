@@ -1,0 +1,256 @@
+name: "Build and Upload Android App for Firebase"
+
+on:
+  push:
+    tags:
+      - 'qa*'
+      - 'v[0-9]*.[0-9]*.[0-9]*'
+
+jobs:
+  validate-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      build_type: ${{ steps.check-tag.outputs.build_type }}
+      is_valid: ${{ steps.check-tag.outputs.is_valid }}
+    steps:
+      - name: Check Tag Format
+        id: check-tag
+        run: |
+          TAG=${{ github.ref_name }}
+          if [[ $TAG =~ ^qa.* ]]; then
+            echo "build_type=qa" >> $GITHUB_OUTPUT
+            echo "is_valid=true" >> $GITHUB_OUTPUT
+          elif [[ $TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "build_type=release" >> $GITHUB_OUTPUT
+            echo "is_valid=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            echo "Invalid tag format. Must be 'qa*' or 'v#.#.#'" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+  get-build-number:
+    needs: validate-tag
+    uses: ./.github/workflows/build-number.yml
+    with:
+      workflow_name: "Build and Upload Android App for Firebase"
+    permissions:
+      actions: read
+      contents: read
+
+  build-android:
+    name: Build Android Firebase APK
+    needs: [validate-tag, get-build-number]
+    if: needs.validate-tag.outputs.is_valid == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0'
+
+      - name: Install Dependencies
+        run: |
+          cd app
+          flutter pub get
+          
+      - name: Install Bundletool
+        run: |
+          cd app
+          echo "Downloading bundletool..."
+          wget -q "https://github.com/google/bundletool/releases/download/1.15.6/bundletool-all-1.15.6.jar" -O bundletool.jar
+          
+          echo "Verifying bundletool download..."
+          if [ ! -s bundletool.jar ]; then
+            echo "Error: bundletool.jar is empty or not downloaded"
+            exit 1
+          fi
+          
+          echo "Making bundletool executable..."
+          chmod +x bundletool.jar
+          
+          echo "Checking bundletool.jar file:"
+          ls -l bundletool.jar
+
+      - name: Store Base Version
+        run: |
+          BASE_VERSION=$(grep "^version:" app/pubspec.yaml | sed 's/version: //')
+          echo "base_version=$BASE_VERSION" >> $GITHUB_ENV
+          echo "----------------------------------------"
+          echo "Base version from pubspec: $BASE_VERSION"
+          echo "----------------------------------------"
+
+      - name: Update Pubspec Version
+        run: |
+          BUILD_NUMBER=${{ needs.get-build-number.outputs.build_number }}
+          
+          echo "Current build number: $BUILD_NUMBER"
+          
+          # Always append build number for both QA and release builds
+          sed -i.bak 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*$/version: \1+'$BUILD_NUMBER'/' app/pubspec.yaml
+          
+          # Store the version for later use
+          FULL_VERSION=$(grep "^version:" app/pubspec.yaml | sed 's/version: //')
+          echo "full_version=$FULL_VERSION" >> $GITHUB_ENV
+          
+          echo "----------------------------------------"
+          echo "Updated pubspec version: $FULL_VERSION"
+          echo "----------------------------------------"
+
+      - name: Set Build Name
+        run: |
+          TAG=${{ github.ref_name }}
+          BUILD_TYPE=${{ needs.validate-tag.outputs.build_type }}
+          
+          if [ "$BUILD_TYPE" = "qa" ]; then
+            BUILD_NAME="flex_ui_v${{ env.base_version }}+${{ needs.get-build-number.outputs.build_number }}_${TAG}"
+          else
+            BUILD_NAME="flex_ui_${TAG}"
+          fi
+          
+          echo "build_name=$BUILD_NAME" >> $GITHUB_ENV
+          echo "----------------------------------------"
+          echo "Build Type: $BUILD_TYPE"
+          echo "Tag: $TAG"
+          echo "Build Name: $BUILD_NAME"
+          echo "----------------------------------------"
+
+      - name: Create Distribution Notes
+        run: |
+          BUILD_NUMBER=${{ needs.get-build-number.outputs.build_number }}
+          TAG=${{ github.ref_name }}
+          BUILD_TYPE=${{ needs.validate-tag.outputs.build_type }}
+          
+          # Create distribution-notes.md from scratch
+          NOTES_FILE="app/distribution-notes.md"
+          {
+            echo "----------------------------------------"
+            echo "Version Information"
+            echo "----------------------------------------"
+            echo "Base Version | ${{ env.base_version }}"
+            echo "Full Version | ${{ env.full_version }}"
+            if [ "$BUILD_TYPE" = "qa" ]; then
+              echo "Build Code  | $BUILD_NUMBER"
+            fi
+            echo "Tag         | $TAG"
+            echo "Type        | ${BUILD_TYPE^^} Build"
+            echo "----------------------------------------"
+            if [ "$BUILD_TYPE" = "qa" ]; then
+              echo "Testing Instructions:"
+              echo "- Check all features for bugs"
+            else
+              echo "Release Notes:"
+              echo "- Official release version $TAG"
+            fi
+            echo "----------------------------------------"
+          } > "$NOTES_FILE"
+          echo "Distribution notes contents:"
+          cat "$NOTES_FILE"
+
+      - name: Decode Keystore File
+        run: |
+          echo "Current working directory before cd:"
+          pwd
+
+          echo "Moving to android app directory..."
+          cd app/android/app
+
+          echo "Current working directory after cd:"
+          pwd
+
+          echo "Contents of current directory:"
+          ls -la
+
+          echo "Creating keystore file..."
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d -i > ${{ secrets.ANDROID_KEYSTORE_PATH }}
+
+          echo "Verifying keystore file creation:"
+          ls -la
+          
+          echo "File type check of created keystore:"
+          file ${{ secrets.ANDROID_KEYSTORE_PATH }}
+
+      - name: Build Android App Bundle
+        run: |
+          cd app
+          flutter build appbundle --release
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+          ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
+
+      - name: Generate Universal APK from AAB
+        run: |
+          cd app
+          echo "Verifying bundletool and AAB existence:"
+          ls -l bundletool.jar
+          ls -l build/app/outputs/bundle/release/app-release.aab
+          
+          echo "Generating APK..."
+          java -jar bundletool.jar build-apks \
+            --bundle=build/app/outputs/bundle/release/app-release.aab \
+            --output=build/app/outputs/apk/release/app-release.apks \
+            --ks=android/app/${{ secrets.ANDROID_KEYSTORE_PATH }} \
+            --ks-key-alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} \
+            --ks-pass=pass:${{ secrets.ANDROID_KEYSTORE_PASSWORD }} \
+            --key-pass=pass:${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }} \
+            --mode=universal
+            
+          echo "Extracting universal APK..."
+          unzip -o build/app/outputs/apk/release/app-release.apks -d build/app/outputs/apk/release/
+
+      - name: Rename AAB and APK to Build Name
+        run: |
+          cd app
+          echo "Renaming AAB to: ${{ env.build_name }}.aab"
+          mv build/app/outputs/bundle/release/app-release.aab build/app/outputs/bundle/release/${{ env.build_name }}.aab
+          echo "Renaming APK to: ${{ env.build_name }}.apk"
+          mv build/app/outputs/apk/release/universal.apk build/app/outputs/apk/release/${{ env.build_name }}.apk
+
+      - name: Upload APK to Firebase
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          BUILD_TYPE=${{ needs.validate-tag.outputs.build_type }}
+          DIST_GROUP="Build"
+          if [ "$BUILD_TYPE" = "release" ]; then
+            DIST_GROUP="Release"
+          fi
+          
+          npm install -g firebase-tools
+          echo "Uploading APK to Firebase App Distribution..."
+          firebase appdistribution:distribute app/build/app/outputs/apk/release/${{ env.build_name }}.apk \
+            --app 1:486238391141:android:8377bfb3f147ae672a6f8c \
+            --groups "$DIST_GROUP" \
+            --release-notes-file "app/distribution-notes.md" \
+            --token ${{ secrets.FIREBASE_CLI_TOKEN }}
+
+      - name: Upload AAB to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.build_name }}.aab
+          path: app/build/app/outputs/bundle/release/${{ env.build_name }}.aab
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Upload APK to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.build_name }}.apk
+          path: app/build/app/outputs/apk/release/${{ env.build_name }}.apk
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Upload Build Metadata to GitHub Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-metadata
+          path: |
+            app/pubspec.yaml
+            app/distribution-notes.md
+          retention-days: 90
+          if-no-files-found: error

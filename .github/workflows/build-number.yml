@@ -1,0 +1,86 @@
+name: Build Number Management
+
+on:
+  workflow_call:
+    inputs:
+      workflow_name:
+        description: 'Name of the workflow to count runs from'
+        required: true
+        type: string
+      seed:
+        description: 'Optional seed value to override run number base'
+        required: false
+        type: number
+        default: 0
+      offset:
+        description: 'Optional offset to add to run number'
+        required: false
+        type: number
+        default: 0
+    outputs:
+      build_number:
+        description: "The current build number"
+        value: ${{ jobs.generate-build-number.outputs.build_number }}
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  generate-build-number:
+    runs-on: ubuntu-latest
+    outputs:
+      build_number: ${{ steps.calculate_build_number.outputs.build_number }}
+
+    steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh
+
+      - name: Get Workflow Run Count
+        id: get_count
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          
+          # Get the specified workflow's run count
+          WORKFLOW_DATA=$(gh api repos/${{ github.repository }}/actions/workflows \
+            --jq '.workflows[] | select(.name=="${{ inputs.workflow_name }}")')
+          
+          WORKFLOW_ID=$(echo "$WORKFLOW_DATA" | jq -r '.id')
+          echo "Found workflow ID: $WORKFLOW_ID"
+          
+          if [ ! -z "$WORKFLOW_ID" ]; then
+            TOTAL_COUNT=$(gh api repos/${{ github.repository }}/actions/workflows/$WORKFLOW_ID/runs --jq '.total_count')
+            if [ -z "$TOTAL_COUNT" ] || [ "$TOTAL_COUNT" = "null" ]; then
+              TOTAL_COUNT=1
+            fi
+          else
+            TOTAL_COUNT=1
+          fi
+          
+          echo "total_count=${TOTAL_COUNT}" >> $GITHUB_OUTPUT
+          echo "Workflow has run ${TOTAL_COUNT} times"
+
+      - name: Calculate Build Number
+        id: calculate_build_number
+        run: |
+          # Use run count if seed is 0 (default/not set)
+          if [ "${{ inputs.seed }}" = "0" ]; then
+            BASE_NUMBER=${{ steps.get_count.outputs.total_count }}
+          else
+            BASE_NUMBER=${{ inputs.seed }}
+          fi
+          
+          OFFSET=${{ inputs.offset }}
+          FINAL_NUMBER=$((BASE_NUMBER + OFFSET))
+          
+          # Ensure we never return 0
+          if [ "$FINAL_NUMBER" -le "0" ]; then
+            FINAL_NUMBER=1
+          fi
+          
+          echo "build_number=${FINAL_NUMBER}" >> $GITHUB_OUTPUT
+          echo "Generated build number: ${FINAL_NUMBER}"
