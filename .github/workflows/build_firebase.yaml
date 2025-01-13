@@ -236,6 +236,7 @@ jobs:
           path: app/build/app/outputs/bundle/release/${{ env.build_name }}.aab
           retention-days: 90
           if-no-files-found: error
+          compression-level: 0   # Add this line for direct download
 
       - name: Upload APK to GitHub Artifacts
         uses: actions/upload-artifact@v4
@@ -244,7 +245,8 @@ jobs:
           path: app/build/app/outputs/apk/release/${{ env.build_name }}.apk
           retention-days: 90
           if-no-files-found: error
-
+          compression-level: 0   # Add this line for direct download
+          
       - name: Upload Build Metadata to GitHub Artifacts
         uses: actions/upload-artifact@v4
         with:
