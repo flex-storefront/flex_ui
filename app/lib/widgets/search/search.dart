@@ -108,10 +108,13 @@ class _FlexSearchState extends State<FlexSearch> {
                 widget.onChanged?.call('');
               },
             ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: widget.searchIcon ?? const Icon(Icons.search),
+          IconButton(
+            icon: widget.searchIcon ?? const Icon(Icons.search),
+            onPressed: () {
+              widget.onSubmitted?.call(_controller.text);
+            },
           ),
+          const SizedBox(width: FlexSizes.xs),
         ],
       ),
       border: OutlineInputBorder(
