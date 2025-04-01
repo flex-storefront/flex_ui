@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_import, prefer_relative_imports, directives_ordering
@@ -12,16 +13,18 @@
 import 'package:flex_ui/widgets/app_bar/app_bar.dart' as _i2;
 import 'package:flex_ui/widgets/banner/banner.dart' as _i4;
 import 'package:flex_ui/widgets/buttons/button.dart' as _i5;
-import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i9;
+import 'package:flex_ui/widgets/cards/productCard/product_card.dart' as _i10;
 import 'package:flex_ui/widgets/cards/productCard/shared/badge.dart' as _i3;
-import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i7;
+import 'package:flex_ui/widgets/cards/productCard/shared/price.dart' as _i8;
 import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
-    as _i8;
+    as _i9;
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i6;
-import 'package:flex_ui/widgets/gallery/gallery.dart' as _i12;
+import 'package:flex_ui/widgets/connectivity/connectivity_indicator.dart'
+    as _i7;
+import 'package:flex_ui/widgets/gallery/gallery.dart' as _i13;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
-    as _i10;
-import 'package:flex_ui/widgets/search/search.dart' as _i11;
+    as _i11;
+import 'package:flex_ui/widgets/search/search.dart' as _i12;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -94,19 +97,40 @@ final directories = <_i1.WidgetbookNode>[
         ),
       ),
       _i1.WidgetbookComponent(
+        name: 'FlexConnectivityIndicator',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: 'Connected',
+            builder: _i7.connectedIndicator,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Custom Colors',
+            builder: _i7.customColorIndicator,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Disconnected',
+            builder: _i7.disconnectedIndicator,
+          ),
+          _i1.WidgetbookUseCase(
+            name: 'Unknown',
+            builder: _i7.unknownIndicator,
+          ),
+        ],
+      ),
+      _i1.WidgetbookComponent(
         name: 'FlexPrice',
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i7.flexPrice,
+            builder: _i8.flexPrice,
           ),
           _i1.WidgetbookUseCase(
             name: 'Strikethrough',
-            builder: _i7.flexPriceSale,
+            builder: _i8.flexPriceSale,
           ),
           _i1.WidgetbookUseCase(
             name: 'Style Override (No formatter)',
-            builder: _i7.priceStyleOverride,
+            builder: _i8.priceStyleOverride,
           ),
         ],
       ),
@@ -115,11 +139,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Default',
-            builder: _i8.defaultPriceDiscount,
+            builder: _i9.defaultPriceDiscount,
           ),
           _i1.WidgetbookUseCase(
             name: 'Default - No Sale Price',
-            builder: _i8.fallbackPriceDiscount,
+            builder: _i9.fallbackPriceDiscount,
           ),
         ],
       ),
@@ -128,11 +152,11 @@ final directories = <_i1.WidgetbookNode>[
         useCases: [
           _i1.WidgetbookUseCase(
             name: 'Grid',
-            builder: _i9.gridFlexProductCard,
+            builder: _i10.gridFlexProductCard,
           ),
           _i1.WidgetbookUseCase(
             name: 'Standard',
-            builder: _i9.standardFlexProductCard,
+            builder: _i10.standardFlexProductCard,
           ),
         ],
       ),
@@ -140,14 +164,14 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexQuantitySelector',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i10.defaultQuantitySelector,
+          builder: _i11.defaultQuantitySelector,
         ),
       ),
       _i1.WidgetbookLeafComponent(
         name: 'FlexSearch',
         useCase: _i1.WidgetbookUseCase(
           name: 'Default',
-          builder: _i11.flexSearchStandard,
+          builder: _i12.flexSearchStandard,
         ),
       ),
     ],
@@ -162,7 +186,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'FlexGallery',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i12.defaultCarousel,
+              builder: _i13.defaultCarousel,
             ),
           )
         ],
