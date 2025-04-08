@@ -27,7 +27,8 @@ extension SnackBarExtension on BuildContext {
   void showAppSnackBar({
     required String message,
     bool isError = false,
-    String? dismissLabel,
+    String? dismissLabel = '✕',
+    bool isDismissable = true,
   }) {
     ScaffoldMessenger.of(this).hideCurrentSnackBar();
     ScaffoldMessenger.of(this).showSnackBar(
@@ -35,16 +36,15 @@ extension SnackBarExtension on BuildContext {
         content: Text(message, style: const TextStyle(color: Colors.white)),
         backgroundColor: isError ? Colors.deepOrange : Colors.green,
         behavior: SnackBarBehavior.floating,
-        action:
-            isError && dismissLabel != null
-                ? SnackBarAction(
-                  label: dismissLabel,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    ScaffoldMessenger.of(this).hideCurrentSnackBar();
-                  },
-                )
-                : null,
+        action: isDismissable && dismissLabel != null
+            ? SnackBarAction(
+                label: dismissLabel,
+                textColor: Colors.white,
+                onPressed: () {
+                  ScaffoldMessenger.of(this).hideCurrentSnackBar();
+                },
+              )
+            : null,
       ),
     );
   }
