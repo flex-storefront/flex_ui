@@ -30,6 +30,7 @@ extension SnackBarExtension on BuildContext {
     String? dismissLabel = '✕',
     bool isDismissable = true,
   }) {
+    if (!mounted) return;
     ScaffoldMessenger.of(this).hideCurrentSnackBar();
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
