@@ -42,6 +42,7 @@ extension SnackBarExtension on BuildContext {
                 label: dismissLabel,
                 textColor: Colors.white,
                 onPressed: () {
+                  if (!mounted) return;
                   ScaffoldMessenger.of(this).hideCurrentSnackBar();
                 },
               )
