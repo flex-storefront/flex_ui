@@ -23,7 +23,7 @@ extension ThemeExtension on BuildContext {
   bool get isKeyboardVisible => MediaQuery.viewInsetsOf(this).bottom > 0;
 }
 
-extension SnackBarExtension on BuildContext {
+extension SnackBarStateExtension<T extends StatefulWidget> on State<T> {
   void showAppSnackBar({
     required String message,
     bool isError = false,
@@ -31,21 +31,22 @@ extension SnackBarExtension on BuildContext {
     bool isDismissable = true,
   }) {
     if (!mounted) return;
-    ScaffoldMessenger.of(this).hideCurrentSnackBar();
-    ScaffoldMessenger.of(this).showSnackBar(
+
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message, style: const TextStyle(color: Colors.white)),
         backgroundColor: isError ? Colors.deepOrange : Colors.green,
         behavior: SnackBarBehavior.floating,
         action: isDismissable && dismissLabel != null
             ? SnackBarAction(
-                label: dismissLabel,
-                textColor: Colors.white,
-                onPressed: () {
-                  if (!mounted) return;
-                  ScaffoldMessenger.of(this).hideCurrentSnackBar();
-                },
-              )
+          label: dismissLabel,
+          textColor: Colors.white,
+          onPressed: () {
+            if (!mounted) return;
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        )
             : null,
       ),
     );
