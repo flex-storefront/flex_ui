@@ -175,12 +175,30 @@ final directories = <_i1.WidgetbookNode>[
           builder: _i11.defaultQuantitySelector,
         ),
       ),
-      _i1.WidgetbookLeafComponent(
+      _i1.WidgetbookComponent(
         name: 'FlexSearch',
-        useCase: _i1.WidgetbookUseCase(
-          name: 'Default',
-          builder: _i12.flexSearchStandard,
-        ),
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: '0. Default',
+            builder: _i12.flexSearchStandard,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '1. Filled Search',
+            builder: _i12.filledSearch,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '2. Custom Border Radius',
+            builder: _i12.roundedSearch,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '3. Custom Hint Style',
+            builder: _i12.styledHintSearch,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '4. All Custom Options',
+            builder: _i12.fullCustomSearch,
+          ),
+        ],
       ),
     ],
   ),

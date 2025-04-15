@@ -21,7 +21,7 @@ class FlexSearch extends StatefulWidget {
     this.onChanged,
     this.onSubmitted,
     this.hintText = 'Search...',
-    this.borderRadius = FlexSizes.borderRadiusMd,
+    this.borderRadius,
     this.autofocus = true,
     this.enabled = true,
     this.clearButtonIcon,
@@ -34,6 +34,9 @@ class FlexSearch extends StatefulWidget {
     this.textInputAction = TextInputAction.search,
     this.textStyle,
     this.inputFormatters,
+    this.filled,
+    this.fillColor,
+    this.hintTextStyle,
   });
 
   final Function(String)? onChanged;
@@ -41,7 +44,8 @@ class FlexSearch extends StatefulWidget {
   final VoidCallback? onClearPressed;
   final TextInputAction textInputAction;
   final String hintText;
-  final double borderRadius;
+  final TextStyle? hintTextStyle;
+  final BorderRadius? borderRadius;
   final bool autofocus;
   final bool showClearButton;
   final Icon? clearButtonIcon;
@@ -52,6 +56,8 @@ class FlexSearch extends StatefulWidget {
   final FocusNode? focusNode;
   final TextStyle? textStyle;
   final List<TextInputFormatter>? inputFormatters;
+  final bool? filled;
+  final Color? fillColor;
 
   @override
   State<FlexSearch> createState() => _FlexSearchState();
@@ -78,10 +84,11 @@ class _FlexSearchState extends State<FlexSearch> {
       valueListenable: _controller,
       builder: (context, value, child) {
         return TextField(
+          textInputAction: widget.textInputAction,
           autofocus: widget.autofocus,
           controller: _controller,
           focusNode: _focusNode,
-          decoration: widget.decoration ?? _buildDefaultDecoration(),
+          decoration: widget.decoration ?? _buildDefaultDecoration(context),
           onChanged: widget.onChanged,
           onSubmitted: widget.onSubmitted,
           enabled: widget.enabled,
@@ -92,10 +99,14 @@ class _FlexSearchState extends State<FlexSearch> {
     );
   }
 
-  InputDecoration _buildDefaultDecoration() {
+  InputDecoration _buildDefaultDecoration(BuildContext context) {
+    final borderRadius =
+        widget.borderRadius ?? BorderRadius.circular(FlexSizes.borderRadiusMd);
     return InputDecoration(
+      fillColor: widget.fillColor,
+      filled: widget.filled,
       hintText: widget.hintText,
-      hintStyle: widget.textStyle,
+      hintStyle: widget.hintTextStyle,
       suffixIcon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -117,9 +128,9 @@ class _FlexSearchState extends State<FlexSearch> {
           const SizedBox(width: FlexSizes.xs),
         ],
       ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(widget.borderRadius),
-      ),
+      border: OutlineInputBorder(borderRadius: borderRadius),
+      enabledBorder: OutlineInputBorder(borderRadius: borderRadius),
+      focusedBorder: OutlineInputBorder(borderRadius: borderRadius),
     );
   }
 
@@ -136,7 +147,7 @@ class _FlexSearchState extends State<FlexSearch> {
 }
 
 @UseCase(
-  name: 'Default',
+  name: '0. Default',
   type: FlexSearch,
   path: '[Components]',
 )
@@ -170,6 +181,91 @@ Widget flexSearchStandard(BuildContext context) {
               Colors.red,
             ],
           ),
+        ),
+      ),
+    ),
+  );
+}
+
+@UseCase(
+  name: '1. Filled Search',
+  type: FlexSearch,
+  path: '[Components]',
+)
+Widget filledSearch(BuildContext context) {
+  return Center(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: FlexSearch(
+        controller: TextEditingController(),
+        hintText: 'Search products...',
+        filled: true,
+        fillColor: Colors.grey.shade200,
+      ),
+    ),
+  );
+}
+
+@UseCase(
+  name: '2. Custom Border Radius',
+  type: FlexSearch,
+  path: '[Components]',
+)
+Widget roundedSearch(BuildContext context) {
+  return Center(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: FlexSearch(
+        controller: TextEditingController(),
+        hintText: 'Rounded border',
+        borderRadius: BorderRadius.circular(32),
+        filled: true,
+        fillColor: Colors.white,
+      ),
+    ),
+  );
+}
+
+@UseCase(
+  name: '3. Custom Hint Style',
+  type: FlexSearch,
+  path: '[Components]',
+)
+Widget styledHintSearch(BuildContext context) {
+  return Center(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: FlexSearch(
+        controller: TextEditingController(),
+        hintText: 'Type to search...',
+        hintTextStyle: const TextStyle(
+          color: Colors.grey,
+          fontSize: 16,
+          fontStyle: FontStyle.italic,
+        ),
+      ),
+    ),
+  );
+}
+
+@UseCase(
+  name: '4. All Custom Options',
+  type: FlexSearch,
+  path: '[Components]',
+)
+Widget fullCustomSearch(BuildContext context) {
+  return Center(
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: FlexSearch(
+        controller: TextEditingController(),
+        hintText: 'Search anything...',
+        filled: true,
+        fillColor: Colors.lightBlue.shade50,
+        borderRadius: BorderRadius.circular(24),
+        hintTextStyle: const TextStyle(
+          color: Colors.blueGrey,
+          fontWeight: FontWeight.w500,
         ),
       ),
     ),
