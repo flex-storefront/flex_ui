@@ -12,12 +12,15 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FlexAppBar({
     super.key,
-    this.leadingIcon,
-    this.onLeadingIconPressed,
     this.title,
+    this.leadingIcon,
     this.trailingIcon,
+    this.onLeadingIconPressed,
     this.onTrailingIconPressed,
-    this.centerTitle = true,
+    this.backgroundColor,
+    this.iconTheme,
+    this.trailingWidgets,
+    this.automaticallyImplyLeading = true,
   })  : assert(
           (leadingIcon == null) == (onLeadingIconPressed == null),
           'If leadingIcon is not null, onLeadingIconPressed must not be null, and vice versa.',
@@ -29,30 +32,39 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final Widget? title;
   final IconData? leadingIcon;
-  final VoidCallback? onLeadingIconPressed;
   final IconData? trailingIcon;
+  final VoidCallback? onLeadingIconPressed;
   final VoidCallback? onTrailingIconPressed;
-  final bool centerTitle;
+
+  /// Optional customization
+  final Color? backgroundColor;
+  final IconThemeData? iconTheme;
+  final List<Widget>? trailingWidgets;
+  final bool automaticallyImplyLeading;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: true,
-      centerTitle: centerTitle,
+      title: title,
+      centerTitle: false,
       leading: leadingIcon != null
           ? IconButton(
               onPressed: onLeadingIconPressed,
               icon: Icon(leadingIcon),
             )
           : null,
-      title: title,
       actions: [
+        ...trailingWidgets ?? [],
         if (trailingIcon != null)
           IconButton(
             onPressed: onTrailingIconPressed,
             icon: Icon(trailingIcon),
           ),
+        const SizedBox(width: 4),
       ],
+      iconTheme: iconTheme,
+      backgroundColor: backgroundColor,
+      automaticallyImplyLeading: automaticallyImplyLeading,
     );
   }
 
@@ -61,7 +73,7 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 @widgetbook.UseCase(
-  name: 'Default',
+  name: '1-Default',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -81,7 +93,7 @@ Widget defaultFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: 'With trailing widget',
+  name: '2-With trailing widget',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -101,7 +113,7 @@ Widget trailingWidgetFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: 'With both',
+  name: '3-With both',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -119,5 +131,36 @@ Widget leadingAndTrailingWidgetFlexAppBar(BuildContext context) {
     onLeadingIconPressed: () {},
     trailingIcon: Icons.close,
     onTrailingIconPressed: () {},
+  );
+}
+
+@widgetbook.UseCase(
+  name: '4-With trailingWidgets list',
+  type: FlexAppBar,
+  path: '[Components]',
+)
+Widget trailingWidgetsListFlexAppBar(BuildContext context) {
+  return FlexAppBar(
+    title: const Text('Product List'),
+    trailingWidgets: const [
+      Icon(Icons.filter_list),
+      SizedBox(width: 8),
+      Icon(Icons.favorite_border),
+    ],
+  );
+}
+
+@widgetbook.UseCase(
+  name: '5-Custom backgroundColor',
+  type: FlexAppBar,
+  path: '[Components]',
+)
+Widget backgroundColorFlexAppBar(BuildContext context) {
+  return FlexAppBar(
+    title: const Text('Dark Theme'),
+    backgroundColor: Colors.black87,
+    iconTheme: const IconThemeData(color: Colors.white),
+    leadingIcon: Icons.menu,
+    onLeadingIconPressed: () {},
   );
 }
