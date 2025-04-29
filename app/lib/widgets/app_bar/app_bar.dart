@@ -60,7 +60,7 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: onTrailingIconPressed,
             icon: Icon(trailingIcon),
           ),
-        const SizedBox(width: 4),
+        const SizedBox(width: FlexSizes.xxs),
       ],
       iconTheme: iconTheme,
       backgroundColor: backgroundColor,
