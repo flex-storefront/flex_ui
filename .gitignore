@@ -22,3 +22,5 @@ migrate_working_dir/
 .settings/
 .vscode/*
 
+
+app/android/app/.cxx/

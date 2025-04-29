@@ -35,16 +35,24 @@ final directories = <_i1.WidgetbookNode>[
         name: 'FlexAppBar',
         useCases: [
           _i1.WidgetbookUseCase(
-            name: 'Default',
+            name: '1. Default',
             builder: _i2.defaultFlexAppBar,
           ),
           _i1.WidgetbookUseCase(
-            name: 'With both',
+            name: '2. With trailing widget',
+            builder: _i2.trailingWidgetFlexAppBar,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '3. With both',
             builder: _i2.leadingAndTrailingWidgetFlexAppBar,
           ),
           _i1.WidgetbookUseCase(
-            name: 'With trailing widget',
-            builder: _i2.trailingWidgetFlexAppBar,
+            name: '4. With trailingWidgets list',
+            builder: _i2.trailingWidgetsListFlexAppBar,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '5. Custom backgroundColor',
+            builder: _i2.backgroundColorFlexAppBar,
           ),
         ],
       ),
