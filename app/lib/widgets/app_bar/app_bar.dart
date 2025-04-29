@@ -73,7 +73,7 @@ class FlexAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 @widgetbook.UseCase(
-  name: '1-Default',
+  name: '1. Default',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -93,7 +93,7 @@ Widget defaultFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: '2-With trailing widget',
+  name: '2. With trailing widget',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -113,7 +113,7 @@ Widget trailingWidgetFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: '3-With both',
+  name: '3. With both',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -135,7 +135,7 @@ Widget leadingAndTrailingWidgetFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: '4-With trailingWidgets list',
+  name: '4. With trailingWidgets list',
   type: FlexAppBar,
   path: '[Components]',
 )
@@ -151,7 +151,7 @@ Widget trailingWidgetsListFlexAppBar(BuildContext context) {
 }
 
 @widgetbook.UseCase(
-  name: '5-Custom backgroundColor',
+  name: '5. Custom backgroundColor',
   type: FlexAppBar,
   path: '[Components]',
 )
