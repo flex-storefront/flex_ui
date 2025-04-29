@@ -21,10 +21,11 @@ import 'package:flex_ui/widgets/cards/productCard/shared/price_discount.dart'
 import 'package:flex_ui/widgets/carousel/carousel.dart' as _i6;
 import 'package:flex_ui/widgets/connectivity/connectivity_indicator.dart'
     as _i7;
-import 'package:flex_ui/widgets/gallery/gallery.dart' as _i13;
+import 'package:flex_ui/widgets/gallery/gallery.dart' as _i14;
 import 'package:flex_ui/widgets/quantity_selector/quantity_selector.dart'
     as _i11;
 import 'package:flex_ui/widgets/search/search.dart' as _i12;
+import 'package:flex_ui/widgets/shimmer/shimmer_box.dart' as _i13;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -200,6 +201,27 @@ final directories = <_i1.WidgetbookNode>[
           ),
         ],
       ),
+      _i1.WidgetbookComponent(
+        name: 'ShimmerBox',
+        useCases: [
+          _i1.WidgetbookUseCase(
+            name: '0. Default Fullscreen',
+            builder: _i13.defaultShimmerBox,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '1. Fixed Dimensions',
+            builder: _i13.fixedSizeShimmerBox,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '2. Large Card Style',
+            builder: _i13.largeCardShimmerBox,
+          ),
+          _i1.WidgetbookUseCase(
+            name: '3. Small Pill Style',
+            builder: _i13.pillShimmerBox,
+          ),
+        ],
+      ),
     ],
   ),
   _i1.WidgetbookFolder(
@@ -212,7 +234,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'FlexGallery',
             useCase: _i1.WidgetbookUseCase(
               name: 'Default',
-              builder: _i13.defaultCarousel,
+              builder: _i14.defaultCarousel,
             ),
           )
         ],
