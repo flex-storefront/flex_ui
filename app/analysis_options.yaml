@@ -2,6 +2,8 @@ include: package:flutter_lints/flutter.yaml  # ou package:lint/lint.yaml
 
 linter:
   rules:
+    prefer_relative_imports: false
+    always_use_package_imports: true
     prefer_final_locals: true
     avoid_print: true
     prefer_const_constructors: true
