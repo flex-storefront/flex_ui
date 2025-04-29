@@ -9,10 +9,14 @@ extension StringExtension on String? {
 extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => Theme.of(this).textTheme;
-  FlexAppColorScheme get colors =>
-      Theme.of(this).extension<FlexAppColorScheme>()!;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
-  // additional helpful getters
+  /// Get the [FlexAppColorScheme] from the current theme.
+  /// This is a custom extension that provides access to the FLEX color scheme
+  /// Defaults to [FlexAppColorScheme.lightScheme] if not found.
+  FlexAppColorScheme get colors =>
+      Theme.of(this).extension<FlexAppColorScheme>() ??
+      FlexAppColorScheme.lightScheme;
 
   Size get deviceSize => MediaQuery.sizeOf(this);
   double get screenWidth => deviceSize.width;
@@ -40,13 +44,13 @@ extension SnackBarStateExtension<T extends StatefulWidget> on State<T> {
         behavior: SnackBarBehavior.floating,
         action: isDismissable && dismissLabel != null
             ? SnackBarAction(
-          label: dismissLabel,
-          textColor: Colors.white,
-          onPressed: () {
-            if (!mounted) return;
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        )
+                label: dismissLabel,
+                textColor: Colors.white,
+                onPressed: () {
+                  if (!mounted) return;
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                },
+              )
             : null,
       ),
     );
