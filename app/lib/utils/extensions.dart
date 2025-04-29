@@ -13,8 +13,10 @@ extension ThemeExtension on BuildContext {
 
   /// Get the [FlexAppColorScheme] from the current theme.
   /// This is a custom extension that provides access to the FLEX color scheme
+  /// Defaults to [FlexAppColorScheme.lightScheme] if not found.
   FlexAppColorScheme get colors =>
-      Theme.of(this).extension<FlexAppColorScheme>()!;
+      Theme.of(this).extension<FlexAppColorScheme>() ??
+      FlexAppColorScheme.lightScheme;
 
   Size get deviceSize => MediaQuery.sizeOf(this);
   double get screenWidth => deviceSize.width;
