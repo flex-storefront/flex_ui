@@ -35,9 +35,38 @@ extension SnackBarStateExtension<T extends StatefulWidget> on State<T> {
     bool isDismissable = true,
   }) {
     if (!mounted) return;
+    context._showAppSnackBarInternal(
+      message: message,
+      isError: isError,
+      dismissLabel: dismissLabel,
+      isDismissable: isDismissable,
+    );
+  }
+}
 
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
+extension SnackBarContextExtension on BuildContext {
+  void showAppSnackBar({
+    required String message,
+    bool isError = false,
+    String? dismissLabel = '✕',
+    bool isDismissable = true,
+  }) {
+    _showAppSnackBarInternal(
+      message: message,
+      isError: isError,
+      dismissLabel: dismissLabel,
+      isDismissable: isDismissable,
+    );
+  }
+
+  void _showAppSnackBarInternal({
+    required String message,
+    required bool isError,
+    required String? dismissLabel,
+    required bool isDismissable,
+  }) {
+    ScaffoldMessenger.of(this).hideCurrentSnackBar();
+    ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
         content: Text(message, style: const TextStyle(color: Colors.white)),
         backgroundColor: isError ? Colors.deepOrange : Colors.green,
@@ -47,8 +76,7 @@ extension SnackBarStateExtension<T extends StatefulWidget> on State<T> {
                 label: dismissLabel,
                 textColor: Colors.white,
                 onPressed: () {
-                  if (!mounted) return;
-                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                  ScaffoldMessenger.of(this).hideCurrentSnackBar();
                 },
               )
             : null,
