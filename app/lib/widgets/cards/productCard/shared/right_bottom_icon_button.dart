@@ -8,7 +8,7 @@ class RightBottomIconButton extends StatelessWidget {
     required this.onPressed,
   });
 
-  final Icon icon;
+  final Widget icon;
   final ButtonStyle? iconButtonStyle;
   final VoidCallback? onPressed;
 

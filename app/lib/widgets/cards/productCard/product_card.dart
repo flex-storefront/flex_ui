@@ -63,7 +63,7 @@ class FlexProductCard extends StatelessWidget {
   final Color? leftIconBackgroundColor;
   final Color? leftIconTextColor;
   final bool displayRightIcon;
-  final Icon? rightIcon;
+  final Widget? rightIcon;
   final ButtonStyle? rightIconButtonStyle;
   final String? rightIconSemanticsLabel;
   final VoidCallback? onPressedRightIcon;
