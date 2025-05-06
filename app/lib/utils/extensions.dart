@@ -1,3 +1,4 @@
+import 'package:bloc/bloc.dart';
 import 'package:flex_ui/tokens/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -84,3 +85,18 @@ extension SnackBarContextExtension on BuildContext {
     );
   }
 }
+
+mixin SafeEmitter<T> on Cubit<T> {
+  void safeEmit(T state) {
+    if (isClosed) return;
+    emit(state);
+  }
+}
+
+mixin SafeBlocEmitter<T> on BlocBase<T> {
+  void safeEmit(Emitter<T> emit, T state) {
+    if (isClosed) return;
+    emit(state);
+  }
+}
+
