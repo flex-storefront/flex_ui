@@ -35,7 +35,6 @@ class ProductInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final infoContext = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(FlexSizes.md),
       child: Column(
@@ -43,7 +42,7 @@ class ProductInfo extends StatelessWidget {
         mainAxisAlignment:
             isLandscape ? MainAxisAlignment.center : MainAxisAlignment.start,
         children: [
-          if (!isLandscape)
+          if (notation != null && !isLandscape)
             Padding(
               padding: const EdgeInsets.only(bottom: FlexSizes.sm),
               child: FlexProductRating(
@@ -53,7 +52,7 @@ class ProductInfo extends StatelessWidget {
           Flexible(
             child: Text(
               productName,
-              style: infoContext.textTheme.headlineSmall,
+              style: context.textTheme.headlineSmall,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -64,7 +63,7 @@ class ProductInfo extends StatelessWidget {
                     EdgeInsets.only(bottom: isLandscape ? 0 : FlexSizes.xs),
                 child: Text(
                   productReference!,
-                  style: infoContext.textTheme.titleSmall,
+                  style: context.textTheme.titleSmall,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),

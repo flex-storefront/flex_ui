@@ -18,6 +18,9 @@ class FlexSizes {
   /// 32.0
   static const double xl = 32.0;
 
+  /// 40.0
+  static const double xxl = 40.0;
+
   // Icon sizes
   /// 12.0
   static const double iconXs = 12.0;
@@ -48,7 +51,7 @@ class FlexSizes {
   static const double fontSizeXl = 20.0;
 
   // Button sizes
-  /// 44.0
+  /// 48.0
   static const double buttonHeight = 48.0;
 
   /// 12.0

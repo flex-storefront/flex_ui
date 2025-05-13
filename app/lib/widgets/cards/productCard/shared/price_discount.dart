@@ -63,18 +63,16 @@ class FlexPriceDiscount extends StatelessWidget {
         price: price,
         priceFormatter: priceFormatter,
         priceVariant: PriceVariant.strikethrough,
-        textStyle: const TextStyle(
-          overflow: TextOverflow.ellipsis,
-        ).merge(priceStyle),
+        textStyle: priceStyle?.copyWith(overflow: TextOverflow.ellipsis),
         priceLabel: priceLabel,
       ),
       FlexPrice(
         price: salePrice!,
         priceFormatter: priceFormatter,
-        textStyle: TextStyle(
+        textStyle: salePriceStyle?.copyWith(
           color: context.colors.success,
           overflow: TextOverflow.ellipsis,
-        ).merge(salePriceStyle),
+        ),
         priceLabel: salePriceLabel,
       ),
     ];
@@ -86,9 +84,7 @@ class FlexPriceDiscount extends StatelessWidget {
       return FlexPrice(
         price: price,
         priceFormatter: priceFormatter,
-        textStyle: const TextStyle(
-          overflow: TextOverflow.ellipsis,
-        ).merge(priceStyle),
+        textStyle: priceStyle?.copyWith(overflow: TextOverflow.ellipsis),
         priceLabel: priceLabel,
       );
     }

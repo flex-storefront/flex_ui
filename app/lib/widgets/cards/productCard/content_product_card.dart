@@ -39,6 +39,7 @@ class FlexContentProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget productInfos = Flexible(
+      flex: isLandscape? 1  : 2,
       child: ProductInfo(
         productName: productName,
         productReference: productReference,
@@ -55,6 +56,7 @@ class FlexContentProductCard extends StatelessWidget {
     );
 
     final Widget image = Expanded(
+        flex: isLandscape? 1  : 3,
       child: FlexImage(
         imageUrl,
         width: double.infinity,
