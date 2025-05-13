@@ -18,6 +18,14 @@ class FlexSizes {
   /// 32.0
   static const double xl = 32.0;
 
+  /// 40.0
+  static const double xxl = 40.0;
+
+  /// 48.0
+  static const double xxxl = 48.0;
+
+
+
   // Icon sizes
   /// 12.0
   static const double iconXs = 12.0;
