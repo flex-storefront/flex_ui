@@ -11,7 +11,7 @@ export 'widgets/image/tappable_image.dart';
 export 'widgets/cards/productCard/shared/badge.dart';
 export 'widgets/search/search.dart';
 export 'widgets/shimmer/shimmer_box.dart';
-
+export 'widgets/shimmer/image_shimmer.dart';
 
 // Themes
 export 'theme/flex_app_themes.dart';
