@@ -18,6 +18,7 @@ class FlexImage extends StatelessWidget {
     this.semantics = 'Image',
     this.placeholder,
     this.error,
+    this.errorIconSize,
   });
 
   final String src;
@@ -29,6 +30,7 @@ class FlexImage extends StatelessWidget {
 
   final Widget? placeholder;
   final Widget? error;
+  final double? errorIconSize;
 
   /// If the widget size is not constrained by the parent, this param is
   /// necessary to provide a minimum size otherwise the loading/error widget
@@ -67,6 +69,7 @@ class FlexImage extends StatelessWidget {
           child: error ??
               ImageError(
                 aspectRatio: placeholderAspectRatio,
+                iconSize: errorIconSize,
               ),
         ),
       );
@@ -86,6 +89,7 @@ class FlexImage extends StatelessWidget {
             error ??
             ImageError(
               aspectRatio: placeholderAspectRatio,
+              iconSize: errorIconSize,
             ),
         fit: fit,
         height: height,
@@ -101,6 +105,7 @@ class FlexImage extends StatelessWidget {
             error ??
             ImageError(
               aspectRatio: placeholderAspectRatio,
+              iconSize: errorIconSize,
             ),
       );
     }

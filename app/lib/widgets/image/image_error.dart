@@ -1,12 +1,11 @@
 import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
-final double kBrokenImageIconSize = 75.0;
-
 class ImageError extends StatelessWidget {
-  const ImageError({super.key, this.aspectRatio});
+  const ImageError({super.key, this.aspectRatio, this.iconSize = 24});
 
   final double? aspectRatio;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +13,8 @@ class ImageError extends StatelessWidget {
       color: context.colors.disabled,
       alignment: Alignment.center,
       child: Icon(
-        Icons.broken_image,
-        size: kBrokenImageIconSize,
+        Icons.image_not_supported,
+        size: iconSize,
       ),
     );
 
