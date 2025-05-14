@@ -2,7 +2,13 @@ import 'package:flex_ui/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 class ImageError extends StatelessWidget {
-  const ImageError({super.key, this.aspectRatio, this.iconSize = 24});
+  static const double kDefaultIconSize = 24.0;
+
+  const ImageError({
+    super.key,
+    this.aspectRatio,
+    this.iconSize = kDefaultIconSize,
+  });
 
   final double? aspectRatio;
   final double? iconSize;
