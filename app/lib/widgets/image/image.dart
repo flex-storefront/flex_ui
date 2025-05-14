@@ -18,6 +18,7 @@ class FlexImage extends StatelessWidget {
     this.semantics = 'Image',
     this.placeholder,
     this.error,
+    this.errorIconSize,
   });
 
   final String src;
@@ -29,6 +30,7 @@ class FlexImage extends StatelessWidget {
 
   final Widget? placeholder;
   final Widget? error;
+  final double? errorIconSize;
 
   /// If the widget size is not constrained by the parent, this param is
   /// necessary to provide a minimum size otherwise the loading/error widget
@@ -46,12 +48,13 @@ class FlexImage extends StatelessWidget {
   final double? placeholderAspectRatio;
 
   /// Returns `true` if the image source is a remote URL.
-  bool get isRemote => Uri.tryParse(src)?.host.isNotEmpty ?? false;
+  bool get isRemote {
+    final uri = Uri.tryParse(src);
+    return uri != null && (uri.scheme == 'http' || uri.scheme == 'https');
+  }
 
   @override
   Widget build(BuildContext context) {
-    Widget content;
-
     // Handling for web and tests
     if (kIsWeb || Platform.environment.containsKey('FLUTTER_TEST')) {
       return const Placeholder();
@@ -59,13 +62,40 @@ class FlexImage extends StatelessWidget {
 
     // src could come as empty or 'null' depending on how it is declared
     if (src.isEmpty || src == 'null') {
-      content = error ??
-          ImageError(
-            aspectRatio: placeholderAspectRatio,
-          );
+      return ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        child: Semantics(
+          label: semantics,
+          child: error ??
+              ImageError(
+                aspectRatio: placeholderAspectRatio,
+                iconSize: errorIconSize,
+              ),
+        ),
+      );
     }
 
-    if (!isRemote) {
+    Widget content;
+
+    if (isRemote) {
+      content = CachedNetworkImage(
+        imageUrl: src,
+        placeholder: (context, url) =>
+            placeholder ??
+            ImageLoader(
+              aspectRatio: placeholderAspectRatio,
+            ),
+        errorWidget: (context, url, err) =>
+            error ??
+            ImageError(
+              aspectRatio: placeholderAspectRatio,
+              iconSize: errorIconSize,
+            ),
+        fit: fit,
+        height: height,
+        width: width,
+      );
+    } else {
       content = Image.asset(
         src,
         width: width,
@@ -75,28 +105,10 @@ class FlexImage extends StatelessWidget {
             error ??
             ImageError(
               aspectRatio: placeholderAspectRatio,
+              iconSize: errorIconSize,
             ),
       );
     }
-
-    content = CachedNetworkImage(
-      imageUrl: src,
-      placeholder: (context, url) =>
-          placeholder ??
-          ImageLoader(
-            aspectRatio: placeholderAspectRatio,
-          ),
-      errorWidget: (context, url, err) {
-        error ??
-            ImageError(
-              aspectRatio: placeholderAspectRatio,
-            );
-        throw err;
-      },
-      fit: fit,
-      height: height,
-      width: width,
-    );
 
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.zero,
