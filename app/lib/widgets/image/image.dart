@@ -53,6 +53,10 @@ class FlexImage extends StatelessWidget {
     return uri != null && (uri.scheme == 'http' || uri.scheme == 'https');
   }
 
+  /// Returns `true` if the image source is a local file or cache asset.
+  bool get isLocal =>
+      !isRemote && (src.startsWith('/') || src.startsWith('file://'));
+
   @override
   Widget build(BuildContext context) {
     // Handling for web and tests
@@ -94,6 +98,19 @@ class FlexImage extends StatelessWidget {
         fit: fit,
         height: height,
         width: width,
+      );
+    } else if (isLocal) {
+      content = Image.file(
+        File(src),
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (context, err, stacktrace) =>
+            error ??
+            ImageError(
+              aspectRatio: placeholderAspectRatio,
+              iconSize: errorIconSize,
+            ),
       );
     } else {
       content = Image.asset(
