@@ -19,8 +19,13 @@ class MainApp extends StatelessWidget {
     final theme = Uri.base.queryParameters['theme'] ?? 'light';
 
     return MaterialApp.router(
-      theme: FlexAppThemes.lightTheme,
-      darkTheme: FlexAppThemes.darkTheme,
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: DesignTokens.brandPrimary,
+          secondary: DesignTokens.brandSecondary,
+        ),
+      ),
+      darkTheme: ThemeData.dark(),
       themeMode: theme == 'dark' ? ThemeMode.dark : ThemeMode.light,
       debugShowCheckedModeBanner: false,
       routerConfig: _appRouter.config(),

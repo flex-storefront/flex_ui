@@ -9,16 +9,13 @@ class ImageError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget widget = Container(
-      color: context.colors.disabled,
+      color: context.colorScheme.disabled,
       alignment: Alignment.center,
       child: const Icon(Icons.error),
     );
 
     if (aspectRatio != null) {
-      widget = AspectRatio(
-        aspectRatio: aspectRatio!,
-        child: widget,
-      );
+      widget = AspectRatio(aspectRatio: aspectRatio!, child: widget);
     }
 
     return widget;

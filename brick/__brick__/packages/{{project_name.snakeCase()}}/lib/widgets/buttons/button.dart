@@ -54,8 +54,12 @@ class FlexButton extends StatelessWidget {
 
     final effectiveStyle = isDisabled
         ? baseStyle.copyWith(
-            backgroundColor: WidgetStatePropertyAll(context.colors.disabled),
-            foregroundColor: WidgetStatePropertyAll(context.colors.onDisabled),
+            backgroundColor: WidgetStatePropertyAll(
+              context.colorScheme.disabled,
+            ),
+            foregroundColor: WidgetStatePropertyAll(
+              context.colorScheme.onDisabled,
+            ),
           )
         : baseStyle;
 
@@ -77,7 +81,7 @@ class FlexButton extends StatelessWidget {
                 child: Center(
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: context.colors.onPrimary,
+                    color: context.colorScheme.onPrimary,
                   ),
                 ),
               ),
@@ -89,25 +93,14 @@ class FlexButton extends StatelessWidget {
   }
 }
 
-@widgetbook.UseCase(
-  name: 'Default',
-  type: FlexButton,
-  path: '[Components]',
-)
+@widgetbook.UseCase(name: 'Default', type: FlexButton, path: '[Components]')
 Widget defaultButton(BuildContext context) {
   return Center(
-    child: FlexButton(
-      title: 'Add to Cart',
-      onPressed: () {},
-    ),
+    child: FlexButton(title: 'Add to Cart', onPressed: () {}),
   );
 }
 
-@widgetbook.UseCase(
-  name: 'Loading',
-  type: FlexButton,
-  path: '[Components]',
-)
+@widgetbook.UseCase(name: 'Loading', type: FlexButton, path: '[Components]')
 Widget loadingButton(BuildContext context) {
   return Center(
     child: FlexButton(
@@ -118,11 +111,7 @@ Widget loadingButton(BuildContext context) {
   );
 }
 
-@widgetbook.UseCase(
-  name: 'Disabled',
-  type: FlexButton,
-  path: '[Components]',
-)
+@widgetbook.UseCase(name: 'Disabled', type: FlexButton, path: '[Components]')
 Widget disabledButton(BuildContext context) {
   return Center(
     child: FlexButton(
@@ -143,8 +132,8 @@ Widget smallButton(BuildContext context) {
     child: FlexButton(
       title: 'Add to Cart',
       style: ElevatedButton.styleFrom(
-        backgroundColor: context.colors.tertiary,
-        foregroundColor: context.colors.onTertiary,
+        backgroundColor: context.colorScheme.tertiary,
+        foregroundColor: context.colorScheme.onTertiary,
         padding: const EdgeInsets.all(FlexSizes.md),
       ),
       onPressed: () {},

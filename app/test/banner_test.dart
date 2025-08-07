@@ -10,7 +10,7 @@ void main() {
   const testName = 'FlexBanner';
 
   group(testName, () {
-    final themes = [FlexAppThemes.lightTheme, FlexAppThemes.darkTheme];
+    final themes = [ThemeData.light(), ThemeData.dark()];
 
     final tests = [
       (
@@ -26,7 +26,7 @@ void main() {
     ];
 
     for (final theme in themes) {
-      final themeName = theme == FlexAppThemes.lightTheme ? 'Light' : 'Dark';
+      final themeName = theme == ThemeData.light() ? 'Light' : 'Dark';
 
       for (final test in tests) {
         goldenTest(

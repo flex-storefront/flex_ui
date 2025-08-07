@@ -1,5 +1,5 @@
 import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
+import 'package:flex_ui/utils/context_extensions.dart';
 import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
 import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
@@ -37,7 +37,7 @@ class FlexProductCard extends StatelessWidget {
     this.isAvailable = true,
     this.isLandscape = false,
   })  : assert(
-          displayLeftIcon == false || leftIconLabel.isNotBlank(),
+          displayLeftIcon == false || leftIconLabel?.isNotEmpty == true,
           'You must provide a leftIconLabel when displayLeftIcon is true',
         ),
         assert(
@@ -98,7 +98,7 @@ class FlexProductCard extends StatelessWidget {
               isLandscape: isLandscape,
             ),
           ),
-          if (displayLeftIcon && leftIconLabel.isNotBlank())
+          if (displayLeftIcon && leftIconLabel?.isNotEmpty == true)
             Positioned(
               top: 0,
               left: 0,
@@ -158,7 +158,7 @@ Widget standardFlexProductCard(BuildContext context) {
             .boolean(label: 'displayLeftIcon', initialValue: false),
         leftIconLabel: 'New',
         leftIconSemanticsLabel: 'This is a new product',
-        leftIconBackgroundColor: context.colors.info,
+        leftIconBackgroundColor: context.brandColors.info,
         leftIconTextColor: Colors.white,
         displayRightIcon: context.knobs
             .boolean(label: 'displayRightIcon', initialValue: false),
@@ -227,7 +227,7 @@ Widget gridFlexProductCard(BuildContext context) {
           context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
       leftIconLabel: 'New',
       leftIconSemanticsLabel: 'This is a new product',
-      leftIconBackgroundColor: context.colors.info,
+      leftIconBackgroundColor: context.brandColors.info,
       leftIconTextColor: Colors.white,
       displayRightIcon:
           context.knobs.boolean(label: 'displayRightIcon', initialValue: false),

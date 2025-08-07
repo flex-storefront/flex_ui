@@ -1,4 +1,5 @@
 import 'package:flex_ui/flex_ui.dart';
+import 'package:flex_ui/utils/context_extensions.dart';
 import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -70,7 +71,7 @@ class FlexPriceDiscount extends StatelessWidget {
         price: salePrice!,
         priceFormatter: priceFormatter,
         textStyle: salePriceStyle?.copyWith(
-          color: context.colors.success,
+          color: context.brandColors.success,
           overflow: TextOverflow.ellipsis,
         ),
         priceLabel: salePriceLabel,

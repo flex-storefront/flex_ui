@@ -72,7 +72,7 @@ class FlexPriceDiscount extends StatelessWidget {
         price: salePrice!,
         priceFormatter: priceFormatter,
         textStyle: TextStyle(
-          color: context.colors.success,
+          color: context.colorScheme.success,
           overflow: TextOverflow.ellipsis,
         ).merge(salePriceStyle),
         priceLabel: salePriceLabel,
@@ -92,10 +92,7 @@ class FlexPriceDiscount extends StatelessWidget {
         priceLabel: priceLabel,
       );
     }
-    return Wrap(
-      spacing: FlexSizes.xs,
-      children: _buildDiscountPrice(context),
-    );
+    return Wrap(spacing: FlexSizes.xs, children: _buildDiscountPrice(context));
   }
 }
 
@@ -106,12 +103,12 @@ class FlexPriceDiscount extends StatelessWidget {
 )
 Widget defaultPriceDiscount(BuildContext context) {
   final price = context.knobs.double.input(label: 'Price', initialValue: 200);
-  final salePrice =
-      context.knobs.double.input(label: 'salePrice', initialValue: 150);
+  final salePrice = context.knobs.double.input(
+    label: 'salePrice',
+    initialValue: 150,
+  );
   final theme = Theme.of(context);
-  exampleFormatter(
-    double price,
-  ) {
+  exampleFormatter(double price) {
     final formatter = NumberFormat.simpleCurrency(
       locale: context.knobs.list(
         label: 'Locale Examples',
@@ -128,24 +125,25 @@ Widget defaultPriceDiscount(BuildContext context) {
       salePrice: salePrice,
       priceFormatter: exampleFormatter,
       salePriceLabel: 'originally {price}',
-      priceStyle: context.knobs.boolean(
-        label: 'Example Price Style Override',
-        description: 'Overrides Standard Price Textstyle',
-        initialValue: false,
-      )
+      priceStyle:
+          context.knobs.boolean(
+            label: 'Example Price Style Override',
+            description: 'Overrides Standard Price Textstyle',
+            initialValue: false,
+          )
           ? theme.textTheme.headlineMedium!.merge(
-              TextStyle(
-                color: salePrice > 0 ? Colors.blue : Colors.red,
-              ),
+              TextStyle(color: salePrice > 0 ? Colors.blue : Colors.red),
             )
           : null,
-      salePriceStyle: context.knobs.boolean(
-        label: 'Example Sale Price Style Override',
-        description: 'Overrides Styling of Sale Price',
-        initialValue: false,
-      )
-          ? theme.textTheme.headlineMedium!
-              .merge(const TextStyle(color: Colors.blue))
+      salePriceStyle:
+          context.knobs.boolean(
+            label: 'Example Sale Price Style Override',
+            description: 'Overrides Styling of Sale Price',
+            initialValue: false,
+          )
+          ? theme.textTheme.headlineMedium!.merge(
+              const TextStyle(color: Colors.blue),
+            )
           : null,
     ),
   );
@@ -160,12 +158,12 @@ Widget fallbackPriceDiscount(BuildContext context) {
   final theme = Theme.of(context);
 
   final price = context.knobs.double.input(label: 'Price', initialValue: 200);
-  final salePrice =
-      context.knobs.double.input(label: 'salePrice', initialValue: 0);
+  final salePrice = context.knobs.double.input(
+    label: 'salePrice',
+    initialValue: 0,
+  );
 
-  exampleFormatter(
-    double price,
-  ) {
+  exampleFormatter(double price) {
     final formatter = NumberFormat.simpleCurrency(
       locale: context.knobs.list(
         label: 'Locale Examples',
@@ -182,16 +180,15 @@ Widget fallbackPriceDiscount(BuildContext context) {
       salePrice: salePrice,
       priceFormatter: exampleFormatter,
       salePriceLabel: 'originally {price}',
-      priceStyle: context.knobs.boolean(
-        label: 'Example Price Style Override',
-        description:
-            'Overrides Styling of Current Price, Both When salePrice is provided and when not',
-        initialValue: false,
-      )
+      priceStyle:
+          context.knobs.boolean(
+            label: 'Example Price Style Override',
+            description:
+                'Overrides Styling of Current Price, Both When salePrice is provided and when not',
+            initialValue: false,
+          )
           ? theme.textTheme.headlineMedium!.merge(
-              TextStyle(
-                color: salePrice > 0 ? Colors.blue : Colors.red,
-              ),
+              TextStyle(color: salePrice > 0 ? Colors.blue : Colors.red),
             )
           : null,
     ),

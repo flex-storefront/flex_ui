@@ -32,36 +32,27 @@ class FlexBadge extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius:
             borderRadius ?? BorderRadius.circular(FlexSizes.circleRadius),
-        color: iconBackgroundColor ?? context.colors.info,
+        color: iconBackgroundColor ?? context.colorScheme.info,
       ),
-      padding: padding ??
+      padding:
+          padding ??
           const EdgeInsets.symmetric(
             horizontal: FlexSizes.md,
             vertical: FlexSizes.xxs,
           ),
       child: Text(
         label,
-        style: Theme.of(context)
-            .textTheme
-            .labelSmall
-            ?.copyWith(color: context.colors.onInfo)
+        style: Theme.of(context).textTheme.labelSmall
+            ?.copyWith(color: context.colorScheme.onInfo)
             .copyWith(color: textColor),
       ),
     );
   }
 }
 
-@widgetbook.UseCase(
-  name: 'Default',
-  type: FlexBadge,
-  path: '[Components]',
-)
+@widgetbook.UseCase(name: 'Default', type: FlexBadge, path: '[Components]')
 Widget defaultBadge(BuildContext context) {
-  return const Center(
-    child: FlexBadge(
-      label: 'New',
-    ),
-  );
+  return const Center(child: FlexBadge(label: 'New'));
 }
 
 @widgetbook.UseCase(
@@ -73,8 +64,8 @@ Widget saleBadge(BuildContext context) {
   return Center(
     child: FlexBadge(
       label: 'sale',
-      textColor: context.colors.onSuccess,
-      iconBackgroundColor: context.colors.success,
+      textColor: context.colorScheme.onSuccess,
+      iconBackgroundColor: context.colorScheme.success,
       borderRadius: BorderRadius.circular(4),
       padding: const EdgeInsets.all(10),
     ),

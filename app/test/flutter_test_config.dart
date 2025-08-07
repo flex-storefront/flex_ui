@@ -19,10 +19,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
         ),
       ),
       theme: ThemeData(
-        extensions: const [
-          FlexAppColorScheme.lightScheme,
-          FlexAppColorScheme.darkScheme,
-        ],
+        extensions: const [],
       ),
     ),
     run: testMain,

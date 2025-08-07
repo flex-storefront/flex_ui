@@ -78,7 +78,7 @@ class _FlexCarouselState extends State<FlexCarousel> {
             count: widget.items.length,
             effect: WormEffect(
               radius: 8.0,
-              activeDotColor: context.colors.primary,
+              activeDotColor: context.colorScheme.primary,
             ),
           ),
         ],

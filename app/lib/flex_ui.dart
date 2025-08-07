@@ -12,13 +12,10 @@ export 'widgets/cards/productCard/shared/badge.dart';
 export 'widgets/search/search.dart';
 export 'widgets/shimmer/shimmer_box.dart';
 
-
-// Themes
-export 'theme/flex_app_themes.dart';
-
 // Tokens
-export 'tokens/colors.dart';
+export 'theme/design_tokens.dart';
 export 'tokens/sizes.dart';
 
 // Extensions
-export 'utils/extensions.dart';
+export 'utils/context_extensions.dart';
+export 'utils/snackbar_extensions.dart';

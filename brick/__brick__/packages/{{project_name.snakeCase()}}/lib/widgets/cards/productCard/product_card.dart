@@ -36,15 +36,15 @@ class FlexProductCard extends StatelessWidget {
     this.isSaved = false,
     this.isAvailable = true,
     this.isLandscape = false,
-  })  : assert(
-          displayLeftIcon == false || leftIconLabel.isNotBlank(),
-          'You must provide a leftIconLabel when displayLeftIcon is true',
-        ),
-        assert(
-          displayRightIcon == false ||
-              (rightIcon != null && onPressedRightIcon != null),
-          'You must provide a rightIcon and onPressedRightIcon when displayRightIcon is true',
-        );
+  }) : assert(
+         displayLeftIcon == false || leftIconLabel.isNotBlank(),
+         'You must provide a leftIconLabel when displayLeftIcon is true',
+       ),
+       assert(
+         displayRightIcon == false ||
+             (rightIcon != null && onPressedRightIcon != null),
+         'You must provide a rightIcon and onPressedRightIcon when displayRightIcon is true',
+       );
 
   final String productName;
   final String? productReference;
@@ -136,8 +136,10 @@ class FlexProductCard extends StatelessWidget {
   path: '[Components]',
 )
 Widget standardFlexProductCard(BuildContext context) {
-  final bool isSaved =
-      context.knobs.boolean(label: 'isProductSaved', initialValue: false);
+  final bool isSaved = context.knobs.boolean(
+    label: 'isProductSaved',
+    initialValue: false,
+  );
 
   return Center(
     child: Container(
@@ -147,21 +149,29 @@ Widget standardFlexProductCard(BuildContext context) {
         productName: 'Temple Fork TFO NXT Series Fly Rod',
         productReference: 'TFO NXT 905 5/6',
         price: context.knobs.double.input(label: 'price', initialValue: 150),
-        salePrice:
-            context.knobs.double.input(label: 'salePrice', initialValue: 0),
+        salePrice: context.knobs.double.input(
+          label: 'salePrice',
+          initialValue: 0,
+        ),
         priceFormatter: (price) => '\$$price',
         imageUrl: 'https://picsum.photos/200',
         notation: 4,
-        isLandscape:
-            context.knobs.boolean(label: 'isLandscape', initialValue: false),
-        displayLeftIcon: context.knobs
-            .boolean(label: 'displayLeftIcon', initialValue: false),
+        isLandscape: context.knobs.boolean(
+          label: 'isLandscape',
+          initialValue: false,
+        ),
+        displayLeftIcon: context.knobs.boolean(
+          label: 'displayLeftIcon',
+          initialValue: false,
+        ),
         leftIconLabel: 'New',
         leftIconSemanticsLabel: 'This is a new product',
-        leftIconBackgroundColor: context.colors.info,
+        leftIconBackgroundColor: context.colorScheme.info,
         leftIconTextColor: Colors.white,
-        displayRightIcon: context.knobs
-            .boolean(label: 'displayRightIcon', initialValue: false),
+        displayRightIcon: context.knobs.boolean(
+          label: 'displayRightIcon',
+          initialValue: false,
+        ),
         isSaved: isSaved,
         rightIcon: isSaved
             ? const Icon(Icons.bookmark)
@@ -170,22 +180,18 @@ Widget standardFlexProductCard(BuildContext context) {
             ? 'Tap on this button to remove the product from your wishlist'
             : 'Tap on this button to add the product to your wishlist',
         onPressedRightIcon: () {},
-        isAvailable: context.knobs
-            .boolean(label: 'isProductAvailable', initialValue: true),
+        isAvailable: context.knobs.boolean(
+          label: 'isProductAvailable',
+          initialValue: true,
+        ),
       ),
     ),
   );
 }
 
-@widgetbook.UseCase(
-  name: 'Grid',
-  type: FlexProductCard,
-  path: '[Components]',
-)
+@widgetbook.UseCase(name: 'Grid', type: FlexProductCard, path: '[Components]')
 Widget gridFlexProductCard(BuildContext context) {
-  exampleFormatter(
-    double price,
-  ) {
+  exampleFormatter(double price) {
     final formatter = NumberFormat.simpleCurrency(
       locale: context.knobs.list(
         label: 'Locale Examples',
@@ -196,10 +202,14 @@ Widget gridFlexProductCard(BuildContext context) {
     return formatter.format(price);
   }
 
-  final bool isSaved =
-      context.knobs.boolean(label: 'isProductSaved', initialValue: false);
-  final bool isLandscape =
-      context.knobs.boolean(label: 'isLandscape', initialValue: false);
+  final bool isSaved = context.knobs.boolean(
+    label: 'isProductSaved',
+    initialValue: false,
+  );
+  final bool isLandscape = context.knobs.boolean(
+    label: 'isLandscape',
+    initialValue: false,
+  );
 
   return GridView.builder(
     physics: const AlwaysScrollableScrollPhysics(),
@@ -217,20 +227,26 @@ Widget gridFlexProductCard(BuildContext context) {
       productName: 'Temple Fork TFO NXT Series Fly Rod',
       productReference: 'TFO NXT 905 5/6',
       price: context.knobs.double.input(label: 'Price', initialValue: 100),
-      salePrice:
-          context.knobs.double.input(label: 'salePrice', initialValue: 50),
+      salePrice: context.knobs.double.input(
+        label: 'salePrice',
+        initialValue: 50,
+      ),
       priceFormatter: exampleFormatter,
       imageUrl: 'https://picsum.photos/200',
       notation: 4,
       isLandscape: isLandscape,
-      displayLeftIcon:
-          context.knobs.boolean(label: 'displayLeftIcon', initialValue: false),
+      displayLeftIcon: context.knobs.boolean(
+        label: 'displayLeftIcon',
+        initialValue: false,
+      ),
       leftIconLabel: 'New',
       leftIconSemanticsLabel: 'This is a new product',
-      leftIconBackgroundColor: context.colors.info,
+      leftIconBackgroundColor: context.colorScheme.info,
       leftIconTextColor: Colors.white,
-      displayRightIcon:
-          context.knobs.boolean(label: 'displayRightIcon', initialValue: false),
+      displayRightIcon: context.knobs.boolean(
+        label: 'displayRightIcon',
+        initialValue: false,
+      ),
       isSaved: isSaved,
       rightIcon: isSaved
           ? const Icon(Icons.bookmark)
@@ -239,8 +255,10 @@ Widget gridFlexProductCard(BuildContext context) {
           ? 'Tap on this button to remove the product from your wishlist'
           : 'Tap on this button to add the product to your wishlist',
       onPressedRightIcon: () {},
-      isAvailable: context.knobs
-          .boolean(label: 'isProductAvailable', initialValue: true),
+      isAvailable: context.knobs.boolean(
+        label: 'isProductAvailable',
+        initialValue: true,
+      ),
     ),
   );
 }

@@ -19,16 +19,16 @@ class FlexProductRating extends StatelessWidget {
         children: List.generate(
           numberOfStars,
           (index) => (index < rating)
-              ?  Flexible(
+              ? Flexible(
                   child: Icon(
                     Icons.star_rounded,
-                    color: context.colors.warning,
+                    color: context.colorScheme.warning,
                   ),
                 )
-              :  Flexible(
+              : Flexible(
                   child: Icon(
                     Icons.star_border_rounded,
-                    color: context.colors.disabled,
+                    color: context.colorScheme.disabled,
                   ),
                 ),
         ),
