@@ -1,7 +1,4 @@
-import 'package:flex_ui/flex_ui.dart';
-import 'package:flex_ui/utils/context_extensions.dart';
-import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
+import '../../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {

@@ -1,7 +1,4 @@
-import 'package:flex_ui/theme/sizes.dart';
-import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/product_info.dart';
-import 'package:flex_ui/widgets/image/image.dart';
+import '../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class FlexContentProductCard extends StatelessWidget {

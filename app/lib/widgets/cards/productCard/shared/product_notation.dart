@@ -1,4 +1,4 @@
-import 'package:flex_ui/utils/context_extensions.dart';
+import '../../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class FlexProductRating extends StatelessWidget {

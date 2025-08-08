@@ -1,17 +1,17 @@
-import 'package:flex_ui/widgets/shimmer/internal/shimmer_theme.dart';
+import 'shimmer_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
 /// A container that applies a shimmer loading effect with consistent styling.
 ///
-/// The [ShimmerBox] combines shimmer animation with layout and styling from a [ShimmerTheme].
+/// The [FlexShimmerBox] combines shimmer animation with layout and styling from a [ShimmerTheme].
 /// It can either take up the full screen dimensions or be constrained to specific dimensions
 /// via [width] and [height] parameters.
 ///
 /// Example usage:
 /// ```dart
-/// ShimmerBox(
+/// FlexShimmerBox(
 ///   theme: ShimmerTheme.defaults(context),
 ///   width: 200,  // Optional: specify width
 ///   height: 100, // Optional: specify height
@@ -21,12 +21,12 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 /// If [width] or [height] are not provided, the box will default to the screen's dimensions.
 /// All styling (colors, padding, margin, border radius) are controlled by [theme].
 ///
-class ShimmerBox extends StatelessWidget {
+class FlexShimmerBox extends StatelessWidget {
   final ShimmerTheme theme;
   final double? width;
   final double? height;
 
-  const ShimmerBox({
+  const FlexShimmerBox({
     super.key,
     this.theme = const ShimmerTheme(),
     this.width,
@@ -56,21 +56,21 @@ class ShimmerBox extends StatelessWidget {
 
 @UseCase(
   name: '0. Default Fullscreen',
-  type: ShimmerBox,
+  type: FlexShimmerBox,
   path: '[Components]',
 )
-Widget defaultShimmerBox(BuildContext context) {
-  return const ShimmerBox(theme: ShimmerTheme());
+Widget defaultFlexShimmerBox(BuildContext context) {
+  return const FlexShimmerBox(theme: ShimmerTheme());
 }
 
 @UseCase(
   name: '1. Fixed Dimensions',
-  type: ShimmerBox,
+  type: FlexShimmerBox,
   path: '[Components]',
 )
-Widget fixedSizeShimmerBox(BuildContext context) {
+Widget fixedSizeFlexShimmerBox(BuildContext context) {
   return const Center(
-    child: ShimmerBox(
+    child: FlexShimmerBox(
       theme: ShimmerTheme(),
       width: 200,
       height: 100,
@@ -80,12 +80,12 @@ Widget fixedSizeShimmerBox(BuildContext context) {
 
 @UseCase(
   name: '2. Large Card Style',
-  type: ShimmerBox,
+  type: FlexShimmerBox,
   path: '[Components]',
 )
-Widget largeCardShimmerBox(BuildContext context) {
+Widget largeCardFlexShimmerBox(BuildContext context) {
   return Center(
-    child: ShimmerBox(
+    child: FlexShimmerBox(
       theme: const ShimmerTheme().copyWith(
         padding: const EdgeInsets.all(12),
         borderRadius: 16,
@@ -98,12 +98,12 @@ Widget largeCardShimmerBox(BuildContext context) {
 
 @UseCase(
   name: '3. Small Pill Style',
-  type: ShimmerBox,
+  type: FlexShimmerBox,
   path: '[Components]',
 )
-Widget pillShimmerBox(BuildContext context) {
+Widget pillFlexShimmerBox(BuildContext context) {
   return Center(
-    child: ShimmerBox(
+    child: FlexShimmerBox(
       theme: const ShimmerTheme().copyWith(
         borderRadius: 50,
       ),

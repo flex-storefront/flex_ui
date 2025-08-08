@@ -1,9 +1,4 @@
-import 'package:flex_ui/theme/sizes.dart';
-import 'package:flex_ui/utils/context_extensions.dart';
-import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/right_bottom_icon_button.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/badge.dart';
+import '../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;

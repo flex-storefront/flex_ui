@@ -118,9 +118,3 @@ class BrandThemeExtension extends ThemeExtension<BrandThemeExtension> {
     divider: DesignTokens.neutralGray200,
   );
 }
-
-/// Extension to easily access brand colors from any context
-extension BrandColors on BuildContext {
-  BrandThemeExtension get brandColors =>
-      Theme.of(this).extension<BrandThemeExtension>()!;
-}
