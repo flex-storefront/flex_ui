@@ -19,25 +19,10 @@ class DesignTokens {
   static const Color neutralBlack = Color(0xFF222222);
   static const Color neutralGray100 = Color(0xFFF2F2F2); // Light surface
   static const Color neutralGray200 = Color(0xFFE6E6E6); // Dividers
+  static const Color neutralGray300 = Color(0xFFE0E0E0); // Medium surface
   static const Color neutralGray400 = Color(0xFF8E8E93); // Disabled
   static const Color neutralGray800 = Color(0xFF282828); // Dark surface
 
   // Dark Mode Variants
-  static const Color brandPrimaryDark = Color(
-    0xFF7E57C2,
-  ); // Purple variant for dark mode
-
-  // Spacing tokens (for future use)
-  static const double spacingXs = 4.0;
-  static const double spacingSm = 8.0;
-  static const double spacingMd = 16.0;
-  static const double spacingLg = 24.0;
-  static const double spacingXl = 32.0;
-
-  // Border radius tokens
-  static const double radiusXs = 4.0;
-  static const double radiusSm = 8.0;
-  static const double radiusMd = 12.0;
-  static const double radiusLg = 16.0;
-  static const double radiusXl = 24.0;
+  static const Color brandPrimaryDark = Color(0xFF7E57C2);
 }

@@ -1,4 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
+import 'package:flex_ui/theme/sizes.dart';
 import 'package:flex_ui/utils/context_extensions.dart';
 import 'package:flex_ui/utils/typedefs.dart';
 import 'package:flex_ui/widgets/cards/productCard/content_product_card.dart';

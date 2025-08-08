@@ -14,7 +14,7 @@ export 'widgets/shimmer/shimmer_box.dart';
 
 // Tokens
 export 'theme/design_tokens.dart';
-export 'tokens/sizes.dart';
+export 'theme/sizes.dart';
 
 // Extensions
 export 'utils/context_extensions.dart';

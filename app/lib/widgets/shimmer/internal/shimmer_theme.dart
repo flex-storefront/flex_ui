@@ -1,5 +1,4 @@
 import 'package:flex_ui/flex_ui.dart';
-import 'package:flex_ui/tokens/flex_colors.dart';
 import 'package:flutter/material.dart';
 
 class ShimmerTheme {
@@ -10,8 +9,8 @@ class ShimmerTheme {
   final EdgeInsets margin;
 
   const ShimmerTheme({
-    this.baseColor = FlexColors.shimmerBase,
-    this.highlightColor = FlexColors.shimmerHighlight,
+    this.baseColor = DesignTokens.neutralGray300,
+    this.highlightColor = DesignTokens.neutralGray100,
     this.borderRadius = FlexSizes.borderRadiusMd,
     this.padding = EdgeInsets.zero,
     this.margin = EdgeInsets.zero,
