@@ -1,5 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
+import '../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -54,8 +53,10 @@ class FlexButton extends StatelessWidget {
 
     final effectiveStyle = isDisabled
         ? baseStyle.copyWith(
-            backgroundColor: WidgetStatePropertyAll(context.colors.disabled),
-            foregroundColor: WidgetStatePropertyAll(context.colors.onDisabled),
+            backgroundColor:
+                WidgetStatePropertyAll(context.brandColors.disabled),
+            foregroundColor:
+                WidgetStatePropertyAll(context.brandColors.onDisabled),
           )
         : baseStyle;
 
@@ -77,7 +78,7 @@ class FlexButton extends StatelessWidget {
                 child: Center(
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: context.colors.onPrimary,
+                    color: context.colorScheme.onPrimary,
                   ),
                 ),
               ),
@@ -143,8 +144,8 @@ Widget smallButton(BuildContext context) {
     child: FlexButton(
       title: 'Add to Cart',
       style: ElevatedButton.styleFrom(
-        backgroundColor: context.colors.tertiary,
-        foregroundColor: context.colors.onTertiary,
+        backgroundColor: context.colorScheme.tertiary,
+        foregroundColor: context.colorScheme.onTertiary,
         padding: const EdgeInsets.all(FlexSizes.md),
       ),
       onPressed: () {},

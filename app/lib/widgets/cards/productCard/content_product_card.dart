@@ -1,7 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/product_info.dart';
-import 'package:flex_ui/widgets/image/image.dart';
+import '../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class FlexContentProductCard extends StatelessWidget {
@@ -39,7 +36,7 @@ class FlexContentProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget productInfos = Flexible(
-      flex: isLandscape? 1  : 2,
+      flex: isLandscape ? 1 : 2,
       child: ProductInfo(
         productName: productName,
         productReference: productReference,
@@ -56,7 +53,7 @@ class FlexContentProductCard extends StatelessWidget {
     );
 
     final Widget image = Expanded(
-        flex: isLandscape? 1  : 3,
+      flex: isLandscape ? 1 : 3,
       child: FlexImage(
         imageUrl,
         width: double.infinity,

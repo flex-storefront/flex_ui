@@ -1,4 +1,4 @@
-import 'package:flex_ui/flex_ui.dart';
+import '../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class FlexTappableImage extends StatelessWidget {

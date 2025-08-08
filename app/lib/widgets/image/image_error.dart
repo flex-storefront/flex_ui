@@ -1,5 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
+import '../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class ImageError extends StatelessWidget {
@@ -15,7 +14,7 @@ class ImageError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget widget = Container(
-      color: context.colors.disabled,
+      color: context.brandColors.disabled,
       alignment: Alignment.center,
       child: Icon(
         Icons.image_not_supported,

@@ -11,6 +11,3 @@ widgetbook:
 
 run_playground:
 	cd playground && flutter run -d chrome
-
-build_brick:
-	dart run tool/generator/main.dart

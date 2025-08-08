@@ -202,23 +202,23 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookComponent(
-        name: 'ShimmerBox',
+        name: 'FlexShimmerBox',
         useCases: [
           _i1.WidgetbookUseCase(
             name: '0. Default Fullscreen',
-            builder: _i13.defaultShimmerBox,
+            builder: _i13.defaultFlexShimmerBox,
           ),
           _i1.WidgetbookUseCase(
             name: '1. Fixed Dimensions',
-            builder: _i13.fixedSizeShimmerBox,
+            builder: _i13.fixedSizeFlexShimmerBox,
           ),
           _i1.WidgetbookUseCase(
             name: '2. Large Card Style',
-            builder: _i13.largeCardShimmerBox,
+            builder: _i13.largeCardFlexShimmerBox,
           ),
           _i1.WidgetbookUseCase(
             name: '3. Small Pill Style',
-            builder: _i13.pillShimmerBox,
+            builder: _i13.pillFlexShimmerBox,
           ),
         ],
       ),

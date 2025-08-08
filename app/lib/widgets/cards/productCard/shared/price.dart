@@ -1,5 +1,4 @@
-import 'package:flex_ui/utils/extensions.dart';
-import 'package:flex_ui/utils/typedefs.dart';
+import '../../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
@@ -165,8 +164,7 @@ Widget priceStyleOverride(BuildContext context) {
     child: FlexPrice(
       price: context.knobs.double.input(label: 'Price', initialValue: 150.99),
       priceVariant: PriceVariant.strikethrough,
-      textStyle:
-          context.theme.textTheme.headlineLarge?.copyWith(color: Colors.green),
+      textStyle: context.textTheme.headlineLarge?.copyWith(color: Colors.green),
       priceLabel: 'Example {price} Label Positioning',
     ),
   );

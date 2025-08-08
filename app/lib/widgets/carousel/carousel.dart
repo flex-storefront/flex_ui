@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flex_ui/flex_ui.dart';
+import '../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:widgetbook/widgetbook.dart';
@@ -78,7 +78,7 @@ class _FlexCarouselState extends State<FlexCarousel> {
             count: widget.items.length,
             effect: WormEffect(
               radius: 8.0,
-              activeDotColor: context.colors.primary,
+              activeDotColor: context.colorScheme.primary,
             ),
           ),
         ],

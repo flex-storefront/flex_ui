@@ -1,6 +1,4 @@
-import 'package:flex_ui/flex_ui.dart';
-import 'package:flex_ui/utils/typedefs.dart';
-import 'package:flex_ui/widgets/cards/productCard/shared/product_notation.dart';
+import '../../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 
 class ProductInfo extends StatelessWidget {
@@ -56,7 +54,7 @@ class ProductInfo extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
           ),
-          if (productReference.isNotBlank())
+          if (productReference != null && productReference!.isNotEmpty)
             Flexible(
               child: Padding(
                 padding:

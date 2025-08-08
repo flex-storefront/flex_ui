@@ -1,5 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
-import 'package:flex_ui/utils/extensions.dart';
+import '../../../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
@@ -32,7 +31,7 @@ class FlexBadge extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius:
             borderRadius ?? BorderRadius.circular(FlexSizes.circleRadius),
-        color: iconBackgroundColor ?? context.colors.info,
+        color: iconBackgroundColor ?? context.brandColors.info,
       ),
       padding: padding ??
           const EdgeInsets.symmetric(
@@ -44,7 +43,7 @@ class FlexBadge extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .labelSmall
-            ?.copyWith(color: context.colors.onInfo)
+            ?.copyWith(color: context.brandColors.onInfo)
             .copyWith(color: textColor),
       ),
     );
@@ -73,8 +72,8 @@ Widget saleBadge(BuildContext context) {
   return Center(
     child: FlexBadge(
       label: 'sale',
-      textColor: context.colors.onSuccess,
-      iconBackgroundColor: context.colors.success,
+      textColor: context.brandColors.onSuccess,
+      iconBackgroundColor: context.brandColors.success,
       borderRadius: BorderRadius.circular(4),
       padding: const EdgeInsets.all(10),
     ),

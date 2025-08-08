@@ -1,4 +1,4 @@
-import 'package:flex_ui/tokens/sizes.dart';
+import '../../flex_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:widgetbook/widgetbook.dart';
